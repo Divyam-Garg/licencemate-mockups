@@ -1,0 +1,685 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>/p-plates-plan — hero variants (LM design language)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sansita:wght@700;800&family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green-50:  #f0fdf4;
+    --green-100: #dcfce7;
+    --green-200: #bbf7d0;
+    --green-400: #4ade80;
+    --green-500: #22c55e;
+    --green-600: #16a34a;
+    --green-700: #15803d;
+    --green-800: #166534;
+    --green-900: #14532d;
+    --green-950: #052e16;
+    --yellow-300: #fde047;
+    --gray-50:  #f8fafc;
+    --gray-200: #e5e7eb;
+    --gray-500: #6b7280;
+    --gray-700: #374151;
+    --gray-900: #111827;
+    --font-sansita: "Sansita", Georgia, serif;
+    --font-sans: "Geist", -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: var(--font-sans);
+    background: #fff;
+    color: var(--gray-900);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3 { margin: 0; font-family: var(--font-sansita); font-weight: 700; letter-spacing: -0.005em; }
+  p { margin: 0; }
+  a { text-decoration: none; }
+
+  .container { max-width: 72rem; margin: 0 auto; padding: 0 1rem; } /* max-w-6xl + px-4 */
+  .container-narrow { max-width: 48rem; margin: 0 auto; padding: 0 1rem; } /* max-w-3xl */
+
+  /* Reviewer chrome */
+  .topbar { background: #fff; border-bottom: 1px solid var(--gray-200); padding: 14px 32px; }
+  .topbar .wordmark { font-family: var(--font-sansita); font-size: 22px; font-weight: 700; }
+  .topbar .wordmark .l { color: var(--green-700); }
+  .reviewer-note {
+    max-width: 72rem;
+    margin: 24px auto 0;
+    padding: 14px 18px;
+    background: #fff7ed;
+    border: 1px dashed #fdba74;
+    border-radius: 10px;
+    font-size: 13px;
+    color: #7c2d12;
+  }
+  .reviewer-note strong { font-family: var(--font-sansita); }
+  .variant-divider {
+    max-width: 72rem;
+    margin: 56px auto 0;
+    padding: 18px 24px;
+    border-top: 1px dashed #cbd5e1;
+    text-align: center;
+  }
+  .variant-divider .label {
+    display: inline-block;
+    padding: 6px 14px;
+    background: #fff;
+    border: 1px solid var(--gray-200);
+    border-radius: 999px;
+    font-size: 11.5px;
+    font-weight: 700;
+    color: var(--green-700);
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    margin-top: -14px;
+  }
+  .variant-divider .desc {
+    color: var(--gray-700);
+    font-size: 13.5px;
+    margin-top: 10px;
+    max-width: 580px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* =========================================================
+     HERO — branded (Variant B): LpHeroSection clone
+     ========================================================= */
+  .heroB {
+    position: relative;
+    overflow: hidden;
+    color: #fff;
+    background:
+      radial-gradient(ellipse at 80% 10%, rgba(74,222,128,0.18), transparent 55%),
+      linear-gradient(135deg, var(--green-900) 0%, var(--green-800) 35%, var(--green-700) 70%, var(--green-950) 100%);
+  }
+  .heroB::after {
+    content: "";
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0.20) 0%, transparent 25%, transparent 75%, rgba(0,0,0,0.25) 100%);
+    pointer-events: none;
+  }
+  .heroB-inner {
+    position: relative;
+    text-align: center;
+    padding: 88px 16px 64px;
+  }
+  @media (max-width: 720px) { .heroB-inner { padding: 56px 20px 48px; } }
+  .heroB .eyebrow {
+    color: var(--green-100);
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    text-shadow: 0 2px 14px rgba(0,0,0,0.35);
+  }
+  .heroB h1 {
+    color: #fff;
+    margin-top: 18px;
+    font-size: clamp(36px, 6vw, 64px);
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+    text-shadow: 0 2px 16px rgba(0,0,0,0.5);
+    max-width: 820px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .heroB h1 .accent { color: var(--yellow-300); }
+  .heroB .subtitle {
+    margin-top: 14px;
+    color: var(--green-400);
+    font-family: var(--font-sansita);
+    font-weight: 700;
+    font-size: clamp(20px, 2.4vw, 28px);
+    text-shadow: 0 2px 14px rgba(0,0,0,0.25);
+  }
+  .heroB .sub {
+    margin: 22px auto 0;
+    color: rgba(255,255,255,0.92);
+    font-size: 18px;
+    line-height: 1.55;
+    max-width: 600px;
+  }
+  .heroB .cta-row { margin-top: 30px; }
+  .heroB .below-cta {
+    margin-top: 14px;
+    color: rgba(255,255,255,0.75);
+    font-size: 13.5px;
+  }
+  .heroB .statlines {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 28px;
+    margin-top: 36px;
+  }
+  .heroB .statline {
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    text-shadow: 0 2px 14px rgba(0,0,0,0.30);
+  }
+  .heroB .statline .num {
+    font-family: var(--font-sansita);
+    font-weight: 700;
+    font-style: italic;
+    font-size: 28px;
+    color: var(--yellow-300);
+    text-decoration: underline;
+    text-decoration-color: rgba(253,224,71,0.5);
+    text-underline-offset: 4px;
+    letter-spacing: 0;
+    text-transform: none;
+    vertical-align: -3px;
+    margin-right: 6px;
+  }
+  .heroB .statline .num.white { color: #fff; text-decoration-color: rgba(255,255,255,0.5); }
+  @media (max-width: 720px) { .heroB .statlines { gap: 14px; } .heroB .statline { font-size: 12.5px; } .heroB .statline .num { font-size: 22px; } }
+  /* Proof cards row (mimics existing pattern) */
+  .heroB .proof-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    max-width: 720px;
+    margin: 32px auto 0;
+  }
+  @media (max-width: 720px) { .heroB .proof-row { grid-template-columns: 1fr; gap: 10px; } }
+  .heroB .proof-card {
+    padding: 14px 16px;
+    background: rgba(255,255,255,0.10);
+    border: 1px solid rgba(255,255,255,0.16);
+    border-radius: 24px;
+    backdrop-filter: blur(2px);
+    box-shadow: 0 18px 40px rgba(0,0,0,0.14);
+    color: rgba(255,255,255,0.92);
+    font-size: 14px;
+    text-align: left;
+  }
+
+  /* =========================================================
+     HERO — lean (Variant A): light variant of LM hero
+     ========================================================= */
+  .heroA {
+    position: relative;
+    overflow: hidden;
+    background:
+      radial-gradient(ellipse at 80% 10%, rgba(187,247,208,0.55), transparent 55%),
+      linear-gradient(180deg, #f7fdf9 0%, #fff 60%);
+    border-bottom: 1px solid var(--green-100);
+  }
+  .heroA-inner {
+    position: relative;
+    text-align: center;
+    padding: 80px 16px 64px;
+  }
+  @media (max-width: 720px) { .heroA-inner { padding: 52px 20px 48px; } }
+  .heroA .eyebrow {
+    color: var(--green-700);
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+  }
+  .heroA h1 {
+    color: var(--gray-900);
+    margin-top: 18px;
+    font-size: clamp(34px, 5.6vw, 56px);
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+    max-width: 780px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .heroA h1 .accent { color: var(--green-700); }
+  .heroA .subtitle {
+    margin-top: 14px;
+    color: var(--green-700);
+    font-family: var(--font-sansita);
+    font-weight: 700;
+    font-size: clamp(20px, 2.2vw, 26px);
+  }
+  .heroA .sub {
+    margin: 22px auto 0;
+    color: var(--gray-700);
+    font-size: 18px;
+    line-height: 1.6;
+    max-width: 580px;
+  }
+  .heroA .cta-row { margin-top: 30px; }
+  .heroA .below-cta {
+    margin-top: 14px;
+    color: var(--gray-500);
+    font-size: 13.5px;
+  }
+  .heroA .statlines {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 28px;
+    margin-top: 36px;
+  }
+  .heroA .statline {
+    color: var(--gray-700);
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+  }
+  .heroA .statline .num {
+    font-family: var(--font-sansita);
+    font-weight: 700;
+    font-style: italic;
+    font-size: 28px;
+    color: var(--green-700);
+    text-decoration: underline;
+    text-decoration-color: rgba(21,128,61,0.4);
+    text-underline-offset: 4px;
+    letter-spacing: 0;
+    text-transform: none;
+    vertical-align: -3px;
+    margin-right: 6px;
+  }
+  @media (max-width: 720px) { .heroA .statlines { gap: 14px; } .heroA .statline { font-size: 12.5px; } .heroA .statline .num { font-size: 22px; } }
+
+  /* =========================================================
+     Buttons
+     ========================================================= */
+  .cta-green {
+    display: inline-block;
+    padding: 16px 32px;
+    background: var(--green-600);
+    color: #fff;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 16px;
+    box-shadow: 0 8px 22px -6px rgba(22,163,74,0.55);
+    transition: background .15s;
+  }
+  .cta-green:hover { background: var(--green-700); color: #fff; }
+  .cta-white {
+    display: inline-block;
+    padding: 16px 32px;
+    background: #fff;
+    color: var(--green-700);
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 16px;
+    box-shadow: 0 10px 26px -6px rgba(0,0,0,0.30);
+    transition: background .15s;
+  }
+  .cta-white:hover { background: var(--green-50); }
+
+  /* =========================================================
+     Trust banner (TrustFeaturesBanner clone)
+     ========================================================= */
+  .trust-banner {
+    background: linear-gradient(90deg, var(--green-500), var(--green-600));
+    border-bottom: 1px solid var(--gray-200);
+    padding: 18px 16px;
+  }
+  .trust-banner .row {
+    display: flex; align-items: center; justify-content: center; flex-wrap: wrap;
+    gap: 28px;
+    color: #fff;
+  }
+  .trust-banner .item {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 14.5px; font-weight: 500;
+  }
+  .trust-banner .icon {
+    width: 22px; height: 22px;
+    color: #fff;
+    flex-shrink: 0;
+  }
+
+  /* =========================================================
+     Section base
+     ========================================================= */
+  .section { padding: 56px 0; }
+  @media (min-width: 768px) { .section { padding: 72px 0; } }
+  .section h2 {
+    text-align: center;
+    color: var(--gray-900);
+    font-size: clamp(26px, 3.5vw, 36px);
+    line-height: 1.15;
+    letter-spacing: -0.015em;
+  }
+  .section h2 .accent { color: var(--green-600); }
+  .section .lede {
+    margin-top: 14px;
+    text-align: center;
+    color: var(--gray-700);
+    font-size: 16px;
+    max-width: 540px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* "What you'll get" — clean white cards (closer to ThreeStepsSection / cards on LM) */
+  .what-you-get .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-top: 36px;
+  }
+  @media (max-width: 720px) { .what-you-get .grid { grid-template-columns: 1fr; } }
+  .what-you-get .item {
+    padding: 28px 24px;
+    background: #fff;
+    border: 1px solid var(--gray-200);
+    border-radius: 16px;
+    box-shadow: 0 1px 2px rgba(15,23,42,0.04);
+    text-align: left;
+  }
+  .what-you-get .step-num {
+    display: inline-flex;
+    align-items: center; justify-content: center;
+    width: 40px; height: 40px;
+    border-radius: 999px;
+    background: var(--green-600);
+    color: #fff;
+    font-family: var(--font-sansita);
+    font-weight: 700;
+    font-size: 18px;
+  }
+  .what-you-get .item h3 {
+    color: var(--gray-900);
+    font-size: 20px;
+    margin-top: 14px;
+  }
+  .what-you-get .item p {
+    color: var(--gray-700);
+    font-size: 14.5px;
+    margin-top: 8px;
+    line-height: 1.55;
+  }
+
+  /* Testimonial — green gradient backdrop (matches CuratedTestimonialsSection) */
+  .testimonial {
+    background:
+      radial-gradient(ellipse at 30% 0%, rgba(187,247,208,0.20), transparent 50%),
+      linear-gradient(135deg, var(--green-700) 0%, var(--green-600) 55%, var(--green-500) 100%);
+    padding: 64px 16px;
+    color: #fff;
+  }
+  .testimonial .label {
+    text-align: center;
+    color: rgba(255,255,255,0.78);
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    text-shadow: 0 2px 14px rgba(0,0,0,0.25);
+  }
+  .testimonial .heading {
+    text-align: center;
+    color: #fff;
+    font-family: var(--font-sansita);
+    font-weight: 700;
+    font-size: clamp(22px, 3vw, 30px);
+    margin-top: 12px;
+    text-shadow: 0 2px 16px rgba(0,0,0,0.30);
+  }
+  .testimonial .card {
+    background: #fff;
+    color: var(--gray-900);
+    border-radius: 16px;
+    box-shadow: 0 18px 40px -10px rgba(0,0,0,0.30);
+    padding: 28px;
+    max-width: 640px;
+    margin: 28px auto 0;
+    text-align: left;
+  }
+  .testimonial .stars { color: #fbbf24; font-size: 18px; letter-spacing: 4px; }
+  .testimonial blockquote {
+    font-family: var(--font-sansita);
+    font-size: 20px;
+    line-height: 1.4;
+    color: var(--gray-900);
+    margin: 12px 0 0;
+    letter-spacing: -0.01em;
+  }
+  .testimonial .attribution {
+    display: flex; align-items: center; gap: 12px;
+    margin-top: 18px;
+    color: var(--gray-700);
+    font-size: 14px;
+  }
+  .testimonial .avatar {
+    width: 48px; height: 48px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, var(--green-200), var(--green-500));
+    display: flex; align-items: center; justify-content: center;
+    color: #fff; font-family: var(--font-sansita); font-weight: 700; font-size: 18px;
+    flex-shrink: 0;
+  }
+  .testimonial .attribution strong { color: var(--gray-900); font-weight: 600; }
+  .placeholder-tag {
+    display: inline-block;
+    margin-top: 14px;
+    padding: 3px 10px;
+    background: #fff7ed;
+    border: 1px solid #fdba74;
+    border-radius: 999px;
+    color: #7c2d12;
+    font-size: 11px;
+    font-weight: 600;
+  }
+
+  /* Bottom CTA — gray-50 (LpBottomCtaSection clone) */
+  .bottom-cta {
+    background: var(--gray-50);
+    padding: 56px 16px;
+  }
+  .bottom-cta .inner {
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .bottom-cta h2 {
+    color: var(--gray-900);
+    font-size: clamp(26px, 3.5vw, 34px);
+    line-height: 1.15;
+    letter-spacing: -0.015em;
+  }
+  .bottom-cta h2 .accent { color: var(--green-700); }
+  .bottom-cta p {
+    margin: 16px auto 0;
+    color: var(--gray-700);
+    font-size: 16px;
+    max-width: 460px;
+  }
+  .bottom-cta .cta-row { margin-top: 28px; }
+
+  /* Footer */
+  .lp-footer {
+    background: #fff;
+    border-top: 1px solid var(--gray-200);
+    padding: 28px 16px;
+    text-align: center;
+    color: var(--gray-500);
+    font-size: 13px;
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <span class="wordmark"><span class="l">Licence</span>Mate</span>
+</div>
+
+<div class="reviewer-note">
+  <strong>Reviewer note:</strong> Both variants now use the existing LM design language — Sansita italic stat lines, green-gradient testimonial backdrop, gray-50 bottom CTA, trust banner strip. Variant A is a <em>light</em> version of the LM hero; Variant B is the full dark-green branded hero. Below-the-fold sections are identical between variants. Testimonial is still placeholder — paste your Google review and I'll swap it.
+</div>
+
+<!-- =========== VARIANT A — Lean / light brand hero =========== -->
+<div class="variant-divider">
+  <span class="label">Variant A — Light brand hero</span>
+  <p class="desc">Soft light-green backdrop, dark text. Same typographic structure as the LM dark hero (eyebrow → headline → subtitle → sub → stats → CTA) — just inverted for lower visual weight. Fast scan, mobile-friendly.</p>
+</div>
+
+<section class="heroA">
+  <div class="heroA-inner">
+    <p class="eyebrow">Your P-Plates Plan</p>
+    <h1>How many lessons until you're on your <span class="accent">Ps</span>?</h1>
+    <p class="subtitle">Answer 4 questions. Get a plan in 60 seconds.</p>
+    <p class="sub">Personalised lessons, timeline and exact next steps — built around where you're starting from.</p>
+    <div class="cta-row"><a href="/lesson-estimate-quiz" class="cta-green">Get My Plan (60s)</a></div>
+    <p class="below-cta">No booking required · free · saved as your own link</p>
+    <div class="statlines">
+      <span class="statline"><span class="num">81%</span> first-go pass rate</span>
+      <span class="statline"><span class="num">30+</span> Adelaide instructors</span>
+    </div>
+  </div>
+</section>
+
+<section class="trust-banner">
+  <div class="container">
+    <div class="row">
+      <span class="item"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg> Government Licensed</span>
+      <span class="item"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.244-4.243a8 8 0 1111.314 0z"/><circle cx="12" cy="11" r="3"/></svg> Free Pickup &amp; Drop-Off</span>
+      <span class="item"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20M12 2a15 15 0 000 20"/></svg> Book Online 24/7</span>
+      <span class="item"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h14a1 1 0 011 1v3a7 7 0 01-7 7h0a7 7 0 01-7-7V5a1 1 0 011-1zM12 15v6M8 21h8"/></svg> Guaranteed Pass</span>
+    </div>
+  </div>
+</section>
+
+<section class="section what-you-get">
+  <div class="container">
+    <h2>A clear plan, in 60 seconds.</h2>
+    <p class="lede">Tell us your starting point — we'll tailor the rest.</p>
+    <div class="grid">
+      <div class="item">
+        <div class="step-num">1</div>
+        <h3>Your lessons</h3>
+        <p>How many lessons you need based on your starting point — not a generic estimate.</p>
+      </div>
+      <div class="item">
+        <div class="step-num">2</div>
+        <h3>Your timeline</h3>
+        <p>When you could be VORT-ready and on P-plates, factoring in your L's hold and lesson cadence.</p>
+      </div>
+      <div class="item">
+        <div class="step-num">3</div>
+        <h3>Your next steps</h3>
+        <p>A step-by-step plan with what to do and in what order — saved as your own link.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonial">
+  <div class="container">
+    <p class="label">From our students</p>
+    <h2 class="heading">Real students, real results.</h2>
+    <div class="card">
+      <div class="stars">★★★★★</div>
+      <blockquote>"I had no idea where to start with getting my licence. The LicenceMate plan laid it all out — exactly how many lessons, when to test, what to do next. I felt sorted in 60 seconds."</blockquote>
+      <div class="attribution">
+        <div class="avatar">A</div>
+        <span><strong>Aisha R.</strong> · 5★ Google review</span>
+      </div>
+      <div class="placeholder-tag">PLACEHOLDER — swap with real review</div>
+    </div>
+  </div>
+</section>
+
+<section class="bottom-cta">
+  <div class="inner">
+    <h2>Ready to plan your path to your <span class="accent">Ps</span>?</h2>
+    <p>60 seconds, 4 questions, no booking required.</p>
+    <div class="cta-row"><a href="/lesson-estimate-quiz" class="cta-green">Get My Plan (60s)</a></div>
+  </div>
+</section>
+
+<div class="lp-footer">© LicenceMate · Adelaide · <code>/p-plates-plan</code></div>
+
+<!-- =========== VARIANT B — Branded dark green hero =========== -->
+<div class="variant-divider">
+  <span class="label">Variant B — Full LM branded hero</span>
+  <p class="desc">Dark green gradient, white text with text-shadow, yellow accent on "Ps", proof cards, italic Sansita stat lines. Visually consistent with the existing /first-lesson hero.</p>
+</div>
+
+<section class="heroB">
+  <div class="heroB-inner">
+    <h1>How many lessons until you're on your <span class="accent">Ps</span>?</h1>
+    <p class="sub">Personalised lessons, timeline and exact next steps — built around where you're starting from.</p>
+    <div class="cta-row"><a href="/lesson-estimate-quiz" class="cta-white">Get My Plan (60s)</a></div>
+    <div class="statlines">
+      <span class="statline"><span class="num">81%</span> first-go pass rate</span>
+      <span class="statline"><span class="num white">30+</span> Adelaide instructors</span>
+    </div>
+  </div>
+</section>
+
+<section class="trust-banner">
+  <div class="container">
+    <div class="row">
+      <span class="item"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg> Government Licensed</span>
+      <span class="item"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.244-4.243a8 8 0 1111.314 0z"/><circle cx="12" cy="11" r="3"/></svg> Free Pickup &amp; Drop-Off</span>
+      <span class="item"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20M12 2a15 15 0 000 20"/></svg> Book Online 24/7</span>
+      <span class="item"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h14a1 1 0 011 1v3a7 7 0 01-7 7h0a7 7 0 01-7-7V5a1 1 0 011-1zM12 15v6M8 21h8"/></svg> Guaranteed Pass</span>
+    </div>
+  </div>
+</section>
+
+<section class="section what-you-get">
+  <div class="container">
+    <h2>A clear plan, in 60 seconds.</h2>
+    <p class="lede">Tell us your starting point — we'll tailor the rest.</p>
+    <div class="grid">
+      <div class="item">
+        <div class="step-num">1</div>
+        <h3>Your lessons</h3>
+        <p>How many lessons you need based on your starting point — not a generic estimate.</p>
+      </div>
+      <div class="item">
+        <div class="step-num">2</div>
+        <h3>Your timeline</h3>
+        <p>When you could be VORT-ready and on P-plates, factoring in your L's hold and lesson cadence.</p>
+      </div>
+      <div class="item">
+        <div class="step-num">3</div>
+        <h3>Your next steps</h3>
+        <p>A step-by-step plan with what to do and in what order — saved as your own link.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonial">
+  <div class="container">
+    <p class="label">From our students</p>
+    <h2 class="heading">Real students, real results.</h2>
+    <div class="card">
+      <div class="stars">★★★★★</div>
+      <blockquote>"I had no idea where to start with getting my licence. The LicenceMate plan laid it all out — exactly how many lessons, when to test, what to do next. I felt sorted in 60 seconds."</blockquote>
+      <div class="attribution">
+        <div class="avatar">A</div>
+        <span><strong>Aisha R.</strong> · 5★ Google review</span>
+      </div>
+      <div class="placeholder-tag">PLACEHOLDER — swap with real review</div>
+    </div>
+  </div>
+</section>
+
+<section class="bottom-cta">
+  <div class="inner">
+    <h2>Ready to plan your path to your <span class="accent">Ps</span>?</h2>
+    <p>60 seconds, 4 questions, no booking required.</p>
+    <div class="cta-row"><a href="/lesson-estimate-quiz" class="cta-green">Get My Plan (60s)</a></div>
+  </div>
+</section>
+
+<div class="lp-footer">© LicenceMate · Adelaide · <code>/p-plates-plan</code></div>
+
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>LicenceMate — Mockups Index</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sansita:wght@700&family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green-50:  #f0fdf4;
+    --green-100: #dcfce7;
+    --green-600: #16a34a;
+    --green-700: #15803d;
+    --text: #111828;
+    --text-muted: #4b5563;
+    --border: #e5e7eb;
+    --font-sansita: "Sansita", Georgia, serif;
+    --font-sans: "Geist", -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { font-family: var(--font-sans); background: #fafdfb; color: var(--text); line-height: 1.5; }
+  h1, h2 { margin: 0; font-family: var(--font-sansita); font-weight: 700; }
+  a { color: var(--green-700); text-decoration: none; }
+  .topbar { background: #fff; border-bottom: 1px solid var(--border); padding: 14px 32px; display: flex; align-items: center; gap: 12px; }
+  .topbar img { width: 32px; height: 32px; }
+  .topbar .wordmark { font-family: var(--font-sansita); font-size: 22px; font-weight: 700; }
+  .topbar .wordmark .l { color: var(--green-700); }
+  main { max-width: 720px; margin: 48px auto; padding: 0 24px; }
+  h1 { font-size: 32px; letter-spacing: -0.015em; }
+  p.lede { color: var(--text-muted); margin-top: 12px; font-size: 15px; }
+  ul.mockups { list-style: none; padding: 0; margin: 32px 0; display: flex; flex-direction: column; gap: 12px; }
+  li.mockup {
+    background: #fff;
+    border: 1px solid var(--green-100);
+    border-radius: 12px;
+    padding: 20px 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  li.mockup .title { font-family: var(--font-sansita); font-weight: 700; font-size: 17px; color: var(--text); }
+  li.mockup .desc { color: var(--text-muted); font-size: 13.5px; margin-top: 4px; }
+  li.mockup a.open {
+    flex-shrink: 0;
+    background: var(--green-600); color: #fff;
+    padding: 10px 18px; border-radius: 999px;
+    font-weight: 600; font-size: 14px;
+  }
+  li.mockup a.open:hover { background: var(--green-700); }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <img src="licencemate_logo.png" alt="LicenceMate" />
+  <span class="wordmark"><span class="l">Licence</span>Mate</span>
+</div>
+<main>
+  <h1>Mockups index</h1>
+  <p class="lede">Static HTML mockups for review. Open any link below.</p>
+  <ul class="mockups">
+    <li class="mockup">
+      <div>
+        <div class="title">Results page — Variation D (current direction)</div>
+        <div class="desc">Your P-Plates Plan results page with timeline, why us, FAQ. Switch personas / variations via tabs.</div>
+      </div>
+      <a class="open" href="lesson-results-mockups.html?v=D&p=confident">Open</a>
+    </li>
+    <li class="mockup">
+      <div>
+        <div class="title">Standalone landing page — /p-plates-plan</div>
+        <div class="desc">Hero variants A (lean) + B (branded). LM design language throughout.</div>
+      </div>
+      <a class="open" href="p-plates-plan-lp.html">Open</a>
+    </li>
+    <li class="mockup">
+      <div>
+        <div class="title">Quiz entry section — final polished (B1)</div>
+        <div class="desc">The standalone block we slotted into /first-lesson and suburb pages.</div>
+      </div>
+      <a class="open" href="quiz-entry-section.html">Open</a>
+    </li>
+    <li class="mockup">
+      <div>
+        <div class="title">Quiz entry section — B sub-variants</div>
+        <div class="desc">Four sub-variations of the question-led entry block (B1–B4).</div>
+      </div>
+      <a class="open" href="quiz-entry-section-b-variants.html">Open</a>
+    </li>
+    <li class="mockup">
+      <div>
+        <div class="title">Quiz entry — all 5 original variants</div>
+        <div class="desc">A–E. Preview-led, question-led, 3-up, quote, forked.</div>
+      </div>
+      <a class="open" href="quiz-entry-variations.html">Open</a>
+    </li>
+  </ul>
+</main>
+</body>
+</html>

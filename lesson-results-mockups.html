@@ -1,0 +1,2434 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>LicenceMate · Lesson Estimate Quiz — Results page mockups</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sansita:wght@700;800&family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* LicenceMate brand */
+    --green-50:  #f0fdf4;
+    --green-100: #dcfce7;
+    --green-200: #bbf7d0;
+    --green-400: #4ade80;
+    --green-500: #22c55e;
+    --green-600: #16a34a;
+    --green-700: #15803d;
+    --green-800: #166534;
+    --green-950: #052e16;
+    --yellow-200: #fef08a;
+    --yellow-300: #fde047;
+    --yellow-400: #facc15;
+
+    --primary: var(--green-600);
+    --primary-hover: var(--green-700);
+    --primary-tint: var(--green-50);
+    --primary-soft: var(--green-100);
+
+    --bg: #fafdfb;
+    --surface: #ffffff;
+    --surface-2: #f1f5f9;
+    --text: #111828;
+    --text-muted: #4b5563;
+    --text-soft: #6b7280;
+    --border: #e5e7eb;
+    --border-soft: var(--green-100);
+    --border-strong: #d1d5db;
+
+    --success: var(--green-600);
+    --warning-bg: #fffbeb;
+    --warning-border: #f59e0b;
+    --warning-text: #78350f;
+
+    --radius:    0.625rem;
+    --radius-sm: calc(var(--radius) - 4px);
+    --radius-md: calc(var(--radius) - 2px);
+    --radius-lg: var(--radius);
+    --radius-xl: calc(var(--radius) + 6px);
+
+    --shadow-sm: 0 1px 2px rgba(17,24,40,.04), 0 1px 3px rgba(17,24,40,.06);
+    --shadow-md: 0 8px 18px -6px rgba(22,163,74,.12), 0 4px 8px -2px rgba(17,24,40,.04);
+    --shadow-lg: 0 24px 48px -18px rgba(21,128,61,.30);
+    --shadow-glow: 0 0 0 0 rgba(34,197,94,.55);
+
+    --font-sansita: "Sansita", Georgia, ui-serif, serif;
+    --font-sans: "Geist", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: var(--font-sans);
+    background: var(--bg);
+    color: var(--text);
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.5;
+  }
+  h1, h2, h3, h4 {
+    margin: 0;
+    font-family: var(--font-sansita);
+    font-weight: 700;
+    letter-spacing: -0.005em;
+  }
+  p { margin: 0; }
+  button { font-family: inherit; cursor: pointer; }
+  a { color: var(--primary); text-decoration: none; }
+
+  /* ---------- Page shell ---------- */
+  .topbar {
+    background: #fff;
+    border-bottom: 1px solid var(--border);
+    padding: 14px 32px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .topbar img { width: 32px; height: 32px; }
+  .topbar .wordmark {
+    font-family: var(--font-sansita);
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+  .topbar .wordmark .l { color: var(--green-700); }
+  .topbar .wordmark .m { color: var(--text); }
+  .topbar .crumb {
+    margin-left: auto;
+    font-size: 12.5px;
+    color: var(--text-soft);
+  }
+
+  .page-header {
+    background: linear-gradient(180deg, #fff 0%, #f7fdf9 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 28px 32px 0;
+  }
+  .page-header h1 {
+    font-size: 22px;
+    font-family: var(--font-sansita);
+  }
+  .page-header p {
+    color: var(--text-muted);
+    font-size: 13.5px;
+    margin-top: 6px;
+  }
+  .tabs {
+    display: flex;
+    gap: 4px;
+    margin-top: 20px;
+    overflow-x: auto;
+  }
+  .tabs button {
+    background: transparent;
+    border: 0;
+    padding: 10px 14px;
+    font-size: 13.5px;
+    font-weight: 500;
+    color: var(--text-muted);
+    border-bottom: 2px solid transparent;
+    white-space: nowrap;
+    transition: color .15s, border-color .15s;
+  }
+  .tabs button:hover { color: var(--text); }
+  .tabs button.active {
+    color: var(--green-700);
+    border-bottom-color: var(--green-600);
+    font-weight: 600;
+  }
+  .persona-bar {
+    background: var(--surface);
+    padding: 12px 32px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .persona-bar .label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: var(--text-soft);
+    font-weight: 600;
+    margin-right: 8px;
+  }
+  .persona-bar button {
+    background: #fff;
+    border: 1px solid var(--border);
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-size: 12.5px;
+    font-weight: 500;
+    color: var(--text-muted);
+    transition: all .15s;
+  }
+  .persona-bar button:hover { color: var(--text); border-color: var(--green-200); background: var(--green-50); }
+  .persona-bar button.active {
+    background: var(--green-600);
+    color: #fff;
+    border-color: var(--green-600);
+  }
+
+  .stage {
+    padding: 40px 32px 80px;
+    display: flex;
+    justify-content: center;
+  }
+  .stage-inner {
+    width: 100%;
+    max-width: 880px;
+  }
+  .variation-meta {
+    margin-bottom: 24px;
+  }
+  .variation-meta h2 {
+    font-size: 12px;
+    font-family: var(--font-sans);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: var(--green-700);
+  }
+  .variation-meta h3 {
+    font-family: var(--font-sansita);
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    margin-top: 4px;
+    color: var(--text);
+  }
+  .variation-meta p {
+    color: var(--text-muted);
+    font-size: 14px;
+    margin-top: 6px;
+    max-width: 660px;
+  }
+
+  /* ---------- Shared primitives ---------- */
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 12px 22px;
+    background: var(--green-600);
+    color: #fff;
+    border: 0;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    font-size: 14.5px;
+    font-family: var(--font-sans);
+    box-shadow: 0 4px 12px -4px rgba(22,163,74,.45);
+    transition: background .15s, transform .05s, box-shadow .15s;
+  }
+  .btn-primary:hover { background: var(--green-700); box-shadow: 0 6px 18px -4px rgba(21,128,61,.55); }
+  .btn-primary:active { transform: translateY(1px); }
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 16px;
+    background: #fff;
+    color: var(--green-700);
+    border: 1px solid var(--green-200);
+    border-radius: var(--radius-md);
+    font-weight: 500;
+    font-size: 14px;
+  }
+
+  .warning-banner {
+    display: flex;
+    gap: 12px;
+    background: var(--warning-bg);
+    border: 1px solid #fde68a;
+    border-left: 4px solid var(--warning-border);
+    color: var(--warning-text);
+    padding: 14px 16px;
+    border-radius: var(--radius-md);
+    font-size: 13.5px;
+    margin-bottom: 24px;
+  }
+  .warning-banner .icon { flex-shrink: 0; }
+  .warning-banner strong { font-weight: 700; display: block; margin-bottom: 2px; font-family: var(--font-sansita); }
+
+  .roadmap-eyebrow {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: var(--green-700);
+    font-weight: 600;
+    margin: 36px 0 8px;
+  }
+
+  /* ---------- Variation A: 3-phase roadmap ---------- */
+  .vA-hero {
+    background: linear-gradient(135deg, var(--green-600) 0%, var(--green-700) 100%);
+    color: #fff;
+    border-radius: var(--radius-xl);
+    padding: 40px 32px;
+    text-align: center;
+    box-shadow: var(--shadow-md);
+    position: relative;
+    overflow: hidden;
+  }
+  .vA-hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 80% 20%, rgba(255,255,255,.15), transparent 50%);
+    pointer-events: none;
+  }
+  .vA-hero .eyebrow {
+    font-size: 13px;
+    color: rgba(255,255,255,.85);
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    font-weight: 600;
+  }
+  .vA-hero .estimate {
+    font-family: var(--font-sansita);
+    font-size: 64px;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    margin: 12px 0 4px;
+    color: #fff;
+    line-height: 1.05;
+    text-shadow: 0 2px 16px rgba(0,0,0,.18);
+  }
+  .vA-hero .estimate small {
+    font-size: 17px;
+    color: rgba(255,255,255,.92);
+    font-weight: 500;
+    letter-spacing: 0;
+    display: block;
+    margin-top: 4px;
+    font-family: var(--font-sans);
+  }
+  .vA-hero .subtitle {
+    color: rgba(255,255,255,.92);
+    font-size: 15px;
+    margin: 12px auto 24px;
+    max-width: 480px;
+  }
+  .vA-hero .btn-primary {
+    background: #fff;
+    color: var(--green-700);
+    box-shadow: 0 8px 22px -8px rgba(0,0,0,.35);
+  }
+  .vA-hero .btn-primary:hover { background: var(--green-50); }
+
+  .vA-phases-track {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 16px 8px 28px;
+  }
+  .vA-phase-node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    text-align: center;
+    flex: 0 0 auto;
+    width: 110px;
+  }
+  .vA-phase-node .dot {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--green-600);
+    box-shadow: 0 0 0 5px var(--green-100);
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: 700;
+    font-size: 13px;
+    font-family: var(--font-sansita);
+  }
+  .vA-phase-node:not(:first-child) .dot {
+    background: #fff;
+    border: 2px solid var(--green-200);
+    color: var(--green-700);
+    box-shadow: none;
+  }
+  .vA-phase-node .label {
+    font-size: 12px;
+    color: var(--text-muted);
+    font-weight: 600;
+  }
+  .vA-phases-line {
+    flex: 1;
+    height: 2px;
+    background: var(--green-200);
+    margin: 0 -8px;
+    align-self: center;
+    position: relative;
+    top: -16px;
+  }
+  .vA-phase-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 28px;
+  }
+  .vA-phase-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-xl);
+    padding: 22px 24px;
+    box-shadow: var(--shadow-sm);
+  }
+  .vA-phase-card .head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+  .vA-phase-card .pill {
+    background: var(--green-100);
+    color: var(--green-800);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .05em;
+    padding: 4px 10px;
+    border-radius: 999px;
+    text-transform: uppercase;
+    font-family: var(--font-sans);
+  }
+  .vA-phase-card h4 {
+    font-size: 19px;
+    font-family: var(--font-sansita);
+    font-weight: 700;
+  }
+  .vA-phase-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 6px 0 0;
+  }
+  .vA-phase-card li {
+    color: var(--text-muted);
+    font-size: 14.5px;
+    padding: 6px 0 6px 22px;
+    position: relative;
+  }
+  .vA-phase-card li::before {
+    content: "";
+    position: absolute;
+    left: 4px;
+    top: 14px;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--green-500);
+  }
+
+  /* ---------- Variation B: two-column ---------- */
+  .vB-grid {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 24px;
+    align-items: start;
+  }
+  @media (max-width: 720px) {
+    .vB-grid { grid-template-columns: 1fr; }
+  }
+  .vB-left {
+    background: var(--surface);
+    border-radius: var(--radius-xl);
+    padding: 28px 24px;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--green-100);
+    position: sticky;
+    top: 24px;
+    overflow: hidden;
+    position: relative;
+  }
+  .vB-left::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 6px;
+    background: linear-gradient(90deg, var(--green-500), var(--green-700));
+  }
+  .vB-left .eyebrow {
+    font-size: 11.5px;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: var(--green-700);
+    font-weight: 700;
+  }
+  .vB-left .estimate {
+    font-family: var(--font-sansita);
+    font-size: 52px;
+    font-weight: 800;
+    color: var(--green-700);
+    letter-spacing: -0.03em;
+    margin-top: 6px;
+    line-height: 1;
+  }
+  .vB-left .sessions {
+    color: var(--text-muted);
+    font-size: 14px;
+    margin: 8px 0 18px;
+  }
+  .vB-left .basedOn {
+    font-size: 12.5px;
+    color: var(--text-muted);
+    border-top: 1px solid var(--border);
+    padding-top: 14px;
+    margin-top: 6px;
+  }
+  .vB-left .basedOn strong {
+    font-family: var(--font-sansita);
+    font-weight: 700;
+    color: var(--text);
+    font-size: 13px;
+  }
+  .vB-left .basedOn ul {
+    list-style: none;
+    padding: 0;
+    margin: 8px 0 0;
+  }
+  .vB-left .basedOn li {
+    padding: 3px 0 3px 22px;
+    position: relative;
+  }
+  .vB-left .basedOn li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--green-600);
+    font-weight: 700;
+  }
+  .vB-left .package {
+    margin-top: 20px;
+    padding: 14px;
+    background: var(--green-50);
+    border: 1px solid var(--green-100);
+    border-radius: var(--radius-md);
+  }
+  .vB-left .package .pkg-eyebrow {
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: var(--green-700);
+    font-weight: 700;
+  }
+  .vB-left .package .pkg-name {
+    font-family: var(--font-sansita);
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text);
+    margin-top: 2px;
+  }
+  .vB-left .cta { margin-top: 18px; width: 100%; justify-content: center; }
+
+  .vB-right {
+    background: var(--surface);
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--border);
+    padding: 8px 0;
+    box-shadow: var(--shadow-sm);
+  }
+  .vB-right h4 {
+    font-family: var(--font-sansita);
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    padding: 20px 24px 12px;
+  }
+  .vB-step {
+    display: flex;
+    gap: 14px;
+    padding: 16px 24px;
+    border-top: 1px solid var(--border);
+  }
+  .vB-step .num {
+    flex-shrink: 0;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: var(--green-100);
+    color: var(--green-800);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 13.5px;
+    font-family: var(--font-sansita);
+  }
+  .vB-step .body .title {
+    font-size: 15px;
+    font-weight: 600;
+  }
+  .vB-step .body .detail {
+    font-size: 13.5px;
+    color: var(--text-muted);
+    margin-top: 2px;
+  }
+
+  /* ---------- Variation C: timeline expandable ---------- */
+  .vC-hero {
+    background: linear-gradient(135deg, #fff 0%, var(--green-50) 100%);
+    border: 1px solid var(--green-100);
+    border-radius: var(--radius-xl);
+    padding: 24px 28px;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .vC-hero .headline {
+    font-family: var(--font-sansita);
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+  .vC-hero .headline strong {
+    color: var(--green-700);
+    font-weight: 800;
+  }
+  .vC-hero .sub {
+    color: var(--text-muted);
+    font-size: 14px;
+    margin-top: 6px;
+    font-family: var(--font-sans);
+    font-weight: 400;
+  }
+  .vC-list {
+    margin-top: 24px;
+    position: relative;
+  }
+  .vC-list::before {
+    content: "";
+    position: absolute;
+    left: 19px;
+    top: 16px;
+    bottom: 16px;
+    width: 2px;
+    background: var(--green-100);
+  }
+  .vC-step {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    margin-bottom: 10px;
+    position: relative;
+    margin-left: 48px;
+    box-shadow: var(--shadow-sm);
+  }
+  .vC-step summary {
+    list-style: none;
+    cursor: pointer;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 15px;
+    font-weight: 600;
+  }
+  .vC-step summary::-webkit-details-marker { display: none; }
+  .vC-step .num-circle {
+    position: absolute;
+    left: -48px;
+    top: 12px;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: #fff;
+    border: 2px solid var(--green-200);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--green-700);
+    font-family: var(--font-sansita);
+  }
+  .vC-step[data-current="true"] .num-circle {
+    background: var(--green-600);
+    color: #fff;
+    border-color: var(--green-600);
+    box-shadow: 0 0 0 5px var(--green-100);
+  }
+  .vC-step[data-current="true"] {
+    border-color: var(--green-200);
+    box-shadow: 0 8px 18px -6px rgba(22,163,74,.18);
+  }
+  .vC-step .chev {
+    color: var(--text-soft);
+    transition: transform .15s;
+  }
+  .vC-step[open] .chev { transform: rotate(180deg); }
+  .vC-step .detail-body {
+    padding: 0 20px 18px;
+    color: var(--text-muted);
+    font-size: 14px;
+    border-top: 1px solid var(--border);
+    padding-top: 14px;
+  }
+  .vC-step .detail-body a {
+    display: inline-block;
+    margin-top: 10px;
+    font-weight: 600;
+  }
+
+  /* ---------- Variation D: progress checklist ---------- */
+  .vD-card {
+    background: var(--surface);
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--green-100);
+    padding: 32px;
+    box-shadow: var(--shadow-md);
+  }
+  .vD-progress-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 14px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .vD-progress-head .plan-eyebrow {
+    font-size: 11.5px;
+    text-transform: uppercase;
+    letter-spacing: .12em;
+    color: var(--green-700);
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .vD-progress-head .headline {
+    font-family: var(--font-sansita);
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: -0.015em;
+  }
+  .vD-progress-head .pct {
+    font-family: var(--font-sansita);
+    font-size: 40px;
+    font-weight: 800;
+    color: var(--green-700);
+    letter-spacing: -0.025em;
+    line-height: 1;
+  }
+  .vD-bar {
+    height: 12px;
+    background: var(--green-50);
+    border: 1px solid var(--green-100);
+    border-radius: 999px;
+    overflow: hidden;
+    margin-bottom: 8px;
+  }
+  .vD-bar .fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--green-500), var(--green-700));
+    border-radius: 999px;
+    transition: width .4s ease;
+    box-shadow: 0 0 12px rgba(34,197,94,.6);
+  }
+  .vD-bar-sub {
+    color: var(--text-muted);
+    font-size: 13.5px;
+    margin-bottom: 24px;
+  }
+  .vD-cta-row { margin-bottom: 28px; }
+  .vD-checklist {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border-top: 1px solid var(--border);
+  }
+  .vD-check-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 4px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+  }
+  .vD-check-item .marker {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #fff;
+    border: 2px solid var(--border-strong);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 700;
+  }
+  .vD-check-item.done .marker {
+    background: var(--green-600);
+    color: #fff;
+    border-color: var(--green-600);
+  }
+  .vD-check-item.done .text {
+    color: var(--text-muted);
+    text-decoration: line-through;
+    text-decoration-color: rgba(0,0,0,.18);
+  }
+  .vD-check-item.current {
+    background: var(--green-50);
+    margin: 0 -14px;
+    padding: 14px;
+    border-radius: var(--radius-md);
+    border-bottom-color: transparent;
+    border: 1px solid var(--green-100);
+  }
+  .vD-check-item.current .marker {
+    border-color: var(--green-600);
+    border-style: dashed;
+    color: var(--green-700);
+    background: #fff;
+  }
+  .vD-check-item.warning .marker {
+    background: var(--warning-border);
+    color: #fff;
+    border-color: var(--warning-border);
+  }
+  .vD-check-item .text {
+    font-size: 15px;
+    font-weight: 600;
+  }
+  .vD-check-item .text .sub {
+    display: block;
+    color: var(--text-muted);
+    font-size: 13px;
+    font-weight: 400;
+    margin-top: 2px;
+  }
+  .vD-check-item .you-are-here {
+    margin-left: auto;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--green-800);
+    background: #fff;
+    padding: 4px 10px;
+    border-radius: 999px;
+    border: 1px solid var(--green-200);
+    letter-spacing: .04em;
+    text-transform: uppercase;
+  }
+  .vD-check-item .vD-change-answer {
+    margin-left: auto;
+    background: none;
+    border: 0;
+    color: var(--green-700);
+    font-weight: 600;
+    font-size: 12.5px;
+    cursor: pointer;
+    padding: 4px 8px;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    flex-shrink: 0;
+  }
+  .vD-check-item .vD-change-answer:hover { color: var(--green-800); }
+
+  /* D additions */
+  .vD-package-strip {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 18px;
+    background: var(--green-50);
+    border: 1px solid var(--green-100);
+    border-radius: var(--radius-md);
+    margin-bottom: 20px;
+  }
+  .vD-package-strip .pkg-icon { font-size: 22px; line-height: 1; }
+  .vD-package-strip .pkg-eyebrow {
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: var(--green-700);
+    font-weight: 700;
+  }
+  .vD-package-strip .pkg-name {
+    font-family: var(--font-sansita);
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text);
+    margin-top: 1px;
+  }
+  .vD-package-strip .pkg-link {
+    margin-left: auto;
+    color: var(--green-700);
+    font-weight: 600;
+    font-size: 13.5px;
+    white-space: nowrap;
+  }
+  .vD-tip {
+    display: flex;
+    gap: 12px;
+    background: #fffbeb;
+    border: 1px solid #fde68a;
+    border-left: 4px solid var(--warning-border);
+    padding: 12px 14px;
+    border-radius: var(--radius-md);
+    margin-bottom: 16px;
+    font-size: 13.5px;
+    color: var(--warning-text);
+  }
+  .vD-tip strong {
+    display: block;
+    font-family: var(--font-sansita);
+    font-weight: 700;
+    margin-bottom: 2px;
+  }
+  .vD-tip .icon { flex-shrink: 0; font-size: 16px; line-height: 1.2; }
+  .vD-focus-row {
+    list-style: none;
+    padding: 12px 0 2px;
+    border: 0;
+  }
+  .vD-focus-label {
+    font-size: 11.5px;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: var(--green-700);
+    font-weight: 700;
+  }
+  .vD-check-item.current {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+  }
+  .vD-current-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    width: 100%;
+  }
+  .vD-current-detail {
+    margin-top: 12px;
+    margin-left: 38px;
+    padding: 14px 16px;
+    background: #fff;
+    border: 1px solid var(--green-100);
+    border-radius: var(--radius-sm);
+    font-size: 13.5px;
+    color: var(--text-muted);
+    line-height: 1.55;
+  }
+  .vD-current-detail strong { color: var(--text); font-weight: 700; }
+  .vD-current-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 10px;
+  }
+  .vD-current-links a {
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--green-700);
+  }
+  .vD-current-links a:hover { color: var(--green-800); text-decoration: underline; }
+
+  .vD-save-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #fff;
+    border: 1px solid var(--green-100);
+    border-radius: var(--radius-md);
+    padding: 10px 14px;
+    margin-bottom: 20px;
+    font-size: 13px;
+    color: var(--text-muted);
+    flex-wrap: wrap;
+  }
+  .vD-save-bar .indicator-dot {
+    width: 8px; height: 8px; border-radius: 50%; background: var(--green-500);
+    box-shadow: 0 0 0 3px var(--green-100);
+    flex-shrink: 0;
+  }
+  .vD-save-bar .indicator { color: var(--green-700); font-weight: 600; }
+  .vD-save-bar .copy-btn {
+    margin-left: auto;
+    background: var(--green-50);
+    border: 1px solid var(--green-200);
+    color: var(--green-700);
+    padding: 6px 12px;
+    border-radius: var(--radius-sm);
+    font-size: 12.5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background .15s, border-color .15s;
+  }
+  .vD-save-bar .copy-btn:hover { background: var(--green-100); border-color: var(--green-300, var(--green-200)); }
+
+  .vD-decision {
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px dashed var(--green-200);
+  }
+  .vD-decision .prompt {
+    font-family: var(--font-sansita);
+    font-weight: 700;
+    color: var(--text);
+    font-size: 14.5px;
+    margin-bottom: 10px;
+  }
+  .vD-decision-options { display: grid; gap: 8px; }
+  .vD-decision-option {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    padding: 12px 14px;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: border-color .15s, background .15s, box-shadow .15s;
+  }
+  .vD-decision-option:hover { border-color: var(--green-200); background: var(--green-50); }
+  .vD-decision-option.selected {
+    border-color: var(--green-600);
+    background: var(--green-50);
+    box-shadow: 0 0 0 3px var(--green-100);
+  }
+  .vD-decision-option input[type="radio"] { margin-top: 3px; accent-color: var(--green-600); flex-shrink: 0; }
+  .vD-decision-option .label { font-weight: 600; color: var(--text); font-size: 14px; }
+  .vD-decision-option .hint { color: var(--text-muted); font-size: 13px; margin-top: 2px; line-height: 1.45; }
+
+  .vD-decision-answered {
+    margin-top: 12px;
+    padding: 12px 14px;
+    background: var(--green-50);
+    border: 1px solid var(--green-200);
+    border-radius: var(--radius-sm);
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+  .vD-decision-answered .check {
+    width: 22px; height: 22px; border-radius: 50%;
+    background: var(--green-600); color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 12px; flex-shrink: 0;
+  }
+  .vD-decision-answered .your-answer {
+    font-weight: 600; color: var(--text); font-size: 14px;
+  }
+  .vD-decision-answered .your-answer-sub {
+    color: var(--text-muted); font-size: 13px; margin-top: 2px;
+  }
+  .vD-decision-answered .change-link {
+    margin-left: auto;
+    color: var(--green-700);
+    font-size: 12.5px;
+    font-weight: 600;
+    cursor: pointer;
+    background: none;
+    border: 0;
+    text-decoration: underline;
+    padding: 0;
+  }
+
+  .vD-success-callout {
+    display: flex;
+    gap: 12px;
+    background: linear-gradient(135deg, var(--green-50), var(--green-100));
+    border: 1px solid var(--green-200);
+    border-left: 4px solid var(--green-600);
+    color: var(--green-800);
+    padding: 14px 16px;
+    border-radius: var(--radius-md);
+    font-size: 14px;
+    margin: 14px 0 20px;
+  }
+  .vD-success-callout strong {
+    display: block;
+    font-family: var(--font-sansita);
+    font-weight: 700;
+    color: var(--green-950);
+    margin-bottom: 2px;
+  }
+  .vD-success-callout .icon { font-size: 18px; line-height: 1.2; flex-shrink: 0; }
+
+  .vD-check-item.expandable {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    cursor: pointer;
+  }
+  .vD-check-item.expandable .vD-step-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    width: 100%;
+  }
+  .vD-check-item.expandable .chev {
+    margin-left: auto;
+    color: var(--text-soft);
+    transition: transform .15s;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+  .vD-check-item.expandable.expanded .chev { transform: rotate(180deg); }
+  .vD-check-item.expandable .vD-step-body {
+    display: none;
+    margin-top: 12px;
+    margin-left: 38px;
+    padding: 14px 16px;
+    background: #fafdfb;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    font-size: 13.5px;
+    color: var(--text-muted);
+    line-height: 1.6;
+    cursor: default;
+  }
+  .vD-check-item.expandable.expanded .vD-step-body { display: block; }
+  .vD-check-item.expandable .vD-step-body strong { color: var(--text); font-weight: 700; }
+  .vD-check-item.expandable .vD-step-body a { color: var(--green-700); font-weight: 600; }
+  .vD-check-item.expandable .vD-step-body a:hover { color: var(--green-800); text-decoration: underline; }
+  .vD-check-item.expandable.done .vD-step-header { opacity: 0.85; }
+
+  /* Inline LM CTA + Read more (inside any step body) */
+  .vD-current-detail .lm-inline-cta,
+  .vD-step-body .lm-inline-cta {
+    display: inline-block;
+    margin-top: 14px;
+    padding: 9px 18px;
+    background: var(--green-600);
+    color: #fff;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    font-size: 13.5px;
+    text-decoration: none;
+    box-shadow: 0 3px 8px -2px rgba(22,163,74,.45);
+    transition: background .15s;
+  }
+  .vD-current-detail .lm-inline-cta:hover,
+  .vD-step-body .lm-inline-cta:hover {
+    background: var(--green-700);
+    color: #fff;
+    text-decoration: none;
+  }
+  .vD-current-detail .lm-read-more,
+  .vD-step-body .lm-read-more {
+    display: inline-block;
+    margin-top: 12px;
+    font-size: 13px;
+    color: var(--green-700);
+    font-weight: 600;
+  }
+  .vD-current-detail .lm-pitch,
+  .vD-step-body .lm-pitch {
+    display: block;
+    padding: 12px 14px;
+    background: var(--green-50);
+    border-left: 3px solid var(--green-600);
+    border-radius: 6px;
+    margin-bottom: 14px;
+    color: var(--green-800);
+    font-size: 13.5px;
+    line-height: 1.55;
+  }
+  .vD-current-detail .lm-pitch strong,
+  .vD-step-body .lm-pitch strong { color: var(--green-950); }
+
+  /* Timeline strip (inside main D card) */
+  .vD-timeline {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    padding: 16px 18px;
+    background: var(--green-50);
+    border: 1px solid var(--green-100);
+    border-radius: var(--radius-md);
+    margin-bottom: 20px;
+  }
+  .vD-timeline-cell .label {
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: var(--green-700);
+    font-weight: 700;
+  }
+  .vD-timeline-cell .value {
+    font-family: var(--font-sansita);
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text);
+    margin-top: 4px;
+    line-height: 1.1;
+  }
+  .vD-timeline-cell .value-sub {
+    font-size: 12.5px;
+    color: var(--text-muted);
+    margin-top: 4px;
+  }
+  .vD-timeline-note {
+    grid-column: 1 / -1;
+    font-size: 13px;
+    color: var(--warning-text);
+    background: var(--warning-bg);
+    border: 1px solid #fde68a;
+    border-radius: 6px;
+    padding: 10px 12px;
+    margin-top: 4px;
+    line-height: 1.5;
+  }
+
+  /* Why LicenceMate card */
+  .lm-card {
+    background: var(--surface);
+    border: 1px solid var(--green-100);
+    border-radius: var(--radius-xl);
+    padding: 28px 32px;
+    box-shadow: var(--shadow-sm);
+    margin-top: 20px;
+  }
+  .lm-card h3 {
+    font-family: var(--font-sansita);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 8px;
+  }
+  .lm-card .lm-card-sub {
+    color: var(--text-muted);
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+  .lm-why-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+  }
+  @media (max-width: 720px) { .lm-why-grid { grid-template-columns: 1fr; } }
+  .lm-why-item {
+    padding: 18px;
+    background: linear-gradient(135deg, var(--green-50), #fff);
+    border: 1px solid var(--green-100);
+    border-radius: var(--radius-md);
+  }
+  .lm-why-item .stat {
+    font-family: var(--font-sansita);
+    font-size: 30px;
+    font-weight: 800;
+    color: var(--green-700);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  .lm-why-item .stat-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+    margin-top: 8px;
+  }
+  .lm-why-item .desc {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-top: 6px;
+    line-height: 1.5;
+  }
+
+  /* Cost transparency card */
+  .lm-cost-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 14px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border);
+    align-items: baseline;
+  }
+  .lm-cost-row:first-of-type { border-top: 1px solid var(--border); }
+  .lm-cost-row.total {
+    border-top: 2px solid var(--text);
+    border-bottom: 0;
+    margin-top: 4px;
+    padding-top: 16px;
+  }
+  .lm-cost-row .item-name { font-weight: 600; font-size: 14.5px; color: var(--text); }
+  .lm-cost-row .item-sub {
+    display: block;
+    color: var(--text-muted);
+    font-size: 12.5px;
+    margin-top: 2px;
+    font-weight: 400;
+  }
+  .lm-cost-row .amount {
+    font-family: var(--font-sansita);
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--text);
+    white-space: nowrap;
+  }
+  .lm-cost-row.total .item-name {
+    font-family: var(--font-sansita);
+    font-size: 17px;
+  }
+  .lm-cost-row.total .amount {
+    font-size: 26px;
+    color: var(--green-700);
+  }
+  .lm-cost-row .strike {
+    text-decoration: line-through;
+    color: var(--text-soft);
+    margin-right: 8px;
+    font-weight: 500;
+    font-size: 14.5px;
+  }
+  .lm-cost-footer {
+    margin-top: 14px;
+    font-size: 12.5px;
+    color: var(--text-soft);
+    line-height: 1.5;
+  }
+
+  /* FAQ section */
+  .lm-faq-item {
+    border-bottom: 1px solid var(--border);
+  }
+  .lm-faq-item:last-of-type { border-bottom: 0; }
+  .lm-faq-item summary {
+    list-style: none;
+    cursor: pointer;
+    padding: 16px 0;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--text);
+  }
+  .lm-faq-item summary::-webkit-details-marker { display: none; }
+  .lm-faq-item .faq-q { flex: 1; }
+  .lm-faq-item .faq-chev { color: var(--text-soft); transition: transform .15s; font-size: 14px; }
+  .lm-faq-item[open] .faq-chev { transform: rotate(180deg); }
+  .lm-faq-item .faq-a {
+    padding: 0 0 18px 0;
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.6;
+    max-width: 720px;
+  }
+
+  /* ---------- Variation E: boarding pass ---------- */
+  .vE-pass {
+    background:
+      radial-gradient(circle at 90% 10%, rgba(74,222,128,.22), transparent 40%),
+      linear-gradient(135deg, var(--green-700) 0%, var(--green-800) 60%, var(--green-950) 100%);
+    color: #fff;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+    position: relative;
+  }
+  .vE-pass.with-ribbon::before {
+    content: "⚠  Permit can only be extended once — and only if you haven't failed. Plan your VORT before it expires.";
+    display: block;
+    background: var(--yellow-300);
+    color: var(--warning-text);
+    font-size: 12.5px;
+    font-weight: 700;
+    padding: 10px 24px;
+    letter-spacing: .01em;
+  }
+  .vE-brandbar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 18px 36px 0;
+    font-family: var(--font-sansita);
+    font-size: 14px;
+    font-weight: 700;
+    color: rgba(255,255,255,.92);
+    letter-spacing: .02em;
+  }
+  .vE-brandbar img { width: 22px; height: 22px; filter: brightness(0) invert(1); opacity: .92; }
+  .vE-pass-body {
+    padding: 12px 36px 28px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  @media (max-width: 640px) { .vE-pass-body { grid-template-columns: 1fr; } }
+  .vE-cell .label {
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: .12em;
+    color: rgba(255,255,255,.65);
+    font-weight: 700;
+  }
+  .vE-cell .value {
+    font-family: var(--font-sansita);
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-top: 4px;
+    color: #fff;
+  }
+  .vE-cell .value small {
+    font-size: 14px;
+    color: rgba(255,255,255,.78);
+    font-weight: 500;
+    margin-left: 6px;
+    font-family: var(--font-sans);
+  }
+  .vE-divider {
+    position: relative;
+    height: 1px;
+    background: rgba(255,255,255,.16);
+    margin: 0 36px;
+  }
+  .vE-divider::before, .vE-divider::after {
+    content: "";
+    position: absolute;
+    top: -12px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--bg);
+  }
+  .vE-divider::before { left: -48px; }
+  .vE-divider::after { right: -48px; }
+  .vE-milestones { padding: 28px 36px 32px; }
+  .vE-milestones .label {
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: .12em;
+    color: rgba(255,255,255,.65);
+    font-weight: 700;
+    margin-bottom: 18px;
+  }
+  .vE-stones {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    position: relative;
+  }
+  .vE-stones::before {
+    content: "";
+    position: absolute;
+    top: 26px;
+    left: 26px;
+    right: 26px;
+    height: 2px;
+    background-image: linear-gradient(to right, rgba(255,255,255,.35) 50%, transparent 50%);
+    background-size: 10px 2px;
+  }
+  .vE-stone {
+    flex: 1;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+  .vE-stone .icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.12);
+    border: 1px solid rgba(255,255,255,.22);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    margin: 0 auto 10px;
+    backdrop-filter: blur(4px);
+  }
+  .vE-stone.active .icon {
+    background: var(--yellow-300);
+    color: var(--green-950);
+    border-color: var(--yellow-300);
+    box-shadow: 0 6px 22px rgba(253,224,71,.45);
+  }
+  .vE-stone .name {
+    font-size: 11.5px;
+    color: rgba(255,255,255,.88);
+    font-weight: 600;
+    letter-spacing: .02em;
+  }
+  .vE-cta-wrap { padding: 0 36px 32px; }
+  .vE-cta {
+    width: 100%;
+    background: #fff;
+    color: var(--green-700);
+    border: 0;
+    padding: 14px;
+    border-radius: var(--radius-md);
+    font-weight: 700;
+    font-size: 15px;
+    cursor: pointer;
+    transition: transform .05s, background .15s;
+    font-family: var(--font-sans);
+  }
+  .vE-cta:hover { background: var(--green-50); }
+  .vE-footnote {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 13px;
+    margin-top: 16px;
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <img src="licencemate_logo.png" alt="LicenceMate" />
+  <span class="wordmark"><span class="l">Licence</span><span class="m">Mate</span></span>
+  <span class="crumb">Your P-Plates Plan</span>
+</div>
+
+<header class="page-header">
+  <h1>Lesson Estimate — Results page mockups</h1>
+  <p>5 layout variations × 4 materially-different personas. Switch via the tabs.</p>
+  <nav class="tabs" id="variation-tabs">
+    <button data-var="A" class="active">A · 3-Phase Roadmap</button>
+    <button data-var="B">B · Two-column</button>
+    <button data-var="C">C · Expandable Timeline</button>
+    <button data-var="D">D · Progress Checklist</button>
+    <button data-var="E">E · Boarding Pass</button>
+  </nav>
+</header>
+
+<div class="persona-bar" id="persona-bar">
+  <span class="label">Persona</span>
+  <button data-persona="confident" class="active">L's + Car Control · 6 hrs</button>
+  <button data-persona="new">No L's · 12 hrs</button>
+  <button data-persona="retry">Failed VORT before · 6 hrs</button>
+  <button data-persona="overseas">Overseas convert · 6 hrs</button>
+</div>
+
+<main class="stage">
+  <div class="stage-inner">
+    <div class="variation-meta" id="meta"></div>
+    <div id="mount"></div>
+  </div>
+</main>
+
+<script>
+/* ----------------- Persona data ----------------- */
+/* ----------------- LicenceMate global content ----------------- */
+const LICENCEMATE_TRUST = [
+  { stat: "81%", statLabel: "First-time VORT pass rate",
+    desc: "Higher than the SA average — built on tight 4-lesson prep plans that finish with a full mock test." },
+  { stat: "30+", statLabel: "Adelaide metro instructors",
+    desc: "We pair you with one near your suburb, in an auto dual-control car we prep for test day." },
+  { stat: "Auto", statLabel: "Dual-control fleet",
+    desc: "All cars automatic with instructor dual-controls. Less to think about while you focus on the road." }
+];
+
+const FAQ_ITEMS = [
+  { q: "Do you teach auto only, or also manual?",
+    a: "<strong>Auto only.</strong> All our instructors and cars are automatic — it's what nearly all SA learners drive on, and it lets us focus on driving fundamentals over gear management." },
+  { q: "What suburbs do you cover?",
+    a: "<strong>Adelaide metro.</strong> When you book a lesson, we pair you with an instructor in or near your suburb. We don't currently service regional SA." },
+  { q: "Can I learn in my own car?",
+    a: "No — our lessons use our dual-control cars. The dual-controls let your instructor intervene safely if needed, which lets us be more ambitious with what we cover earlier in your learning." },
+  { q: "Can I switch instructors if I don't gel with mine?",
+    a: "Yes. Tell us and we'll re-match you for your next lesson, no questions asked. Some students click with their first instructor, some don't — we're set up for either." },
+  { q: "Can a parent come in the car during a lesson?",
+    a: "No — lessons are 1:1 with your instructor. Your parent can ask questions before or after the lesson, but during it we keep focus tight." },
+  { q: "How long are lessons?",
+    a: "90 minutes is our standard. Shorter slots aren't enough to build proper rhythm; longer slots get diminishing returns once concentration drops." },
+  { q: "What if I fail my VORT after going through your package?",
+    a: "We've got a discounted retry path tailored to your fail type — a single 90-min polish session for aggregate-point fails, or 4–6 hours of targeted work for instant fails. Re-take the quiz from the \"failed before\" angle to see your plan." },
+  { q: "How do I book a lesson?",
+    a: "Tap any <strong>Book a Lesson</strong> button on this page. You'll pick a time, a location, and (if you want) a preferred instructor." }
+];
+
+const PERSONAS = {
+  confident: {
+    name: "L's, comfortable with car control, will practise",
+    hours: 6,
+    sessions: 4,
+    package: "VORT-Ready Package",
+    headline: "You're on the home stretch.",
+    headlineSub: "A focused 6 hours of prep and you'll be VORT test-ready.",
+    basedOn: ["You have your L's", "You're comfortable with car control", "You'll practise between lessons"],
+    progressPct: 25,
+    warning: null,
+    timeline: {
+      lessons: "~2 weeks",
+      toResult: "~3 weeks",
+      resultLabel: "to your P1 licence",
+      bottleneck: null
+    },
+    costBreakdown: {
+      rows: [
+        { item: "LicenceMate VORT-Ready package", sub: "6 hours · 4 × 90-min sessions · 10% off standard rate", amount: "$702", strike: "$780" },
+        { item: "MyLS subscription", sub: "Covers theory test + Hazard Perception Test (12-month subscription)", amount: "$35" },
+        { item: "VORT test fee", sub: "Authorised Examiner (deregulated — varies by examiner)", amount: "from $369" },
+        { item: "P1 licence fee", sub: "Service SA", amount: "~$80" }
+      ],
+      total: "~$1,186",
+      footnote: "Government fees may change. Final amounts confirmed by Service SA on the day."
+    },
+    phases: [
+      { tag: "Phase 1", title: "Get test-ready", steps: [
+        "Take 4–6 VORT-specific preparatory lessons",
+        "Practise at home between lessons on real test routes"
+      ]},
+      { tag: "Phase 2", title: "Pass your VORT & finish up", steps: [
+        "Book and pass your VORT test",
+        "Complete the Hazard Perception Test",
+        "Log your 75 hours (including night driving)",
+        "Service SA → walk out with your P-plates"
+      ]}
+    ],
+    steps: [
+      { title: "VORT lessons", detail: "~6 hours, ≈ 4 sessions of 90 min, practising between.", current: true,
+        long: "<span class=\"lm-pitch\"><strong>This is the moment we built our VORT-Ready package for.</strong> 4 × 90-min sessions over 2–3 weeks, same instructor near you, in an auto dual-control car we prep for test day. <strong>81% of our students pass the VORT first time.</strong></span><strong>What we cover (4 × 90-min sessions):</strong><br>• Lesson 1 — Full assessment + identify any habits to clean up<br>• Lesson 2 — The 5 slow-speed manoeuvres examined: <strong>reverse parallel park, 3-point turn, U-turn, angle park, hill start</strong><br>• Lesson 3 — Test-route familiarisation around your local examiner hub<br>• Lesson 4 — Full mock test, examined exactly like the real thing<br><br><strong>Common gotchas we drill:</strong><br>• Rolling stops at stop signs (any roll = instant fail)<br>• Mirror checks done in sequence (mirror–mirror–shoulder, not a glance)<br>• Head-checks before every lane change<br>• Smooth hill starts with no rollback<br><br><strong>Between lessons:</strong> 20–30 min of focused practice on the manoeuvres your instructor flagged. Short and frequent beats long drives.<br><br><a href=\"#\" class=\"lm-read-more\">Read more — How our mock test mirrors the real VORT →</a><br><a href=\"#\" class=\"lm-inline-cta\">Book a Lesson</a>",
+        links: [
+          { label: "View VORT-Ready package", href: "#" }
+        ]
+      },
+      { title: "Pass your Hazard Perception Test", detail: "Online video test — must be passed before booking VORT.",
+        long: "Click-to-respond test on real driving video clips — you tap when you'd take action. Sit it at home through mylicence.sa.gov.au or in-centre at any Service SA centre; unlimited online retakes during your 12-month subscription.<br><br><strong>Order:</strong> Must be passed <strong>before</strong> you can book your VORT. Free practice at <a href=\"https://www.mylicence.sa.gov.au/hazard-perception-test\" target=\"_blank\" rel=\"noopener\">mylicence.sa.gov.au/hazard-perception-test</a> — same format as the live test." },
+      { title: "Book & pass your VORT", detail: "45-min on-road test with an Authorised Examiner. Result on the day.",
+        long: "<span class=\"lm-pitch\"><strong>Save yourself the admin.</strong> Your instructor books the VORT with the Authorised Examiner, supplies the dual-control car, and drives you to the hub on test day. One less thing to organise.</span><strong>Where:</strong> Examiner hubs around Adelaide (Firle, Park Holme, Flinders Park, Noarlunga, Salisbury, Elizabeth, Wingfield) or regional (Mount Barker, Mount Gambier) — not Service SA.<br><br><strong>If you don't pass:</strong> <strong>14-day minimum wait</strong> before re-booking.<br><br><a href=\"#\" class=\"lm-read-more\">Read more — What VORT test day looks like + what to bring →</a><br><a href=\"#\" class=\"lm-inline-cta\">Book a Lesson</a>" },
+      { title: "Confirm your 75 logbook hours", detail: "75 hrs total, ≥15 at night, plus the time gate on your L's.",
+        long: "<span class=\"lm-pitch\"><strong>Every lesson with us counts toward your 75 hours</strong> — and we sign your logbook on the spot.</span><strong>The rule:</strong> 75 supervised hours total, of which <strong>≥15 at night</strong> (sunset to sunrise).<br><br><strong>Supervisor:</strong> Any fully-licensed driver (2+ years) in the front seat — your instructor, parent or any qualifying adult.<br><br><strong>Time gate:</strong> Hold your L's at least <strong>12 months (under 25)</strong> or <strong>6 months (25+)</strong> before applying for P1.<br><br><strong>How to log:</strong> Paper Driving Companion logbook (from Service SA) or an electronic logbook app — both accepted.<br><br><a href=\"#\" class=\"lm-read-more\">Read more — Tips to log 75 hours without scrambling + which logbook app to use →</a>" },
+      { title: "Service SA → P1 licence", detail: "Bring VORT pass + logbook + permit + ID. Same-day issue.",
+        long: "<strong>What to bring:</strong> VORT pass certificate, completed logbook, learner permit, evidence of identity, payment for the licence fee.<br><br><strong>What happens:</strong> Service SA checks your docs, takes your photo, and issues your P1 on the spot.<br><br><a href=\"#\" class=\"lm-read-more\">Read more — P1 rules in plain English (BAC, phones, passengers) + the path from P1 to your full licence →</a>" }
+    ],
+    milestones: [
+      { icon: "🎯", name: "Lessons", active: true },
+      { icon: "🧠", name: "HPT" },
+      { icon: "🚦", name: "VORT" },
+      { icon: "📒", name: "Logbook" },
+      { icon: "🪪", name: "P1" }
+    ],
+    completedChecks: [
+      { text: "Got your learner's permit", sub: "Service SA · done" },
+      { text: "Built up car control", sub: "You told us you're comfortable" }
+    ]
+  },
+
+  new: {
+    name: "No L's yet, will practise with a parent/guardian",
+    hours: 12,
+    sessions: 8,
+    package: "Beginner-to-VORT Package",
+    headline: "Let's get you from zero to P-plates.",
+    headlineSub: "Around 12 hours of professional lessons, with practice in between.",
+    basedOn: ["You don't have your L's yet", "You'll practise between lessons", "Starting from scratch"],
+    progressPct: 5,
+    warning: null,
+    timeline: {
+      lessons: "~6 weeks",
+      toResult: "~12 months",
+      resultLabel: "to your P1 licence",
+      bottleneck: "The 12-month L's hold (or 6 months if you're 25+) is your real bottleneck — not lesson cadence. Use the L's period to log your 75 supervised hours."
+    },
+    costBreakdown: {
+      rows: [
+        { item: "LicenceMate Beginner-to-VORT package", sub: "12 hours · ~8 sessions · 10% off standard rate", amount: "$1,404", strike: "$1,560" },
+        { item: "MyLS subscription", sub: "Covers theory test + Hazard Perception Test (12-month subscription)", amount: "$35" },
+        { item: "Learner's permit", sub: "Service SA · 2-year permit", amount: "~$70" },
+        { item: "Driving Companion logbook", sub: "Service SA", amount: "$5" },
+        { item: "VORT test fee", sub: "Authorised Examiner", amount: "from $369" },
+        { item: "P1 licence fee", sub: "Service SA", amount: "~$80" }
+      ],
+      total: "~$1,963",
+      footnote: "Government fees may change. L-plates are supplied by you, not by Service SA."
+    },
+    tips: [{
+      title: "Practising with a parent or guardian later?",
+      body: "Watch out for 'bad habits' that pass at home but cost points on test day — rolling through give-ways, lazy mirror checks, missed shoulder-checks. The earlier we catch them, the less retraining you'll need later."
+    }],
+    phases: [
+      { tag: "Phase 1", title: "Get your L's", steps: [
+        "Complete the MyLS theory course (online or at Service SA)",
+        "Pass the theory test, pick up your L-plates, permit and logbook"
+      ]},
+      { tag: "Phase 2", title: "Learn to drive", steps: [
+        "Take ~8 hours of lessons to build confidence in varied conditions",
+        "Practise with a parent or guardian between lessons",
+        "Watch out for bad habits — they cost extra to untrain later"
+      ]},
+      { tag: "Phase 3", title: "Pass VORT & finish up", steps: [
+        "A few VORT-specific lessons before booking your test",
+        "Hazard Perception Test (online)",
+        "Log your 75 hours including night driving",
+        "Service SA → walk out with your P-plates"
+      ]}
+    ],
+    steps: [
+      { title: "Complete MyLS theory & get your L's", detail: "Online course + theory test, then enrol at Service SA.", current: true,
+        long: "<strong>How long it takes:</strong> About <strong>4 hours</strong> of self-paced content. Most students finish in a week or two.<br><br><strong>What's tested:</strong> Road rules, signs, give-way priority, alcohol/drug rules. Multiple-choice, taken online from home or in-centre at Service SA.<br><br><strong>Eligibility:</strong> 16+ to be issued the permit (you can start studying from 15 years 9 months).<br><br><strong>After passing:</strong> Service SA issues your learner permit on the spot — digital first, plastic card by post. Permit is valid <strong>2 years</strong>.<br><br><strong>Heads up:</strong> The theory test is <strong>separate from the Hazard Perception Test</strong> — HPT comes later, before your VORT.<br><br><a href=\"#\" class=\"lm-read-more\">Read more — A week-by-week MyLS study plan + what to bring to Service SA →</a><br><span class=\"lm-pitch\"><strong>Once you have your L's, come back and book your first lesson with us</strong> — we'll start exactly where you are. Lots of our beginners book their first drive in our car the day they get their permit.</span><a href=\"#\" class=\"lm-inline-cta\">Book a Lesson</a>",
+        links: [
+          { label: "Start MyLS course", href: "https://www.sa.gov.au/topics/driving-and-transport/licences/learners-permit/apply/myls-course-and-theory-test" }
+        ] },
+      { title: "Build driving confidence", detail: "~8 hours of lessons + supervised practice. Start logging your 75 hours.",
+        long: "<span class=\"lm-pitch\"><strong>Our instructors specialise in nervous beginners.</strong> One lesson with us per week, paired with parent-supervised drives in between, gets you to VORT-ready faster than parents-only — and avoids the small habits that cost points on test day. <strong>81% of our students pass first time.</strong></span><strong>Recommended cadence:</strong> 1 professional lesson per week + 2–3 supervised drives in between. Less than this and skills don't \"set\" — you re-learn the same things each lesson.<br><br><strong>Variety beats raw hours:</strong> Aim to tick off a different condition each week — daytime, night, rain, freeways, school zones, roundabouts, parallel parking, hill starts.<br><br><strong>Typical 8-lesson progression:</strong> Car familiarisation → empty car park → quiet streets → main roads → freeway entry/exit → roundabouts → parking manoeuvres → night driving.<br><br><a href=\"#\" class=\"lm-read-more\">Read more — Lessons vs parent drives: what each is best for →</a><br><a href=\"#\" class=\"lm-inline-cta\">Book a Lesson</a>" },
+      { title: "VORT-specific lessons", detail: "~4 hours focused on test routes and examiner expectations.",
+        long: "<span class=\"lm-pitch\"><strong>This is where our VORT-Ready package kicks in.</strong> 4 × 90-min sessions, focused on what examiners actually mark — not on \"being a good driver\" in the abstract.</span>Once you're confident with general driving, we shift gears. These lessons are specifically about <strong>passing the test</strong> — a different skill from \"being a good driver.\"<br><br><strong>What changes:</strong> Your instructor role-plays the examiner. You drive the actual test routes around your local examiner hub. We drill the 5 specific manoeuvres examined: <strong>reverse parallel park, 3-point turn, U-turn, angle park, hill start</strong>.<br><br><strong>The mock test:</strong> Your final lesson is a full mock — examined like the real thing, scored like the real thing (90% threshold, instant-fail rules and all). If you'd pass the mock, you're ready to book.<br><br><a href=\"#\" class=\"lm-inline-cta\">Book a Lesson</a>" },
+      { title: "Pass your Hazard Perception Test", detail: "Online video test — prerequisite to booking VORT.",
+        long: "Click-to-respond on real driving video clips. Sit it at home through mylicence.sa.gov.au or in-centre — unlimited online retakes during your 12-month subscription.<br><br><strong>Order:</strong> Must be passed <strong>before</strong> booking your VORT. Free practice at mylicence.sa.gov.au/hazard-perception-test." },
+      { title: "Book & pass your VORT", detail: "45-min on-road test with an Authorised Examiner. Result on the day.",
+        long: "<span class=\"lm-pitch\"><strong>We handle the booking for you</strong> — your instructor books with an Authorised Examiner, supplies the dual-control car, and meets you at the hub on test day.</span><strong>Where:</strong> Examiner hubs around Adelaide (Firle, Park Holme, Flinders Park, Noarlunga, Salisbury, Elizabeth, Wingfield) or regional (Mount Barker, Mount Gambier) — not Service SA.<br><br><strong>If you don't pass:</strong> <strong>14-day minimum wait</strong> before re-booking.<br><br><a href=\"#\" class=\"lm-inline-cta\">Book a Lesson</a>" },
+      { title: "Confirm your 75 logbook hours", detail: "75 hrs total, ≥15 at night, supervised, before applying for P1.",
+        long: "<span class=\"lm-pitch\"><strong>Every lesson with us counts toward your 75 hours</strong> — and we sign your logbook on the spot.</span><strong>The rule:</strong> 75 supervised hours total, of which <strong>≥15 at night</strong> (sunset to sunrise).<br><br><strong>Supervisor:</strong> Any fully-licensed driver (2+ years) in the front seat.<br><br><strong>Time gate:</strong> Hold your L's at least <strong>12 months (under 25)</strong> or <strong>6 months (25+)</strong> before applying for P1.<br><br><strong>Typical timeline:</strong> At 3–4 hrs/week, expect 4–6 months to log 75 hours — comfortably within your 12-month L's hold.<br><br><a href=\"#\" class=\"lm-read-more\">Read more — Tips to log 75 hours without scrambling →</a>" },
+      { title: "Service SA → P1 licence", detail: "Bring VORT pass + logbook + permit + ID. Same-day P1 issue.",
+        long: "<strong>What to bring:</strong> VORT pass certificate, completed Driving Companion logbook, learner permit, evidence of identity, payment.<br><br><strong>What happens:</strong> Service SA checks your docs, takes your photo, and issues your P1 on the spot.<br><br><a href=\"#\" class=\"lm-read-more\">Read more — P1 rules in plain English + the path from P1 to your full licence (~4 years for under-25s) →</a>" }
+    ],
+    milestones: [
+      { icon: "📚", name: "Theory" },
+      { icon: "🚗", name: "Learn" },
+      { icon: "🎯", name: "Lessons", active: true },
+      { icon: "🧠", name: "HPT" },
+      { icon: "🚦", name: "VORT" },
+      { icon: "📒", name: "Logbook" },
+      { icon: "🪪", name: "P1" }
+    ],
+    completedChecks: []
+  },
+
+  retry: {
+    name: "Sat the VORT before, didn't pass",
+    hours: 6,
+    sessions: 4,
+    package: "VORT-Ready Retry Package",
+    headline: "You've sat the VORT before — let's get you over the line.",
+    headlineSub: "We'll start with a diagnostic to pinpoint what cost you the pass, then build a short, focused plan.",
+    basedOn: ["You have your L's", "You've sat the VORT once already", "You'll practise between lessons"],
+    progressPct: 70,
+    warning: null,
+    timeline: {
+      lessons: "1–2 weeks",
+      toResult: "3–4 weeks",
+      resultLabel: "back on track to P1",
+      bottleneck: null
+    },
+    costBreakdown: {
+      rows: [
+        { item: "Diagnostic + targeted plan", sub: "Locks in after lesson 1 — single polish session or full targeted package", amount: "from $195" },
+        { item: "VORT re-test fee", sub: "Authorised Examiner · 14-day minimum wait from your last attempt", amount: "from $369" }
+      ],
+      total: "from ~$564",
+      footnote: "Final package and total confirm after your diagnostic. HPT and logbook from your first VORT attempt still count — no need to redo them."
+    },
+    phases: [
+      { tag: "Phase 1", title: "Diagnose & rebuild", steps: [
+        "1× diagnostic lesson — work out whether it was an instant fail or aggregate points",
+        "Instant fail → ~6 hours of targeted prep · Aggregate points → 1 × 90-min targeted lesson"
+      ]},
+      { tag: "Phase 2", title: "Re-sit & pass", steps: [
+        "Re-book your VORT test",
+        "Hazard Perception Test (if not already done)",
+        "Service SA → walk out with your P-plates"
+      ]}
+    ],
+    steps: [
+      { title: "Identify your fail type", detail: "Was it an instant fail or aggregate points?", current: true,
+        long: "<span class=\"lm-pitch\"><strong>We've helped hundreds of students pass on attempt 2.</strong> Once we know what cost you the test, we build a tight plan — usually 4–6 hours for instant fails, just 90 min for aggregate. No wasted hours, no relearning what you already nailed.</span>There are two ways to fail a VORT — each needs a very different plan. Tell us below if you already know which one applied to you. If you're not sure, we'll book you a 90-min diagnostic lesson (which counts toward your hours either way).<br><br><strong>About your examiner report:</strong> If you got one, it should show either a single critical error (instant fail) or a tally of error points (aggregate). If you've lost your copy, Service SA can reissue it. If you'd rather not chase it, a diagnostic lesson figures it out in 90 minutes.<br><br><strong>Reassurance:</strong> Most students who fail once pass on the second attempt with focused work on the right thing. The trick is identifying the right thing — which is exactly what this step does.<br><br><a href=\"#\" class=\"lm-read-more\">Read more — Decoding your VORT examiner report →</a>",
+        decision: {
+          key: "failType",
+          prompt: "Which describes your last attempt?",
+          options: [
+            { value: "instant",   label: "Instant fail",      hint: "A single critical error — e.g. rolled past a stop sign, missed give-way, hit a kerb, examiner intervened, or any speeding / road-rule breach." },
+            { value: "aggregate", label: "Aggregate points",  hint: "Lots of small errors stacked up — lazy mirror checks, slow at give-ways, hesitant lane changes, missed head-checks." },
+            { value: "unsure",    label: "Not sure",          hint: "We'll book you a 90-min diagnostic lesson to sort it out — counts toward your hours either way." }
+          ]
+        }
+      },
+      { title: "Targeted lessons", detail: "Focused only on your weak areas — no wasted hours.",
+        long: "<span class=\"lm-pitch\"><strong>Tight, targeted, no fluff.</strong> Our retry plans are built around your examiner report — a 90-min polish session if you failed on aggregate, or 4 × 90-min targeted package if it was an instant fail. We don't redo the whole VORT-Ready package, just the parts that need it.</span>After identifying your fail type, we focus only on the area that cost you the test. No re-doing the parts you nailed last time.<br><br><strong>For instant fails:</strong> Usually stop-sign discipline (zero rolling), give-way protocol (full stop, head-check, proceed), speed control near schools and limit-changes, or mirror/head-check sequences. We drill these to muscle memory across 3–4 sessions.<br><br><strong>For aggregate fails:</strong> Usually small things adding up — lazy mirror checks (mirror–mirror–shoulder, not a glance), hesitant lane changes, slow give-way response, awkward parking. Often fixable in a single 90-min targeted session.<br><br><strong>How you'll know you're ready:</strong> A full mock test in your final lesson, examined and scored exactly like the real VORT. If you'd pass the mock, you're ready to re-book.<br><br><a href=\"#\" class=\"lm-inline-cta\">Book a Lesson</a>" },
+      { title: "Re-sit your VORT", detail: "14-day minimum wait between attempts.",
+        long: "<span class=\"lm-pitch\">We'll re-book the VORT for you with the examiner and supply our car on test day. <strong>Tell your instructor about test anxiety</strong> — they've seen it many times after a fail and can build extra mock-test practice into your final lesson.</span><strong>Wait period:</strong> At least <strong>14 days</strong> between VORT attempts.<br><br><strong>The examiner won't know your previous result.</strong> Each test is scored fresh — treat it as a new test, not a retry. Driving the actual test route a few times beforehand helps a lot.<br><br><strong>If you don't pass again:</strong> Another 14-day wait, then re-book. Your instructor adjusts the plan based on examiner feedback.<br><br><a href=\"#\" class=\"lm-inline-cta\">Book a Lesson</a>" },
+      { title: "Service SA → P1 licence", detail: "Bring VORT pass + permit + ID. Same-day P1 issue.",
+        long: "<strong>What to bring:</strong> VORT pass certificate, your existing learner permit, evidence of identity, payment.<br><br>Your HPT and 75 logbook hours from your first VORT attempt still count — they don't reset after a fail.<br><br>Service SA checks your docs, takes your photo, and issues your P1 on the spot.<br><br><a href=\"#\" class=\"lm-read-more\">Read more — P1 rules in plain English →</a>" }
+    ],
+    milestones: [
+      { icon: "🔍", name: "Diagnose", active: true },
+      { icon: "🎯", name: "Targeted lessons" },
+      { icon: "🚦", name: "Re-sit" },
+      { icon: "🪪", name: "P1" }
+    ],
+    completedChecks: [
+      { text: "Got your learner's permit", sub: "Service SA" },
+      { text: "Built up car control", sub: "Years of practice" },
+      { text: "Sat your VORT", sub: "Didn't pass — most don't on attempt 1" }
+    ]
+  },
+
+  overseas: {
+    name: "Overseas licence holder, comfortable with car control",
+    hours: 6,
+    sessions: 4,
+    package: "Overseas Converter · VORT-Ready Package",
+    headline: "Your overseas experience gives you a head start.",
+    headlineSub: "Around 6 hours of focused prep on SA-specific test expectations.",
+    basedOn: ["You have an overseas licence", "You're comfortable driving", "You'll practise between lessons"],
+    progressPct: 50,
+    warning: {
+      title: "Watch your permit expiry",
+      body: "Your SA driving permit can only be extended once — and only if you haven't failed your VORT yet. Plan your test date well before it expires."
+    },
+    timeline: {
+      lessons: "~2 weeks",
+      toResult: "~3 weeks",
+      resultLabel: "to SA P1 plates",
+      bottleneck: null
+    },
+    costBreakdown: {
+      rows: [
+        { item: "LicenceMate Overseas Converter package", sub: "6 hours · 4 × 90-min sessions · 10% off standard rate", amount: "$702", strike: "$780" },
+        { item: "MyLS subscription", sub: "Covers Hazard Perception Test (12-month subscription)", amount: "$35" },
+        { item: "VORT test fee", sub: "Authorised Examiner", amount: "from $369" },
+        { item: "P1 licence fee", sub: "Service SA", amount: "~$80" },
+        { item: "NAATI translation (if licence not in English)", sub: "Required for non-English licences", amount: "~$70–150" }
+      ],
+      total: "~$1,186 – $1,336",
+      footnote: "Government fees may change. NAATI translation skippable if your licence is already in English."
+    },
+    phases: [
+      { tag: "Phase 1", title: "Get SA-test-ready", steps: [
+        "Confirm whether you need a VORT (Service SA licence check)",
+        "Take VORT-specific lessons — SA examiner expectations differ from overseas tests",
+        "Practise locally on Adelaide test routes"
+      ]},
+      { tag: "Phase 2", title: "Pass VORT & swap to SA P's", steps: [
+        "Book and pass your VORT test",
+        "Complete the Hazard Perception Test",
+        "Service SA → swap to your SA provisional licence"
+      ]}
+    ],
+    steps: [
+      { title: "Check whether you need a VORT", detail: "Service SA's licence check tells you in 60 seconds.", current: true,
+        long: "<strong>SA's three categories</strong> (post 1 May 2025 reform):<br>• <strong>Recognised country</strong> — direct conversion. No theory, no HPT, no VORT. You walk into Service SA and walk out with a full SA licence. Examples: UK, Germany, France, Japan, USA, Canada, Singapore, Ireland, Netherlands, Sweden, Norway.<br>• <strong>Non-recognised country</strong> — must pass theory + HPT + VORT (same path as a local learner). Examples: India, China, Philippines, Vietnam, Thailand, Indonesia, Nepal, Pakistan.<br>• <strong>New Zealand</strong> — full class-for-class transfer (separate from the other two).<br><br><strong>Heads up:</strong> The Experienced Driver Recognition (EDR) category was abolished in May 2025 — ex-EDR countries (e.g. South Korea, Taiwan, Hong Kong) now require the VORT.<br><br><strong>Run the check below</strong> to see which category your licence falls into. The rest of your roadmap depends on the answer.",
+        links: [
+          { label: "Service SA licence check", href: "https://www.sa.gov.au/topics/driving-and-transport/licences/interstate-and-overseas/overseas-licence-transfer/licence-check" }
+        ],
+        decision: {
+          key: "needsVort",
+          prompt: "After checking, what did Service SA say?",
+          options: [
+            { value: "yes", label: "I do need to take the VORT", hint: "Continue with the prep plan below — same path as a local learner from here." },
+            { value: "no",  label: "I don't need the VORT",      hint: "You're in the recognised category — skip straight to applying. Roadmap below updates." }
+          ]
+        }
+      },
+      { title: "VORT-specific lessons", detail: "~6 hours on SA examiner expectations — different from overseas.",
+        long: "<span class=\"lm-pitch\"><strong>Many of our students are overseas converters.</strong> Our instructors know exactly where SA examiner expectations diverge from each home country — left-side habits, mirror sequencing, give-way priority. We bridge the gap in 4 sessions.</span><strong>Why you still need lessons:</strong> SA examiners look for specific behaviours that may not exist in your home country — strict mirror-head-check sequences, give-way priority rules, school-zone speed compliance, the 5 examined slow-speed manoeuvres in a specific order.<br><br><strong>Common adjustments from overseas habits:</strong><br>• If you drove on the right overseas — lane position, turn approaches and intersection scanning need rewiring<br>• If you drove in dense city traffic — examiners want assertive but conservative; no aggressive overtakes<br>• Mirror checks must be visible to the examiner (turn your head slightly), not just a glance<br>• Hill starts with no rollback — your handbrake is your friend<br><br><strong>What we cover (~6 hrs, 4 sessions):</strong> A short refresher on SA road rules and signs + 2–3 sessions on test routes + a full mock test.<br><br><a href=\"#\" class=\"lm-read-more\">Read more — Driving habits that pass overseas but fail the SA VORT →</a><br><a href=\"#\" class=\"lm-inline-cta\">Book a Lesson</a>" },
+      { title: "Pass your Hazard Perception Test", detail: "Online video test — required before VORT.",
+        long: "Same as locals — click-to-respond on real driving videos. Unlimited online retakes during your 12-month subscription.<br><br><strong>Order:</strong> Must be passed <strong>before</strong> booking your VORT. Free practice at mylicence.sa.gov.au/hazard-perception-test." },
+      { title: "Book & pass your VORT", detail: "45-min on-road test. Result on the day.",
+        long: "<span class=\"lm-pitch\"><strong>We book the VORT for you</strong>, supply our dual-control car, and meet you at the hub. <strong>Extra critical for overseas converters</strong> — a fail uses up your one permit extension, so going in prepared matters more.</span><strong>Where:</strong> Examiner hubs around Adelaide (Firle, Park Holme, Flinders Park, Noarlunga, Salisbury, Elizabeth, Wingfield) or regional (Mount Barker, Mount Gambier) — not Service SA.<br><br><strong>Bring your overseas licence</strong> (with NAATI translation if not in English) on the day.<br><br><strong>If you don't pass:</strong> 14-day wait, and a fail uses your one allowed permit extension.<br><br><a href=\"#\" class=\"lm-inline-cta\">Book a Lesson</a>" },
+      { title: "Service SA → SA P1 licence", detail: "Bring VORT pass + permit + ID. Same-day issue.",
+        long: "<strong>What to bring:</strong> VORT Certificate of Competency, current SA driving permit, your original overseas licence (you surrender it on the day), NAATI translation if applicable, evidence of identity, payment.<br><br><strong>No 75-hour logbook required</strong> for overseas conversions — you skip the supervised-hours requirement.<br><br><strong>Licence class:</strong> Non-recognised converters enter the SA Graduated Licensing System — typically issued P1 first, then P2, then full. Service SA confirms class on the day based on your overseas experience." }
+    ],
+    milestones: [
+      { icon: "🔎", name: "Check" },
+      { icon: "🎯", name: "Lessons", active: true },
+      { icon: "🧠", name: "HPT" },
+      { icon: "🚦", name: "VORT" },
+      { icon: "🪪", name: "SA P1" }
+    ],
+    completedChecks: [
+      { text: "Learned to drive (overseas)", sub: "Years of experience" },
+      { text: "Got your SA driving permit", sub: "Service SA" },
+      { warning: true, text: "Watch permit expiry — one extension only", sub: "Plan your VORT before it lapses" }
+    ]
+  }
+};
+
+const VARIATION_META = {
+  A: { kicker: "Variation A", title: "Hero estimate + 3-phase roadmap",
+       desc: "Compresses the full journey into 3 narrative phases. Best for reducing overwhelm. Loses some granularity." },
+  B: { kicker: "Variation B", title: "Two-column · estimate pinned",
+       desc: "Estimate and CTA stay visible while the user scans steps. Strong on desktop." },
+  C: { kicker: "Variation C", title: "Expandable timeline",
+       desc: "Vertical timeline with progressive disclosure. Mobile-first. Easy to maintain across personas." },
+  D: { kicker: "Variation D", title: "Progress-bar checklist",
+       desc: "Reframes the journey as a completion meter — emphasises 'you've already done X'. Strongest for the Retry persona." },
+  E: { kicker: "Variation E", title: "Boarding-pass visual",
+       desc: "Design-led, shareable. Treats the result like a ticket to your P's. Lowest information density." }
+};
+
+/* ----------------- State management ----------------- */
+const RESULTS_STORAGE_KEY = "lm.results.state";
+let resultsState = {};
+
+function loadResultsState() {
+  try { resultsState = JSON.parse(localStorage.getItem(RESULTS_STORAGE_KEY) || "{}") || {}; }
+  catch { resultsState = {}; }
+  const params = new URLSearchParams(location.search);
+  if (params.has("p") && PERSONAS[params.get("p")]) currentPersona = params.get("p");
+  if (params.has("v") && VARIATION_META[params.get("v")]) currentVar = params.get("v");
+  if (params.has("needs_vort")) resultsState.needsVort = params.get("needs_vort");
+  if (params.has("fail")) resultsState.failType = params.get("fail");
+}
+
+function saveResultsState() {
+  localStorage.setItem(RESULTS_STORAGE_KEY, JSON.stringify(resultsState));
+  const params = new URLSearchParams();
+  params.set("v", currentVar);
+  params.set("p", currentPersona);
+  if (resultsState.needsVort) params.set("needs_vort", resultsState.needsVort);
+  if (resultsState.failType)  params.set("fail", resultsState.failType);
+  history.replaceState(null, "", "?" + params.toString());
+}
+
+window.setDecision = function(key, value) {
+  resultsState[key] = value;
+  saveResultsState();
+  render();
+};
+
+window.clearDecision = function(key) {
+  delete resultsState[key];
+  saveResultsState();
+  render();
+};
+
+window.copyShareLink = function(btn) {
+  navigator.clipboard.writeText(location.href).then(() => {
+    const orig = btn.textContent;
+    btn.textContent = "✓ Copied to clipboard";
+    setTimeout(() => btn.textContent = orig, 1800);
+  }).catch(() => {
+    btn.textContent = "Copy failed";
+  });
+};
+
+window.toggleStep = function(e, el) {
+  // Don't toggle if user clicked a link / button / input / label inside the body
+  const tag = e.target.tagName;
+  if (tag === 'A' || tag === 'BUTTON' || tag === 'INPUT' || tag === 'LABEL') return;
+  // Don't toggle if the click originated inside the already-expanded body
+  if (e.target.closest('.vD-step-body')) return;
+  el.classList.toggle('expanded');
+};
+
+/* ----------------- Renderers ----------------- */
+function esc(s){ return String(s).replace(/[&<>]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;"}[c])); }
+
+function renderWarning(p) {
+  if (!p.warning) return "";
+  return `<div class="warning-banner">
+    <span class="icon">⚠️</span>
+    <div><strong>${esc(p.warning.title)}</strong>${esc(p.warning.body)}</div>
+  </div>`;
+}
+
+function renderA(p) {
+  return `
+  ${renderWarning(p)}
+  <div class="vA-hero">
+    <div class="eyebrow">Your estimate</div>
+    <div class="estimate">${p.hours} hours<small>≈ ${p.sessions} lessons of 90 min</small></div>
+    <div class="subtitle">${esc(p.headlineSub)}</div>
+    <button class="btn-primary">See your recommended package →</button>
+  </div>
+
+  <div class="roadmap-eyebrow">Your roadmap to P-plates</div>
+
+  <div class="vA-phases-track">
+    ${p.phases.map((ph,i) => `
+      <div class="vA-phases-line" ${i===0 ? 'style="visibility:hidden;flex:0 0 0;"' : ''}></div>
+      <div class="vA-phase-node">
+        <div class="dot">${i+1}</div>
+        <div class="label">${esc(ph.tag)}</div>
+      </div>
+    `).join("")}
+  </div>
+
+  <div class="vA-phase-cards">
+    ${p.phases.map(ph => `
+      <div class="vA-phase-card">
+        <div class="head">
+          <span class="pill">${esc(ph.tag)}</span>
+          <h4>${esc(ph.title)}</h4>
+        </div>
+        <ul>${ph.steps.map(s => `<li>${esc(s)}</li>`).join("")}</ul>
+      </div>
+    `).join("")}
+  </div>`;
+}
+
+function renderB(p) {
+  return `
+  ${renderWarning(p)}
+  <div class="vB-grid">
+    <aside class="vB-left">
+      <div class="eyebrow">Your estimate</div>
+      <div class="estimate">${p.hours} hrs</div>
+      <div class="sessions">≈ ${p.sessions} lessons of 90 min</div>
+      <div class="basedOn">
+        <strong>Based on your answers</strong>
+        <ul>${p.basedOn.map(b => `<li>${esc(b)}</li>`).join("")}</ul>
+      </div>
+      <div class="package">
+        <div class="pkg-eyebrow">Recommended</div>
+        <div class="pkg-name">${esc(p.package)}</div>
+      </div>
+      <button class="btn-primary cta">Book a Lesson</button>
+    </aside>
+    <section class="vB-right">
+      <h4>Your step-by-step roadmap</h4>
+      ${p.steps.map((s,i) => `
+        <div class="vB-step">
+          <div class="num">${i+1}</div>
+          <div class="body">
+            <div class="title">${esc(s.title)}</div>
+            <div class="detail">${esc(s.detail)}</div>
+          </div>
+        </div>
+      `).join("")}
+    </section>
+  </div>`;
+}
+
+function renderC(p) {
+  return `
+  ${renderWarning(p)}
+  <div class="vC-hero">
+    <div>
+      <div class="headline">You're about <strong>${p.hours} hours</strong> of lessons away from being VORT-ready.</div>
+      <div class="sub">${esc(p.headlineSub)}</div>
+    </div>
+    <button class="btn-primary">Book a Lesson</button>
+  </div>
+
+  <div class="vC-list">
+    ${p.steps.map((s, i) => `
+      <details class="vC-step" data-current="${s.current ? 'true' : 'false'}" ${s.current ? 'open' : ''}>
+        <summary>
+          <div style="display:flex;align-items:center;gap:14px;">
+            <div class="num-circle">${i+1}</div>
+            <div>
+              <div>${esc(s.title)}</div>
+              <div style="font-size:13px;color:var(--text-muted);font-weight:400;margin-top:2px;">${esc(s.detail)}</div>
+            </div>
+          </div>
+          <span class="chev">▾</span>
+        </summary>
+        <div class="detail-body">${esc(s.long)}</div>
+      </details>
+    `).join("")}
+  </div>`;
+}
+
+function applyBranches(p) {
+  // Returns a "displayP" reflecting the current resultsState decisions.
+  let hours = p.hours, sessions = p.sessions, progressPct = p.progressPct;
+  let headline = p.headline, headlineSub = p.headlineSub;
+  let pkg = p.package;
+  let completed = (p.completedChecks || []).map(c => ({...c}));
+  let steps = p.steps.map(s => ({...s}));
+  let successCallout = null;
+  let ctaLabel = "Book a Lesson";
+  let timeline = p.timeline || null;
+  let costBreakdown = p.costBreakdown || null;
+  let planName = "Your P-Plates Plan";
+
+  if (currentPersona === "overseas") {
+    if (resultsState.needsVort === "yes") {
+      const confirmStep = steps.shift();
+      completed.push({ text: "Confirmed — VORT required", sub: "You'll need to sit the SA driving test.", done: true, decisionKey: "needsVort" });
+      if (steps[0]) steps[0].current = true;
+      progressPct = 60;
+    } else if (resultsState.needsVort === "no") {
+      completed.push({ text: "Confirmed — no VORT needed", sub: "Your licence converts directly.", done: true, decisionKey: "needsVort" });
+      hours = 0; sessions = 0;
+      progressPct = 90;
+      pkg = null;
+      planName = "Your SA Licence Plan";
+      timeline = {
+        lessons: "—",
+        toResult: "This week",
+        resultLabel: "to a full SA licence",
+        bottleneck: null
+      };
+      costBreakdown = {
+        rows: [
+          { item: "Licence conversion fee", sub: "Service SA · full SA licence issued same-day", amount: "~$80" },
+          { item: "NAATI translation (if needed)", sub: "Required only if your overseas licence isn't in English", amount: "~$70–150" }
+        ],
+        total: "~$80 – $230",
+        footnote: "Government fees may change. No lessons, no VORT, no HPT, no logbook required."
+      };
+      ctaLabel = "Book a Lesson";
+      headline = "Your licence converts directly.";
+      headlineSub = "Skip the VORT entirely — one Service SA visit and you walk out with a full SA licence.";
+      successCallout = {
+        title: "Great news!",
+        body: "You're in the Recognised Country category — you skip the L's, P1 and P2 stages entirely. No theory test, no Hazard Perception Test, no VORT, no 75-hour logbook. Just one trip to Service SA."
+      };
+      steps = [
+        { title: "Apply at Service SA", detail: "Book an appointment, bring your overseas licence + ID + translation.", current: true,
+          long: "<strong>Same-day full SA licence — no test required.</strong> Your overseas licence converts directly under the Recognised Country category.<br><br><strong>What to bring:</strong><br>• Your <strong>original overseas licence</strong> (you surrender it on the day)<br>• <strong>NAATI-certified translation</strong> if it's not in English (or use translate.sa.gov.au — the Interpreting & Translating Centre)<br>• Evidence of identity (passport, plus secondary docs)<br>• Proof of SA residential address<br>• Visa or PR documentation if applicable<br>• Payment for the licence fee<br><br><strong>Timing rule:</strong> If you've just become a permanent resident, you must convert within <strong>90 days</strong>. Visitors on temporary visas can keep driving on their overseas licence for the duration of their visit (no time cap), provided the licence is current and you're not disqualified.<br><br><strong>What about an International Driving Permit?</strong> Accepted for visitor driving, but <strong>not for conversion</strong> — you need your original home-country licence.",
+          links: [{ label: "Book a Service SA appointment", href: "#" }]
+        },
+        { title: "Walk out with your full SA licence", detail: "Equivalent to your overseas full licence — skip L's / P1 / P2.",
+          long: "<strong>You skip the L's, P1 and P2 phases.</strong> Recognised-country converters go straight to a <strong>full unconditional SA licence</strong> equivalent to their overseas full licence.<br><br><strong>What you don't need:</strong> No VORT, no Hazard Perception Test, no theory test, no 75-hour logbook. None of it applies.<br><br><strong>On the day:</strong> Service SA checks your docs, takes your photo, surrenders your overseas licence, and issues your SA licence the same visit.<br><br><strong>Heads up:</strong> If you're returning to driving after a licence that expired more than 5 years ago, you may be asked to sit the HPT as a separate check. Service SA confirms on the day." }
+      ];
+    }
+  }
+
+  if (currentPersona === "retry") {
+    if (resultsState.failType === "instant") {
+      steps.shift();
+      completed.push({ text: "Identified your fail type", sub: "Instant fail — targeted plan below.", done: true, decisionKey: "failType" });
+      if (steps[0]) {
+        steps[0].current = true;
+        steps[0].title = "~6 hours of targeted lessons";
+        steps[0].detail = "Focused on the specific error that triggered your instant fail.";
+        steps[0].long = "<strong>Why 6 hours:</strong> Instant fails come from a specific habit — rolling stops, missed give-ways, examiner intervention. We rebuild that habit to muscle memory across 3–4 sessions of 90 min each, with practice between.<br><br><strong>What we drill:</strong> The exact behaviour that cost you the test — whether it's stop-sign discipline (zero roll), give-way protocol (full stop, head-check, proceed), school-zone speed compliance, or mirror-head-check sequencing.<br><br><strong>The mock test:</strong> Final lesson is a full mock, examined like the real thing (90% pass threshold, instant-fail rules). If you'd pass the mock, you're ready to re-book — observing the <strong>14-day minimum wait</strong> between attempts.";
+      }
+      hours = 6; sessions = 4;
+      progressPct = 75;
+      pkg = "VORT-Ready Retry Package";
+      timeline = { lessons: "~2 weeks", toResult: "~4 weeks", resultLabel: "back on track to P1", bottleneck: null };
+      costBreakdown = {
+        rows: [
+          { item: "LicenceMate VORT-Ready Retry package", sub: "~6 hours targeted on your instant-fail area · 10% off standard rate", amount: "$702", strike: "$780" },
+          { item: "VORT re-test fee", sub: "Authorised Examiner · 14-day mandatory wait between attempts", amount: "from $369" }
+        ],
+        total: "~$1,071",
+        footnote: "Your HPT and 75-hour logbook from your first VORT attempt still count — no need to redo them."
+      };
+    } else if (resultsState.failType === "aggregate") {
+      steps.shift();
+      completed.push({ text: "Identified your fail type", sub: "Aggregate points — short polish plan below.", done: true, decisionKey: "failType" });
+      if (steps[0]) {
+        steps[0].current = true;
+        steps[0].title = "1 × 90-min polish lesson";
+        steps[0].detail = "Targeted on the small errors that stacked up last time.";
+        steps[0].long = "<strong>Why a single session usually works:</strong> Aggregate fails come from many small things — lazy mirror checks (mirror–mirror–shoulder, not a glance), hesitant lane changes, slow give-way response, awkward parking. Each error is small, but they accumulate across a 45-minute test.<br><br><strong>What we cover:</strong> Walk through your last test's likely error patterns, drill the specific habits that need tightening, finish with a 20-min mock to confirm.<br><br><strong>When to re-book:</strong> Your <strong>14-day mandatory wait</strong> between VORT attempts is usually enough time for a single polish session and a few practice drives.";
+      }
+      hours = 1.5; sessions = 1;
+      progressPct = 85;
+      pkg = "VORT Polish Session";
+      timeline = { lessons: "~1 week", toResult: "~3 weeks", resultLabel: "back on track to P1", bottleneck: null };
+      costBreakdown = {
+        rows: [
+          { item: "LicenceMate Polish Session", sub: "1 × 90-min targeted lesson on small habit fixes", amount: "$195" },
+          { item: "VORT re-test fee", sub: "Authorised Examiner · 14-day mandatory wait between attempts", amount: "from $369" }
+        ],
+        total: "~$564",
+        footnote: "Your HPT and 75-hour logbook from your first VORT attempt still count — no need to redo them."
+      };
+    } else if (resultsState.failType === "unsure") {
+      // Diagnostic stays current; plan locks in after.
+      hours = "1.5–6"; sessions = "1–4";
+      progressPct = 72;
+      pkg = "Diagnostic + targeted lessons (set after lesson 1)";
+    } else {
+      // Unanswered — show range, prompt for decision.
+      hours = "1.5–6"; sessions = "1–4";
+    }
+  }
+
+  return { ...p, hours, sessions, progressPct, headline, headlineSub, package: pkg, completedChecks: completed, steps, successCallout, ctaLabel, timeline, costBreakdown, planName };
+}
+
+function renderTimeline(t) {
+  if (!t) return '';
+  return `
+    <div class="vD-timeline">
+      <div class="vD-timeline-cell">
+        <div class="label">Lessons complete in</div>
+        <div class="value">${esc(t.lessons)}</div>
+        <div class="value-sub">At our recommended cadence</div>
+      </div>
+      <div class="vD-timeline-cell">
+        <div class="label">${esc(t.resultLabel.startsWith("to") || t.resultLabel.startsWith("back") || t.resultLabel.startsWith("with") ? t.resultLabel : "to result")}</div>
+        <div class="value">${esc(t.toResult)}</div>
+        <div class="value-sub">Including admin + booking windows</div>
+      </div>
+      ${t.bottleneck ? `<div class="vD-timeline-note">⚠️ <strong>Heads up:</strong> ${esc(t.bottleneck)}</div>` : ''}
+    </div>`;
+}
+
+function renderWhyLicenceMate() {
+  return `
+    <section class="lm-card">
+      <h3>Why LicenceMate</h3>
+      <p class="lm-card-sub">What our students get that you wouldn't with a parent or a generic instructor.</p>
+      <div class="lm-why-grid">
+        ${LICENCEMATE_TRUST.map(t => `
+          <div class="lm-why-item">
+            <div class="stat">${esc(t.stat)}</div>
+            <div class="stat-label">${esc(t.statLabel)}</div>
+            <div class="desc">${esc(t.desc)}</div>
+          </div>
+        `).join('')}
+      </div>
+    </section>`;
+}
+
+function renderCostBreakdown(c) {
+  if (!c) return '';
+  return `
+    <section class="lm-card">
+      <h3>What this will cost you</h3>
+      <p class="lm-card-sub">All-in estimate — your LicenceMate package plus government and test fees.</p>
+      ${c.rows.map(r => `
+        <div class="lm-cost-row">
+          <div>
+            <div class="item-name">${esc(r.item)}</div>
+            ${r.sub ? `<span class="item-sub">${esc(r.sub)}</span>` : ''}
+          </div>
+          <div class="amount">
+            ${r.strike ? `<span class="strike">${esc(r.strike)}</span>` : ''}${esc(r.amount)}
+          </div>
+        </div>
+      `).join('')}
+      <div class="lm-cost-row total">
+        <div class="item-name">Estimated total</div>
+        <div class="amount">${esc(c.total)}</div>
+      </div>
+      ${c.footnote ? `<div class="lm-cost-footer">${esc(c.footnote)}</div>` : ''}
+    </section>`;
+}
+
+function renderFAQ() {
+  return `
+    <section class="lm-card">
+      <h3>Common questions</h3>
+      <p class="lm-card-sub">If yours isn't here, ask at your first lesson — your instructor will know.</p>
+      ${FAQ_ITEMS.map(f => `
+        <details class="lm-faq-item">
+          <summary>
+            <span class="faq-q">${esc(f.q)}</span>
+            <span class="faq-chev">▾</span>
+          </summary>
+          <div class="faq-a">${f.a}</div>
+        </details>
+      `).join('')}
+    </section>`;
+}
+
+function renderDecisionUI(decision, currentValue) {
+  if (currentValue) {
+    const chosen = decision.options.find(o => o.value === currentValue);
+    if (!chosen) return '';
+    return `
+      <div class="vD-decision">
+        <div class="vD-decision-answered">
+          <div class="check">✓</div>
+          <div>
+            <div class="your-answer">Your answer: ${esc(chosen.label)}</div>
+            <div class="your-answer-sub">${esc(chosen.hint)}</div>
+          </div>
+          <button class="change-link" onclick="clearDecision('${esc(decision.key)}')">Change answer</button>
+        </div>
+      </div>`;
+  }
+  return `
+    <div class="vD-decision">
+      <div class="prompt">${esc(decision.prompt)}</div>
+      <div class="vD-decision-options">
+        ${decision.options.map(o => `
+          <label class="vD-decision-option">
+            <input type="radio" name="${esc(decision.key)}" value="${esc(o.value)}" onchange="setDecision('${esc(decision.key)}','${esc(o.value)}')" />
+            <div>
+              <div class="label">${esc(o.label)}</div>
+              <div class="hint">${esc(o.hint)}</div>
+            </div>
+          </label>
+        `).join('')}
+      </div>
+    </div>`;
+}
+
+function renderD(rawP) {
+  const p = applyBranches(rawP);
+
+  const allChecks = [
+    ...(p.completedChecks || []).map(c => ({...c, done: c.done !== false && !c.warning, warning: c.warning})),
+    ...p.steps.map(s => ({ text: s.title, sub: s.detail, long: s.long, links: s.links, current: s.current, decision: s.decision }))
+  ];
+
+  let focusInserted = false;
+  const rowsHTML = allChecks.map(c => {
+    let prefix = '';
+    if (c.current && !focusInserted) {
+      prefix = `<li class="vD-focus-row"><div class="vD-focus-label">Right now, focus on</div></li>`;
+      focusInserted = true;
+    }
+    const cls = c.done ? 'done' : c.current ? 'current' : c.warning ? 'warning' : '';
+    const mark = c.done ? '✓' : c.warning ? '!' : '';
+
+    if (c.current) {
+      const linksHTML = c.links && c.links.length
+        ? `<div class="vD-current-links">${c.links.map(l => `<a href="${esc(l.href)}" target="_blank" rel="noopener">${esc(l.label)} →</a>`).join('')}</div>`
+        : '';
+      const decisionHTML = c.decision ? renderDecisionUI(c.decision, resultsState[c.decision.key]) : '';
+      const detailHTML = (c.long || linksHTML || decisionHTML)
+        ? `<div class="vD-current-detail">${c.long || ''}${linksHTML}${decisionHTML}</div>`
+        : '';
+      return prefix + `<li class="vD-check-item current">
+        <div class="vD-current-header">
+          <div class="marker">${mark}</div>
+          <div class="text">${esc(c.text)}<span class="sub">${esc(c.sub || "")}</span></div>
+          <span class="you-are-here">You are here</span>
+        </div>
+        ${detailHTML}
+      </li>`;
+    }
+
+    if (c.long) {
+      return prefix + `<li class="vD-check-item expandable ${cls}" onclick="toggleStep(event, this)">
+        <div class="vD-step-header">
+          <div class="marker">${mark}</div>
+          <div class="text">${esc(c.text)}<span class="sub">${esc(c.sub || "")}</span></div>
+          <span class="chev">▾</span>
+        </div>
+        <div class="vD-step-body">${c.long}</div>
+      </li>`;
+    }
+
+    return prefix + `<li class="vD-check-item ${cls}">
+      <div class="marker">${mark}</div>
+      <div class="text">${esc(c.text)}<span class="sub">${esc(c.sub || "")}</span></div>
+      ${c.decisionKey ? `<button class="vD-change-answer" onclick="event.stopPropagation(); clearDecision('${esc(c.decisionKey)}')">Change answer</button>` : ''}
+    </li>`;
+  }).join('');
+
+  const tipsHTML = (p.tips || []).map(t => `
+    <div class="vD-tip">
+      <span class="icon">💡</span>
+      <div><strong>${esc(t.title)}</strong>${esc(t.body)}</div>
+    </div>`).join('');
+
+  const hoursDisplay = p.hours === 0 ? "No more lessons needed" : `${p.hours} hours of lessons until VORT-ready`;
+  const successHTML = p.successCallout
+    ? `<div class="vD-success-callout"><span class="icon">🎉</span><div><strong>${esc(p.successCallout.title)}</strong>${esc(p.successCallout.body)}</div></div>`
+    : '';
+  const packageHTML = p.package
+    ? `<div class="vD-package-strip">
+         <span class="pkg-icon">📦</span>
+         <div>
+           <div class="pkg-eyebrow">Recommended package</div>
+           <div class="pkg-name">${esc(p.package)}</div>
+         </div>
+         <a class="pkg-link" href="#">See details →</a>
+       </div>`
+    : '';
+
+  return `
+  <div class="vD-save-bar">
+    <span class="indicator-dot"></span>
+    <span><span class="indicator">${esc(p.planName)} — saved automatically.</span> Bookmark this page or copy the link to come back any time.</span>
+    <button class="copy-btn" onclick="copyShareLink(this)">Copy link</button>
+  </div>
+
+  ${renderWarning(p)}
+  ${successHTML}
+
+  <div class="vD-card">
+    <div class="vD-progress-head">
+      <div>
+        <div class="plan-eyebrow">${esc(p.planName)}</div>
+        <div class="headline">${esc(p.headline)}</div>
+        <div style="color:var(--text-muted);font-size:14px;margin-top:4px;">${esc(hoursDisplay)}.</div>
+      </div>
+      <div class="pct">${p.progressPct}%</div>
+    </div>
+    <div class="vD-bar"><div class="fill" style="width:${p.progressPct}%"></div></div>
+    <div class="vD-bar-sub">You're ${p.progressPct}% of the way to your P-plates.</div>
+    <div class="vD-cta-row"><button class="btn-primary">${esc(p.ctaLabel)}</button></div>
+
+    ${renderTimeline(p.timeline)}
+    ${packageHTML}
+    ${tipsHTML}
+
+    <ul class="vD-checklist">${rowsHTML}</ul>
+  </div>
+
+  ${renderWhyLicenceMate()}
+  ${renderFAQ()}
+  `;
+}
+
+function renderE(p) {
+  const ribbon = p.warning ? 'with-ribbon' : '';
+  return `
+  <div class="vE-pass ${ribbon}">
+    <div class="vE-brandbar">
+      <img src="licencemate_logo.png" alt="" />
+      LicenceMate · Boarding pass to your P-plates
+    </div>
+    <div class="vE-pass-body">
+      <div class="vE-cell">
+        <div class="label">Estimated Prep</div>
+        <div class="value">${p.hours} hrs <small>· ${p.sessions} sessions</small></div>
+      </div>
+      <div class="vE-cell">
+        <div class="label">Recommended</div>
+        <div class="value" style="font-size:19px;">${esc(p.package)}</div>
+      </div>
+    </div>
+    <div class="vE-divider"></div>
+    <div class="vE-milestones">
+      <div class="label">Your milestones to P-plates</div>
+      <div class="vE-stones">
+        ${p.milestones.map(m => `
+          <div class="vE-stone ${m.active ? 'active' : ''}">
+            <div class="icon">${m.icon}</div>
+            <div class="name">${esc(m.name)}</div>
+          </div>
+        `).join("")}
+      </div>
+    </div>
+    <div class="vE-cta-wrap">
+      <button class="vE-cta">Book a Lesson</button>
+    </div>
+  </div>
+  <div class="vE-footnote">Tap any milestone for details.</div>`;
+}
+
+const RENDERERS = { A: renderA, B: renderB, C: renderC, D: renderD, E: renderE };
+
+/* ----------------- Switcher ----------------- */
+let currentVar = "A";
+let currentPersona = "confident";
+
+function render() {
+  const p = PERSONAS[currentPersona];
+  const meta = VARIATION_META[currentVar];
+  document.getElementById("meta").innerHTML = `
+    <h2>${meta.kicker}</h2>
+    <h3>${meta.title}</h3>
+    <p>${meta.desc} <span style="color:var(--text-soft);"> · Persona: ${esc(p.name)}</span></p>
+  `;
+  document.getElementById("mount").innerHTML = RENDERERS[currentVar](p);
+}
+
+function setActiveTab(containerId, attr, value) {
+  document.querySelectorAll(`#${containerId} button`).forEach(x => x.classList.remove("active"));
+  const target = document.querySelector(`#${containerId} button[${attr}="${value}"]`);
+  if (target) target.classList.add("active");
+}
+
+document.getElementById("variation-tabs").addEventListener("click", e => {
+  const b = e.target.closest("button[data-var]");
+  if (!b) return;
+  currentVar = b.dataset.var;
+  setActiveTab("variation-tabs", "data-var", currentVar);
+  saveResultsState();
+  render();
+});
+
+document.getElementById("persona-bar").addEventListener("click", e => {
+  const b = e.target.closest("button[data-persona]");
+  if (!b) return;
+  currentPersona = b.dataset.persona;
+  setActiveTab("persona-bar", "data-persona", currentPersona);
+  saveResultsState();
+  render();
+});
+
+loadResultsState();
+setActiveTab("variation-tabs", "data-var", currentVar);
+setActiveTab("persona-bar", "data-persona", currentPersona);
+render();
+</script>
+</body>
+</html>

@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Quiz entry — B variations</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sansita:wght@700;800&family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green-50:  #f0fdf4;
+    --green-100: #dcfce7;
+    --green-200: #bbf7d0;
+    --green-500: #22c55e;
+    --green-600: #16a34a;
+    --green-700: #15803d;
+    --green-800: #166534;
+    --green-950: #052e16;
+    --yellow-300: #fde047;
+    --text: #111828;
+    --text-muted: #4b5563;
+    --text-soft: #6b7280;
+    --border: #e5e7eb;
+    --radius: 0.625rem;
+    --font-sansita: "Sansita", Georgia, serif;
+    --font-sans: "Geist", -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: var(--font-sans);
+    background: #fafdfb;
+    color: var(--text);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, h4 { margin: 0; font-family: var(--font-sansita); font-weight: 700; letter-spacing: -0.01em; }
+  p { margin: 0; }
+  a { text-decoration: none; }
+
+  .topbar { background: #fff; border-bottom: 1px solid var(--border); padding: 14px 32px; }
+  .topbar .wordmark { font-family: var(--font-sansita); font-size: 22px; font-weight: 700; }
+  .topbar .wordmark .l { color: var(--green-700); }
+
+  .page-header { background: linear-gradient(180deg, #fff, #f7fdf9); border-bottom: 1px solid var(--border); padding: 28px 32px; }
+  .page-header h1 { font-size: 22px; }
+  .page-header p { color: var(--text-muted); font-size: 13.5px; margin-top: 6px; max-width: 760px; }
+
+  .variation-meta {
+    max-width: 1100px;
+    margin: 36px auto 12px;
+    padding: 0 32px;
+  }
+  .variation-meta .label {
+    font-size: 11.5px;
+    font-weight: 700;
+    color: var(--green-700);
+    letter-spacing: .1em;
+    text-transform: uppercase;
+  }
+  .variation-meta h2 {
+    font-size: 22px;
+    margin-top: 6px;
+    color: var(--text);
+  }
+  .variation-meta .desc {
+    color: var(--text-muted);
+    font-size: 13.5px;
+    margin-top: 6px;
+    max-width: 760px;
+  }
+
+  .stage {
+    max-width: 1100px;
+    margin: 0 auto 48px;
+    padding: 0 32px;
+  }
+  @media (max-width: 720px) { .stage { padding: 0 16px; } }
+
+  /* Shared button */
+  .cta {
+    display: inline-block;
+    padding: 16px 32px;
+    border: 0;
+    border-radius: calc(var(--radius) - 2px);
+    font-weight: 700;
+    font-size: 16px;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background .15s, transform .05s;
+  }
+  .cta:active { transform: translateY(1px); }
+  .cta-green {
+    background: var(--green-600);
+    color: #fff;
+    box-shadow: 0 6px 18px -4px rgba(22,163,74,.50);
+  }
+  .cta-green:hover { background: var(--green-700); color: #fff; }
+  .cta-white {
+    background: #fff;
+    color: var(--green-700);
+    box-shadow: 0 6px 18px -4px rgba(0,0,0,.18);
+  }
+  .cta-white:hover { background: var(--green-50); }
+  .micro {
+    color: var(--text-soft);
+    font-size: 13px;
+    margin-top: 14px;
+  }
+  .micro-light { color: rgba(255,255,255,.78); }
+
+  /* ============ B1 — Soft & conversational (current pick) ============ */
+  .b1 {
+    background: #fff;
+    border: 1px solid var(--green-100);
+    border-radius: calc(var(--radius) + 6px);
+    padding: 64px 48px;
+    text-align: center;
+    box-shadow: 0 8px 24px -12px rgba(22,163,74,.18);
+    position: relative;
+    overflow: hidden;
+  }
+  .b1::before {
+    content: "";
+    position: absolute;
+    top: -50%; right: -10%;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, var(--green-100), transparent 60%);
+    opacity: 0.6;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .b1 > * { position: relative; z-index: 1; }
+  @media (max-width: 720px) { .b1 { padding: 44px 24px; border-radius: var(--radius); } }
+  .b1 .eyebrow {
+    font-size: 11.5px; text-transform: uppercase; letter-spacing: .12em;
+    color: var(--green-700); font-weight: 700;
+  }
+  .b1 h2 {
+    font-size: 40px; line-height: 1.1; letter-spacing: -0.02em;
+    margin-top: 10px; max-width: 720px; margin-left: auto; margin-right: auto;
+  }
+  .b1 h2 .accent { color: var(--green-700); }
+  @media (max-width: 720px) { .b1 h2 { font-size: 30px; } }
+  .b1 .sub {
+    color: var(--text-muted); font-size: 17px; line-height: 1.55;
+    margin: 22px auto 32px; max-width: 600px;
+  }
+  @media (max-width: 720px) { .b1 .sub { font-size: 15.5px; } }
+
+  /* ============ B2 — Bold & confident, dark green ============ */
+  .b2 {
+    background:
+      radial-gradient(circle at 80% 20%, rgba(74,222,128,.22), transparent 50%),
+      linear-gradient(135deg, var(--green-700), var(--green-950));
+    color: #fff;
+    border-radius: calc(var(--radius) + 6px);
+    padding: 72px 48px;
+    text-align: center;
+    box-shadow: 0 24px 48px -18px rgba(21,128,61,.40);
+    position: relative;
+    overflow: hidden;
+  }
+  @media (max-width: 720px) { .b2 { padding: 52px 24px; border-radius: var(--radius); } }
+  .b2 .eyebrow {
+    font-size: 11.5px; text-transform: uppercase; letter-spacing: .14em;
+    color: var(--yellow-300); font-weight: 700;
+  }
+  .b2 h2 {
+    font-size: 44px; line-height: 1.1; letter-spacing: -0.025em;
+    margin-top: 10px; max-width: 720px; margin-left: auto; margin-right: auto;
+    color: #fff;
+  }
+  @media (max-width: 720px) { .b2 h2 { font-size: 32px; } }
+  .b2 .sub {
+    color: rgba(255,255,255,.92); font-size: 17px; line-height: 1.55;
+    margin: 22px auto 32px; max-width: 560px;
+  }
+  @media (max-width: 720px) { .b2 .sub { font-size: 15.5px; } }
+
+  /* ============ B3 — Minimal & editorial ============ */
+  .b3 {
+    background: transparent;
+    padding: 80px 48px;
+    text-align: center;
+  }
+  @media (max-width: 720px) { .b3 { padding: 56px 16px; } }
+  .b3 h2 {
+    font-size: 52px; line-height: 1.0; letter-spacing: -0.03em;
+    max-width: 780px; margin-left: auto; margin-right: auto;
+    color: var(--text);
+  }
+  .b3 h2 .accent { color: var(--green-700); }
+  @media (max-width: 720px) { .b3 h2 { font-size: 36px; } }
+  .b3 .sub {
+    color: var(--text-muted); font-size: 17px; line-height: 1.55;
+    margin: 26px auto 36px; max-width: 540px;
+  }
+  @media (max-width: 720px) { .b3 .sub { font-size: 15.5px; } }
+  .b3 .divider {
+    width: 40px; height: 3px; background: var(--green-600);
+    border-radius: 2px;
+    margin: 0 auto 26px;
+  }
+
+  /* ============ B4 — Question + 3-stat callouts ============ */
+  .b4 {
+    background: #fff;
+    border: 1px solid var(--green-100);
+    border-radius: calc(var(--radius) + 6px);
+    padding: 56px 48px;
+    text-align: center;
+    box-shadow: 0 8px 24px -12px rgba(22,163,74,.18);
+  }
+  @media (max-width: 720px) { .b4 { padding: 40px 24px; border-radius: var(--radius); } }
+  .b4 .eyebrow {
+    font-size: 11.5px; text-transform: uppercase; letter-spacing: .12em;
+    color: var(--green-700); font-weight: 700;
+  }
+  .b4 h2 {
+    font-size: 38px; line-height: 1.1; letter-spacing: -0.02em;
+    margin-top: 10px; max-width: 660px; margin-left: auto; margin-right: auto;
+  }
+  .b4 h2 .accent { color: var(--green-700); }
+  @media (max-width: 720px) { .b4 h2 { font-size: 28px; } }
+  .b4 .sub {
+    color: var(--text-muted); font-size: 16px; line-height: 1.55;
+    margin: 18px auto 28px; max-width: 560px;
+  }
+  .b4 .stats {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 18px; max-width: 660px;
+    margin: 0 auto 36px;
+  }
+  @media (max-width: 720px) { .b4 .stats { grid-template-columns: 1fr; gap: 10px; } }
+  .b4 .stat {
+    padding: 18px 12px;
+    background: var(--green-50);
+    border: 1px solid var(--green-100);
+    border-radius: var(--radius);
+    text-align: center;
+  }
+  .b4 .stat .stat-icon { font-size: 22px; line-height: 1; margin-bottom: 6px; }
+  .b4 .stat .stat-label {
+    font-family: var(--font-sansita); font-size: 16px; color: var(--text);
+    font-weight: 700;
+  }
+  .b4 .stat .stat-desc {
+    color: var(--text-muted); font-size: 12.5px; margin-top: 4px;
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <span class="wordmark"><span class="l">Licence</span>Mate</span>
+</div>
+
+<header class="page-header">
+  <h1>Quiz entry — 4 sub-variations within the B (question-led / centred) family</h1>
+  <p>Same content idea, four different visual treatments and tone angles. Pick one, or signal which direction and I'll iterate further.</p>
+</header>
+
+<!-- ============ B1 ============ -->
+<div class="variation-meta">
+  <div class="label">B1 — Soft &amp; conversational</div>
+  <h2>Soft green card, radial gradient accent. The version we polished earlier.</h2>
+  <p class="desc">Warm, low-pressure, conversational. Sits comfortably as a secondary CTA — won't compete with the hero's Book a Lesson. Best for "let people self-discover the offer."</p>
+</div>
+<div class="stage">
+  <section class="b1">
+    <div class="eyebrow">Your P-Plates Plan</div>
+    <h2>Not sure how long it'll take to get your <span class="accent">Ps</span>?</h2>
+    <p class="sub">Answer 4 questions. Get your hours, timeline and step-by-step plan — built around your starting point, not a generic checklist.</p>
+    <a href="/lesson-estimate-quiz" class="cta cta-green">Get my P-Plates Plan</a>
+    <div class="micro">60 seconds · free · no booking required</div>
+  </section>
+</div>
+
+<!-- ============ B2 ============ -->
+<div class="variation-meta">
+  <div class="label">B2 — Bold &amp; confident, dark green</div>
+  <h2>Branded dark-green gradient, white text. Yellow eyebrow accent.</h2>
+  <p class="desc">High visual weight. Reads as a "moment" on the page, not just another section. Risk: competes with the hero more directly — could pull eye attention away from Book a Lesson. Use if you want the quiz to feel like a serious offer in its own right.</p>
+</div>
+<div class="stage">
+  <section class="b2">
+    <div class="eyebrow">Your P-Plates Plan</div>
+    <h2>Plan your path to your Ps. In 60 seconds.</h2>
+    <p class="sub">Personalised hours, cost and timeline — built around your starting point. Saved as your own link.</p>
+    <a href="/lesson-estimate-quiz" class="cta cta-white">Get my P-Plates Plan</a>
+    <div class="micro micro-light">4 questions · free · no booking required</div>
+  </section>
+</div>
+
+<!-- ============ B3 ============ -->
+<div class="variation-meta">
+  <div class="label">B3 — Minimal &amp; editorial</div>
+  <h2>No card. Big typography. Lots of breathing room.</h2>
+  <p class="desc">Quietly confident. The headline does the work. Feels like a magazine-style aside rather than a sales push. Best if you trust the typography hierarchy to pull the eye and want the lightest possible footprint. Risk: easiest to scroll past.</p>
+</div>
+<div class="stage">
+  <section class="b3">
+    <div class="divider"></div>
+    <h2>Plan your licence <span class="accent">in 60 seconds</span>.</h2>
+    <p class="sub">Personalised hours, cost and steps — built around your situation.</p>
+    <a href="/lesson-estimate-quiz" class="cta cta-green">Get my P-Plates Plan</a>
+    <div class="micro">Free · no booking required · saved automatically</div>
+  </section>
+</div>
+
+<!-- ============ B4 ============ -->
+<div class="variation-meta">
+  <div class="label">B4 — Question + 3-stat preview</div>
+  <h2>Question headline with three small callouts showing what's in the plan.</h2>
+  <p class="desc">Hybrid — keeps B's question-led tone but adds visual cues for what they'll actually get. The stats turn an abstract offer into something concrete. Best for users who need a "what's in it for me" hint before clicking.</p>
+</div>
+<div class="stage">
+  <section class="b4">
+    <div class="eyebrow">Your P-Plates Plan</div>
+    <h2>What's your fastest path to your <span class="accent">Ps</span>?</h2>
+    <p class="sub">Answer 4 questions. We'll build it around your starting point.</p>
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-icon">⏱</div>
+        <div class="stat-label">Your timeline</div>
+        <div class="stat-desc">Weeks to P-plates</div>
+      </div>
+      <div class="stat">
+        <div class="stat-icon">$</div>
+        <div class="stat-label">Your cost</div>
+        <div class="stat-desc">All-in estimate</div>
+      </div>
+      <div class="stat">
+        <div class="stat-icon">→</div>
+        <div class="stat-label">Your steps</div>
+        <div class="stat-desc">In the right order</div>
+      </div>
+    </div>
+    <a href="/lesson-estimate-quiz" class="cta cta-green">Get my P-Plates Plan</a>
+    <div class="micro">60 seconds · free · no booking required</div>
+  </section>
+</div>
+
+<div style="text-align:center; padding: 32px; color: var(--text-soft); font-size: 13px;">
+  All four CTAs link to <code>/lesson-estimate-quiz</code>. Pick one or signal direction.
+</div>
+
+</body>
+</html>

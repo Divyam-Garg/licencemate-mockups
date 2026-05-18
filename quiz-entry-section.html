@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>/first-lesson — quiz entry (2nd section)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sansita:wght@700;800&family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green-50:  #f0fdf4;
+    --green-100: #dcfce7;
+    --green-200: #bbf7d0;
+    --green-600: #16a34a;
+    --green-700: #15803d;
+    --green-800: #166534;
+    --text: #111828;
+    --text-muted: #4b5563;
+    --text-soft: #6b7280;
+    --border: #e5e7eb;
+    --radius: 0.625rem;
+    --font-sansita: "Sansita", Georgia, serif;
+    --font-sans: "Geist", -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: var(--font-sans);
+    background: #fafdfb;
+    color: var(--text);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, h4 { margin: 0; font-family: var(--font-sansita); font-weight: 700; letter-spacing: -0.01em; }
+  p { margin: 0; }
+  a { text-decoration: none; }
+
+  /* Page chrome (mockup viewer only) */
+  .topbar { background: #fff; border-bottom: 1px solid var(--border); padding: 14px 32px; display: flex; align-items: center; gap: 12px; }
+  .topbar .wordmark { font-family: var(--font-sansita); font-size: 22px; font-weight: 700; }
+  .topbar .wordmark .l { color: var(--green-700); }
+  .topbar .crumb { margin-left: auto; font-size: 12.5px; color: var(--text-soft); }
+
+  .reviewer-note {
+    max-width: 1100px;
+    margin: 24px auto 0;
+    padding: 14px 18px;
+    background: #fff7ed;
+    border: 1px dashed #fdba74;
+    border-radius: var(--radius);
+    font-size: 13px;
+    color: #7c2d12;
+  }
+  .reviewer-note strong { font-family: var(--font-sansita); }
+
+  /* In-context faux sections (faded — show where the real section sits) */
+  .faux {
+    max-width: 1100px;
+    margin: 24px auto;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 56px 40px;
+    color: var(--text-soft);
+    text-align: center;
+    opacity: 0.45;
+    position: relative;
+  }
+  .faux .ghost-label {
+    position: absolute;
+    top: 10px;
+    left: 12px;
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: .12em;
+    color: var(--text-soft);
+    font-weight: 700;
+  }
+  .faux .ghost-heading { font-family: var(--font-sansita); font-size: 32px; color: var(--text); }
+  .faux .ghost-sub { margin-top: 12px; font-size: 14.5px; }
+  .faux .ghost-btn {
+    display: inline-block; margin-top: 22px; padding: 12px 26px;
+    background: var(--green-600); color: #fff; border-radius: calc(var(--radius) - 2px);
+    font-weight: 700; font-size: 14px;
+  }
+
+  /* THE REAL SECTION (Variation B — polished) */
+  .quiz-entry {
+    max-width: 1100px;
+    margin: 24px auto;
+    background: #fff;
+    border: 1px solid var(--green-100);
+    border-radius: calc(var(--radius) + 6px);
+    padding: 64px 48px;
+    text-align: center;
+    box-shadow: 0 8px 24px -12px rgba(22,163,74,.18);
+    position: relative;
+    overflow: hidden;
+  }
+  .quiz-entry::before {
+    content: "";
+    position: absolute;
+    top: -50%; right: -10%;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, var(--green-100), transparent 60%);
+    opacity: 0.6;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .quiz-entry > * { position: relative; z-index: 1; }
+  @media (max-width: 720px) {
+    .quiz-entry { padding: 44px 24px; border-radius: var(--radius); }
+  }
+
+  .quiz-entry .eyebrow {
+    font-size: 11.5px;
+    text-transform: uppercase;
+    letter-spacing: .12em;
+    color: var(--green-700);
+    font-weight: 700;
+  }
+  .quiz-entry h2 {
+    font-size: 40px;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-top: 10px;
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .quiz-entry h2 .accent { color: var(--green-700); }
+  @media (max-width: 720px) {
+    .quiz-entry h2 { font-size: 30px; }
+  }
+  .quiz-entry .sub {
+    color: var(--text-muted);
+    font-size: 17px;
+    line-height: 1.55;
+    margin: 22px auto 32px;
+    max-width: 600px;
+  }
+  @media (max-width: 720px) {
+    .quiz-entry .sub { font-size: 15.5px; }
+  }
+  .quiz-entry .cta {
+    display: inline-block;
+    padding: 16px 32px;
+    background: var(--green-600);
+    color: #fff;
+    border: 0;
+    border-radius: calc(var(--radius) - 2px);
+    font-weight: 700;
+    font-size: 16px;
+    font-family: inherit;
+    box-shadow: 0 6px 18px -4px rgba(22,163,74,.50);
+    cursor: pointer;
+    transition: background .15s, transform .05s;
+  }
+  .quiz-entry .cta:hover { background: var(--green-700); }
+  .quiz-entry .cta:active { transform: translateY(1px); }
+  .quiz-entry .micro {
+    color: var(--text-soft);
+    font-size: 13px;
+    margin-top: 14px;
+  }
+
+  /* Testimonial slot — empty for now, drop a quote here later */
+  .quiz-entry .testimonial-slot {
+    margin-top: 36px;
+    padding-top: 28px;
+    border-top: 1px solid var(--green-100);
+    color: var(--text-soft);
+    font-size: 12px;
+    font-style: italic;
+    display: none; /* hidden until you have a real testimonial to drop in */
+  }
+  /* Reveal helper for review only: */
+  .quiz-entry.show-slot .testimonial-slot { display: block; }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <span class="wordmark"><span class="l">Licence</span>Mate</span>
+  <span class="crumb">/first-lesson · 2nd section preview</span>
+</div>
+
+<div class="reviewer-note">
+  <strong>Reviewer note:</strong> Faded blocks above &amp; below = adjacent /first-lesson sections (hero on top, next existing section on the bottom). The white card in the middle is the new quiz entry section. Resize your window to check mobile.
+</div>
+
+<!-- Faux hero above -->
+<div class="faux">
+  <div class="ghost-label">Existing hero (above)</div>
+  <div class="ghost-heading">Driving lessons in Adelaide that get you VORT-ready, fast.</div>
+  <p class="ghost-sub">Auto-only · 30+ instructors · 81% first-time pass rate</p>
+  <a href="#" class="ghost-btn">Book a Lesson</a>
+</div>
+
+<!-- THE REAL SECTION -->
+<section class="quiz-entry">
+  <div class="eyebrow">Your P-Plates Plan</div>
+  <h2>Not sure how long it'll take to get your <span class="accent">Ps</span>?</h2>
+  <p class="sub">Answer 4 questions. Get your hours, timeline and step-by-step plan — built around your starting point, not a generic checklist.</p>
+  <a href="/lesson-estimate-quiz" class="cta">Get my P-Plates Plan</a>
+  <div class="micro">60 seconds · free · no booking required</div>
+
+  <!-- testimonial slot, hidden by default; drop a real quote in here later -->
+  <div class="testimonial-slot">
+    "Placeholder testimonial — paste a real student quote here when you have one." — Name, Suburb
+  </div>
+</section>
+
+<!-- Faux section below -->
+<div class="faux">
+  <div class="ghost-label">Next existing section (below)</div>
+  <div class="ghost-heading">Why LicenceMate?</div>
+  <p class="ghost-sub">81% first-time VORT pass rate · 30+ instructors · auto-only fleet</p>
+</div>
+
+<div style="text-align:center; padding: 24px; color: var(--text-soft); font-size: 12.5px;">
+  CTA destination: <code>/lesson-estimate-quiz</code> · Testimonial slot is hidden (empty) — wire up when ready
+</div>
+
+</body>
+</html>

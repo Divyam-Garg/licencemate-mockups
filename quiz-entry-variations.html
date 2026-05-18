@@ -1,0 +1,438 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Quiz entry — 2nd section variations</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sansita:wght@700;800&family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green-50:  #f0fdf4;
+    --green-100: #dcfce7;
+    --green-200: #bbf7d0;
+    --green-500: #22c55e;
+    --green-600: #16a34a;
+    --green-700: #15803d;
+    --green-800: #166534;
+    --green-950: #052e16;
+    --yellow-300: #fde047;
+    --text: #111828;
+    --text-muted: #4b5563;
+    --text-soft: #6b7280;
+    --border: #e5e7eb;
+    --radius: 0.625rem;
+    --radius-xl: calc(var(--radius) + 6px);
+    --font-sansita: "Sansita", Georgia, serif;
+    --font-sans: "Geist", -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: var(--font-sans);
+    background: #fafdfb;
+    color: var(--text);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, h4 { margin: 0; font-family: var(--font-sansita); font-weight: 700; letter-spacing: -0.01em; }
+  p { margin: 0; }
+  a { text-decoration: none; color: var(--green-700); }
+  button { font-family: inherit; cursor: pointer; }
+
+  /* Page chrome */
+  .topbar { background: #fff; border-bottom: 1px solid var(--border); padding: 14px 32px; }
+  .topbar .wordmark { font-family: var(--font-sansita); font-size: 22px; font-weight: 700; }
+  .topbar .wordmark .l { color: var(--green-700); }
+  .page-header { background: linear-gradient(180deg, #fff, #f7fdf9); border-bottom: 1px solid var(--border); padding: 28px 32px; }
+  .page-header h1 { font-size: 22px; }
+  .page-header p { color: var(--text-muted); font-size: 13.5px; margin-top: 6px; max-width: 720px; }
+
+  .variation-meta {
+    max-width: 1100px;
+    margin: 36px auto 12px;
+    padding: 0 32px;
+  }
+  .variation-meta .label {
+    font-size: 11.5px;
+    font-weight: 700;
+    color: var(--green-700);
+    letter-spacing: .1em;
+    text-transform: uppercase;
+  }
+  .variation-meta h2 {
+    font-size: 22px;
+    margin-top: 6px;
+    color: var(--text);
+  }
+  .variation-meta .desc {
+    color: var(--text-muted);
+    font-size: 13.5px;
+    margin-top: 6px;
+    max-width: 760px;
+  }
+
+  /* Common section wrapper — represents the /first-lesson 2nd section */
+  .section-stage {
+    background: #fff;
+    border: 1px dashed #cbd5e1;
+    border-radius: var(--radius-xl);
+    margin: 0 auto 48px;
+    max-width: 1100px;
+    padding: 48px 56px;
+  }
+  @media (max-width: 720px) { .section-stage { padding: 32px 24px; } }
+
+  /* Shared button styles */
+  .btn-primary {
+    display: inline-block;
+    padding: 14px 28px;
+    background: var(--green-600);
+    color: #fff;
+    border: 0;
+    border-radius: calc(var(--radius) - 2px);
+    font-weight: 700;
+    font-size: 15px;
+    box-shadow: 0 4px 14px -4px rgba(22,163,74,.45);
+    transition: background .15s;
+  }
+  .btn-primary:hover { background: var(--green-700); color: #fff; }
+  .btn-secondary {
+    display: inline-block;
+    padding: 14px 28px;
+    background: #fff;
+    color: var(--green-700);
+    border: 1.5px solid var(--green-300, var(--green-200));
+    border-radius: calc(var(--radius) - 2px);
+    font-weight: 700;
+    font-size: 15px;
+  }
+  .btn-secondary:hover { background: var(--green-50); color: var(--green-800); }
+  .micro {
+    color: var(--text-soft);
+    font-size: 12.5px;
+    margin-top: 12px;
+  }
+
+  /* ===================== VARIATION A — Preview-led ===================== */
+  .vA {
+    display: grid;
+    grid-template-columns: 1fr 1.05fr;
+    gap: 56px;
+    align-items: center;
+  }
+  @media (max-width: 720px) { .vA { grid-template-columns: 1fr; gap: 36px; } }
+  .vA .copy h3 {
+    font-size: 36px;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+  .vA .copy h3 .accent { color: var(--green-700); }
+  .vA .copy .sub { color: var(--text-muted); font-size: 16px; margin-top: 14px; max-width: 460px; }
+  .vA .copy ul { list-style: none; padding: 0; margin: 22px 0 26px; }
+  .vA .copy li { padding: 6px 0 6px 26px; position: relative; color: var(--text-muted); font-size: 14.5px; }
+  .vA .copy li::before { content: "✓"; position: absolute; left: 0; color: var(--green-600); font-weight: 700; }
+  .vA .preview {
+    background: linear-gradient(180deg, #f0fdf4, #fff);
+    border: 1px solid var(--green-100);
+    border-radius: var(--radius-xl);
+    padding: 18px;
+    box-shadow: 0 18px 40px -16px rgba(21,128,61,.20);
+  }
+  .vA .browser-bar {
+    height: 22px; background: #fff; border: 1px solid var(--border);
+    border-radius: 8px 8px 0 0; display: flex; align-items: center; gap: 5px; padding: 0 10px;
+  }
+  .vA .browser-bar span { width: 8px; height: 8px; border-radius: 50%; background: #e5e7eb; }
+  .vA .preview-body {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-top: 0;
+    border-radius: 0 0 10px 10px;
+    padding: 22px 22px 26px;
+  }
+  .vA .preview-eyebrow {
+    font-size: 9.5px; text-transform: uppercase; letter-spacing: .1em;
+    color: var(--green-700); font-weight: 700; margin-bottom: 4px;
+  }
+  .vA .preview-headline { font-family: var(--font-sansita); font-size: 18px; font-weight: 700; }
+  .vA .preview-bar { height: 10px; background: var(--green-50); border-radius: 999px; margin: 14px 0 4px; overflow: hidden; }
+  .vA .preview-bar .fill { width: 25%; height: 100%; background: linear-gradient(90deg, var(--green-500), var(--green-700)); }
+  .vA .preview-pct { font-family: var(--font-sansita); font-size: 22px; color: var(--green-700); font-weight: 700; float: right; margin-top: -8px; }
+  .vA .preview-meta { color: var(--text-muted); font-size: 12px; margin-top: 12px; }
+  .vA .preview-pkg {
+    margin-top: 12px; padding: 10px 12px; background: var(--green-50); border: 1px solid var(--green-100);
+    border-radius: 8px; font-size: 12px;
+  }
+  .vA .preview-pkg .pkg-eyebrow { font-size: 9px; text-transform: uppercase; color: var(--green-700); font-weight: 700; letter-spacing: .08em; }
+  .vA .preview-pkg .pkg-name { font-weight: 700; font-size: 13px; margin-top: 1px; }
+  .vA .preview-steps { margin-top: 14px; }
+  .vA .preview-step {
+    display: flex; gap: 10px; align-items: center; padding: 6px 0;
+    font-size: 12px;
+  }
+  .vA .preview-step .dot { width: 18px; height: 18px; border-radius: 50%; background: var(--green-100); display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:var(--green-700); flex-shrink: 0;}
+  .vA .preview-step.current .dot { background: var(--green-600); color: #fff; }
+  .vA .preview-step .text { color: var(--text-muted); }
+  .vA .preview-step.current .text { color: var(--text); font-weight: 600; }
+
+  /* ===================== VARIATION B — Question-led ===================== */
+  .vB { text-align: center; max-width: 720px; margin: 0 auto; }
+  .vB h3 {
+    font-size: 38px;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+  .vB h3 .accent { color: var(--green-700); }
+  .vB .sub {
+    color: var(--text-muted); font-size: 16.5px; margin: 22px auto 28px;
+    line-height: 1.55;
+    max-width: 560px;
+  }
+
+  /* ===================== VARIATION C — 3-up benefits ===================== */
+  .vC { text-align: center; }
+  .vC .eyebrow {
+    font-size: 11.5px; text-transform: uppercase; letter-spacing: .12em;
+    color: var(--green-700); font-weight: 700;
+  }
+  .vC h3 { font-size: 32px; margin-top: 8px; letter-spacing: -0.015em; }
+  .vC .sub { color: var(--text-muted); font-size: 15.5px; margin-top: 12px; max-width: 540px; margin-left: auto; margin-right: auto; }
+  .vC .grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 22px; margin: 36px 0 32px;
+    text-align: left;
+  }
+  @media (max-width: 720px) { .vC .grid { grid-template-columns: 1fr; } }
+  .vC .item {
+    padding: 22px; border: 1px solid var(--green-100);
+    background: linear-gradient(180deg, var(--green-50), #fff);
+    border-radius: var(--radius-xl);
+  }
+  .vC .item .icon-row { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+  .vC .item .icon {
+    width: 36px; height: 36px; border-radius: 50%; background: var(--green-600); color: #fff;
+    display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 18px;
+  }
+  .vC .item h4 { font-size: 18px; color: var(--text); }
+  .vC .item p { color: var(--text-muted); font-size: 14px; line-height: 1.55; }
+
+  /* ===================== VARIATION D — Quote-led ===================== */
+  .vD-q { max-width: 780px; margin: 0 auto; text-align: center; }
+  .vD-q .mark {
+    font-family: var(--font-sansita); font-size: 90px; color: var(--green-600);
+    line-height: 0.4; margin-top: -8px;
+  }
+  .vD-q .quote {
+    font-family: var(--font-sansita); font-size: 28px; line-height: 1.3;
+    color: var(--text); letter-spacing: -0.01em; margin-top: 20px;
+  }
+  .vD-q .quote .accent { color: var(--green-700); }
+  .vD-q .attribution {
+    display: flex; align-items: center; gap: 12px; justify-content: center;
+    margin-top: 22px; color: var(--text-muted); font-size: 14.5px;
+  }
+  .vD-q .avatar {
+    width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg, var(--green-200), var(--green-500));
+    display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 700;
+    font-family: var(--font-sansita); font-size: 18px;
+  }
+  .vD-q .attribution strong { color: var(--text); font-weight: 600; }
+  .vD-q .offer {
+    color: var(--text-muted); font-size: 16px;
+    margin-top: 36px;
+  }
+  .vD-q .cta-row { margin-top: 22px; }
+
+  /* ===================== VARIATION E — Forked CTA ===================== */
+  .vE { text-align: center; }
+  .vE > h3 { font-size: 28px; }
+  .vE .fork {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 22px; margin-top: 32px;
+    text-align: left;
+  }
+  @media (max-width: 720px) { .vE .fork { grid-template-columns: 1fr; } }
+  .vE .card {
+    padding: 28px;
+    border-radius: var(--radius-xl);
+    display: flex; flex-direction: column;
+    gap: 14px;
+  }
+  .vE .card.book {
+    background: linear-gradient(135deg, var(--green-600), var(--green-800));
+    color: #fff;
+  }
+  .vE .card.book .eyebrow { color: rgba(255,255,255,.85); }
+  .vE .card.book h4 { color: #fff; font-size: 22px; }
+  .vE .card.book p { color: rgba(255,255,255,.92); font-size: 14.5px; line-height: 1.5; }
+  .vE .card.book .btn-primary {
+    background: #fff; color: var(--green-700);
+    margin-top: auto;
+  }
+  .vE .card.book .btn-primary:hover { background: var(--green-50); }
+  .vE .card.plan {
+    background: #fff;
+    border: 1.5px solid var(--green-200);
+  }
+  .vE .card.plan h4 { font-size: 22px; }
+  .vE .card.plan p { color: var(--text-muted); font-size: 14.5px; line-height: 1.5; }
+  .vE .card.plan .btn-secondary { margin-top: auto; align-self: flex-start; }
+  .vE .eyebrow {
+    font-size: 11px; text-transform: uppercase; letter-spacing: .12em;
+    font-weight: 700; color: var(--green-700);
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <span class="wordmark"><span class="l">Licence</span>Mate</span>
+</div>
+
+<header class="page-header">
+  <h1>Quiz entry — 5 variations for the /first-lesson 2nd section</h1>
+  <p>Each variation is the block that would sit right under the hero on the /first-lesson page. Primary CTA there remains "Book a Lesson"; these are the secondary, lead-magnet placement.</p>
+</header>
+
+<!-- ============ A ============ -->
+<div class="variation-meta">
+  <div class="label">Variation A</div>
+  <h2>Preview-led — show what they'll get</h2>
+  <p class="desc">Two-column layout. Copy + checkmarks on the left, a styled mini-preview of the actual results page on the right. Concrete and tangible — they see the artefact before clicking. Best for visual reassurance.</p>
+</div>
+<section class="section-stage">
+  <div class="vA">
+    <div class="copy">
+      <h3>Plan your path to your <span class="accent">P-plates</span>, in 60 seconds.</h3>
+      <p class="sub">Personalised cost, timeline, and step-by-step plan — built around your situation, not generic.</p>
+      <ul>
+        <li>See exactly how many lessons you need</li>
+        <li>Full cost breakdown (lessons + government fees)</li>
+        <li>Saved as your own link — bookmark and come back any time</li>
+      </ul>
+      <a href="#" class="btn-primary">Get Your P-Plates Plan</a>
+      <div class="micro">4 questions · free · no booking required</div>
+    </div>
+    <div class="preview">
+      <div class="browser-bar"><span></span><span></span><span></span></div>
+      <div class="preview-body">
+        <div class="preview-eyebrow">YOUR P-PLATES PLAN</div>
+        <div>
+          <span class="preview-pct">25%</span>
+          <div class="preview-headline">You're on the home stretch.</div>
+        </div>
+        <div class="preview-bar"><div class="fill"></div></div>
+        <div class="preview-meta">6 hours of lessons · ~3 weeks · ~$1,186 all-in</div>
+        <div class="preview-pkg">
+          <div class="pkg-eyebrow">RECOMMENDED PACKAGE</div>
+          <div class="pkg-name">VORT-Ready Package</div>
+        </div>
+        <div class="preview-steps">
+          <div class="preview-step current"><div class="dot">1</div><div class="text">VORT lessons (~6 hrs)</div></div>
+          <div class="preview-step"><div class="dot">2</div><div class="text">Pass Hazard Perception Test</div></div>
+          <div class="preview-step"><div class="dot">3</div><div class="text">Book &amp; pass VORT</div></div>
+          <div class="preview-step"><div class="dot">4</div><div class="text">Service SA → P1 licence</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ B ============ -->
+<div class="variation-meta">
+  <div class="label">Variation B</div>
+  <h2>Question-led — conversational, low pressure</h2>
+  <p class="desc">Single-column centred. Pulls the user in with a question that matches their internal monologue. Minimal, easy to scan. Best for confident, copy-driven brands. Lowest visual weight — easier to scroll past.</p>
+</div>
+<section class="section-stage">
+  <div class="vB">
+    <h3>Not sure how long it'll take to get your <span class="accent">Ps</span>?</h3>
+    <p class="sub">Most people don't — until they map it out. Answer 4 questions and we'll show you exactly how many lessons you need, what it costs, and how soon you could be on the road.</p>
+    <a href="#" class="btn-primary">Plan Your Licence</a>
+    <div class="micro">60 seconds · free · no booking required</div>
+  </div>
+</section>
+
+<!-- ============ C ============ -->
+<div class="variation-meta">
+  <div class="label">Variation C</div>
+  <h2>3-up benefits — concrete deliverables</h2>
+  <p class="desc">Three columns showing what's in the plan. Makes the value tangible: timeline + cost + steps. Best for users who need to see "what's in it for me" quickly. Slightly more business-like.</p>
+</div>
+<section class="section-stage">
+  <div class="vC">
+    <div class="eyebrow">YOUR P-PLATES PLAN</div>
+    <h3>Everything you need to know — in 60 seconds.</h3>
+    <p class="sub">Built around your situation, not a generic checklist. See your timeline, your total cost, and your exact next steps.</p>
+    <div class="grid">
+      <div class="item">
+        <div class="icon-row"><div class="icon">⏱</div><h4>Your timeline</h4></div>
+        <p>How long until you're on P-plates, based on your starting point and how often you'll practise.</p>
+      </div>
+      <div class="item">
+        <div class="icon-row"><div class="icon">$</div><h4>Your total cost</h4></div>
+        <p>All-in estimate — lessons, VORT fee, HPT, permit, licence. No surprises later.</p>
+      </div>
+      <div class="item">
+        <div class="icon-row"><div class="icon">→</div><h4>Your next steps</h4></div>
+        <p>Step-by-step plan from where you are now, with what to do and in what order.</p>
+      </div>
+    </div>
+    <a href="#" class="btn-primary">Get Your P-Plates Plan</a>
+    <div class="micro">4 questions · free · saved automatically as your own link</div>
+  </div>
+</section>
+
+<!-- ============ D ============ -->
+<div class="variation-meta">
+  <div class="label">Variation D</div>
+  <h2>Quote-led — social proof first</h2>
+  <p class="desc">Student quote front and centre. Earns trust before asking for anything. Best if you have a strong real testimonial. Risk: feels lighter on what the offer actually is — only one short line about the plan itself.</p>
+</div>
+<section class="section-stage">
+  <div class="vD-q">
+    <div class="mark">"</div>
+    <div class="quote">I had no idea where to start with my licence. The plan laid it all out — <span class="accent">how many lessons, when to book the test, what it would cost.</span></div>
+    <div class="attribution">
+      <div class="avatar">A</div>
+      <span><strong>Aisha</strong> · 18 · Mawson Lakes</span>
+    </div>
+    <p class="offer">Get your own personalised plan in 60 seconds.</p>
+    <div class="cta-row">
+      <a href="#" class="btn-primary">Get Your P-Plates Plan</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ E ============ -->
+<div class="variation-meta">
+  <div class="label">Variation E</div>
+  <h2>Forked CTA — match user to their state</h2>
+  <p class="desc">Two-card layout that surfaces both paths explicitly. "Ready to book?" vs "Still figuring it out?" Forces a self-select. Risk: secondary CTA visually competes with primary "Book a Lesson"; could cannibalise some bookings if the framing tilts away from confidence.</p>
+</div>
+<section class="section-stage">
+  <div class="vE">
+    <h3>Where are you in your licence journey?</h3>
+    <div class="fork">
+      <div class="card book">
+        <div class="eyebrow">READY TO LEARN</div>
+        <h4>Book your first lesson.</h4>
+        <p>Pick a time and location, we'll match you with an instructor in your suburb in an auto dual-control car.</p>
+        <a href="#" class="btn-primary">Book a Lesson</a>
+      </div>
+      <div class="card plan">
+        <div class="eyebrow">STILL FIGURING IT OUT</div>
+        <h4>Get Your P-Plates Plan.</h4>
+        <p>Personalised cost, timeline and step-by-step plan — in 60 seconds, no booking required.</p>
+        <a href="#" class="btn-secondary">Plan Your Licence</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div style="text-align:center; padding: 32px; color: var(--text-soft); font-size: 13px;">End of variations · Pick one or mix-and-match.</div>
+
+</body>
+</html>
