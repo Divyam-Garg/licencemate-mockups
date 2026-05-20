@@ -1,0 +1,795 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Inline Quiz — design variants</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sansita:wght@700;800&family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green-50:  #f0fdf4;
+    --green-100: #dcfce7;
+    --green-200: #bbf7d0;
+    --green-400: #4ade80;
+    --green-500: #22c55e;
+    --green-600: #16a34a;
+    --green-700: #15803d;
+    --green-800: #166534;
+    --green-900: #14532d;
+    --green-950: #052e16;
+    --yellow-300: #fde047;
+    --gray-50:  #f8fafc;
+    --gray-200: #e5e7eb;
+    --gray-300: #d1d5db;
+    --gray-500: #6b7280;
+    --gray-700: #374151;
+    --gray-900: #111827;
+    --font-sansita: "Sansita", Georgia, serif;
+    --font-sans: "Geist", -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: var(--font-sans);
+    background: #fafdfb;
+    color: var(--gray-900);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3 { margin: 0; font-family: var(--font-sansita); font-weight: 700; letter-spacing: -0.005em; }
+  p { margin: 0; }
+  a, button { font-family: inherit; }
+
+  /* Chrome / page shell */
+  .topbar { background: #fff; border-bottom: 1px solid var(--gray-200); padding: 14px 32px; }
+  .topbar .wordmark { font-family: var(--font-sansita); font-size: 22px; font-weight: 700; }
+  .topbar .wordmark .l { color: var(--green-700); }
+  .page-header { background: linear-gradient(180deg, #fff, #f7fdf9); border-bottom: 1px solid var(--gray-200); padding: 28px 32px; }
+  .page-header h1 { font-size: 22px; }
+  .page-header p { color: var(--gray-700); font-size: 13.5px; margin-top: 6px; max-width: 760px; }
+
+  .section-header {
+    max-width: 1100px;
+    margin: 64px auto 0;
+    padding: 0 24px;
+  }
+  .section-header .super {
+    font-size: 11px; font-weight: 700; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--gray-500);
+  }
+  .section-header h2 {
+    font-size: 26px; margin-top: 6px; color: var(--gray-900);
+  }
+  .section-header .desc {
+    color: var(--gray-700); font-size: 14px; margin-top: 6px;
+    max-width: 720px;
+  }
+
+  .variant-meta {
+    max-width: 1100px;
+    margin: 36px auto 12px;
+    padding: 0 24px;
+  }
+  .variant-meta .label {
+    font-size: 11.5px; font-weight: 700;
+    color: var(--green-700);
+    letter-spacing: .12em; text-transform: uppercase;
+  }
+  .variant-meta h3 {
+    font-size: 22px; margin-top: 6px; color: var(--gray-900);
+  }
+  .variant-meta .desc {
+    color: var(--gray-700); font-size: 13.5px; margin-top: 6px;
+    max-width: 760px;
+  }
+
+  /* ============ Reusable hero backdrop (mimics LpHeroSection) ============ */
+  .lp-hero-bg {
+    position: relative;
+    overflow: hidden;
+    color: #fff;
+    background:
+      radial-gradient(ellipse at 80% 10%, rgba(74,222,128,0.18), transparent 55%),
+      linear-gradient(135deg, var(--green-900) 0%, var(--green-800) 35%, var(--green-700) 70%, var(--green-950) 100%);
+  }
+  .lp-hero-bg::after {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0.18) 0%, transparent 25%, transparent 75%, rgba(0,0,0,0.22) 100%);
+    pointer-events: none;
+  }
+
+  /* Hero typography */
+  .hero-eyebrow {
+    color: var(--green-100);
+    font-size: 12px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: .22em;
+    text-shadow: 0 2px 14px rgba(0,0,0,0.35);
+  }
+  .hero-title {
+    color: #fff;
+    font-family: var(--font-sansita); font-weight: 700;
+    font-size: clamp(34px, 5.5vw, 56px);
+    line-height: 1.05; letter-spacing: -0.025em;
+    text-shadow: 0 2px 16px rgba(0,0,0,0.5);
+  }
+  .hero-title .accent { color: var(--yellow-300); }
+  .hero-subtitle {
+    color: var(--green-400);
+    font-family: var(--font-sansita); font-weight: 700;
+    font-size: clamp(20px, 2.4vw, 26px);
+    text-shadow: 0 2px 14px rgba(0,0,0,0.25);
+  }
+  .hero-statlines {
+    display: flex; justify-content: center; flex-wrap: wrap;
+    gap: 24px; color: #fff;
+    font-size: 13.5px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: .15em;
+    text-shadow: 0 2px 14px rgba(0,0,0,0.3);
+  }
+  .hero-statlines .num {
+    font-family: var(--font-sansita); font-style: italic; font-weight: 700;
+    font-size: 24px; color: var(--yellow-300);
+    text-decoration: underline; text-decoration-color: rgba(253,224,71,0.5);
+    text-underline-offset: 4px; text-transform: none;
+    letter-spacing: 0; margin-right: 6px; vertical-align: -3px;
+  }
+  .hero-statlines .num.white {
+    color: #fff; text-decoration-color: rgba(255,255,255,0.5);
+  }
+
+  /* Buttons */
+  .btn-green {
+    display: inline-block; padding: 14px 28px;
+    background: var(--green-600); color: #fff;
+    border: 0; border-radius: 999px;
+    font-weight: 700; font-size: 15px;
+    box-shadow: 0 6px 18px -4px rgba(22,163,74,0.55);
+    cursor: pointer;
+  }
+  .btn-green:hover { background: var(--green-700); }
+  .btn-white {
+    display: inline-block; padding: 14px 28px;
+    background: #fff; color: var(--green-700);
+    border: 0; border-radius: 999px;
+    font-weight: 700; font-size: 15px;
+    box-shadow: 0 10px 26px -6px rgba(0,0,0,0.25);
+    cursor: pointer;
+  }
+
+  /* Faux section */
+  .faux {
+    background: #fff;
+    text-align: center;
+    padding: 24px;
+    color: var(--gray-500);
+    font-size: 13px;
+    opacity: 0.55;
+  }
+  .faux strong { color: var(--gray-700); }
+
+  /* ============================================================
+     P1 — /p-plates-plan: Hero-integrated quiz (no card)
+     ============================================================ */
+  .p1 .hero-stage {
+    text-align: center;
+    padding: 72px 24px 84px;
+  }
+  .p1 .hero-eyebrow { margin-bottom: 14px; }
+  .p1 .hero-title { max-width: 760px; margin: 0 auto; }
+  .p1 .progress-tag {
+    display: inline-block;
+    margin: 28px 0 18px;
+    padding: 6px 14px;
+    background: rgba(255,255,255,0.10);
+    border: 1px solid rgba(255,255,255,0.20);
+    border-radius: 999px;
+    backdrop-filter: blur(4px);
+    color: rgba(255,255,255,0.92);
+    font-size: 12px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: .14em;
+  }
+  .p1 .question {
+    color: #fff;
+    font-family: var(--font-sansita); font-weight: 700;
+    font-size: clamp(22px, 3vw, 30px);
+    text-shadow: 0 2px 14px rgba(0,0,0,0.35);
+    margin: 14px auto 28px;
+    max-width: 680px;
+  }
+  .p1 .options {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    max-width: 760px;
+    margin: 0 auto 24px;
+  }
+  @media (max-width: 720px) { .p1 .options { grid-template-columns: 1fr; } }
+  .p1 .option {
+    background: rgba(255,255,255,0.10);
+    border: 1.5px solid rgba(255,255,255,0.22);
+    border-radius: 16px;
+    backdrop-filter: blur(2px);
+    padding: 18px 14px;
+    color: #fff;
+    font-weight: 600; font-size: 15px;
+    cursor: pointer;
+    transition: background .15s, border-color .15s;
+  }
+  .p1 .option:hover { background: rgba(255,255,255,0.18); border-color: rgba(255,255,255,0.4); }
+  .p1 .option.selected { background: var(--yellow-300); color: var(--green-950); border-color: var(--yellow-300); }
+  .p1 .meta-row {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 14px;
+    max-width: 760px; margin: 0 auto;
+  }
+  .p1 .meta-progress {
+    flex: 1;
+    height: 4px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 999px;
+    overflow: hidden;
+    position: relative;
+  }
+  .p1 .meta-progress::after {
+    content: ""; position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 20%;
+    background: var(--yellow-300);
+    border-radius: 999px;
+  }
+  .p1 .meta-stats {
+    display: flex; gap: 16px; margin-top: 24px;
+    color: rgba(255,255,255,0.85);
+    font-size: 12px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: .15em;
+    justify-content: center;
+  }
+
+  /* ============================================================
+     P2 — /p-plates-plan: Premium white card in hero
+     ============================================================ */
+  .p2 .hero-stage {
+    text-align: center;
+    padding: 56px 24px 0;
+  }
+  .p2 .hero-title { max-width: 720px; margin: 14px auto 6px; font-size: clamp(28px, 4.5vw, 44px); }
+  .p2 .hero-subtitle { margin-bottom: 8px; }
+  .p2 .hero-stats-strip {
+    display: inline-flex; gap: 20px;
+    margin-top: 6px;
+    color: rgba(255,255,255,0.85);
+    font-size: 12px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: .14em;
+  }
+  .p2 .quiz-card {
+    background: #fff;
+    border-radius: 24px;
+    box-shadow: 0 40px 80px -28px rgba(0,0,0,0.40);
+    max-width: 640px;
+    margin: 44px auto -64px;
+    padding: 36px 36px 32px;
+    text-align: left;
+    position: relative;
+    z-index: 2;
+  }
+  .p2 .quiz-card .step-info {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 18px;
+  }
+  .p2 .quiz-card .step-info .pill {
+    background: var(--green-50); color: var(--green-700);
+    padding: 5px 11px; border-radius: 999px;
+    font-size: 11px; font-weight: 700;
+    letter-spacing: .1em; text-transform: uppercase;
+  }
+  .p2 .quiz-card .step-info .progress-mini {
+    height: 4px; width: 60%;
+    background: var(--gray-200);
+    border-radius: 999px;
+    position: relative;
+  }
+  .p2 .quiz-card .step-info .progress-mini::after {
+    content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 20%;
+    background: var(--green-600); border-radius: 999px;
+  }
+  .p2 .quiz-card h3 {
+    font-family: var(--font-sansita);
+    font-size: clamp(22px, 3vw, 28px);
+    color: var(--gray-900);
+    letter-spacing: -0.015em;
+  }
+  .p2 .quiz-card .options {
+    display: grid; gap: 10px; margin-top: 22px;
+  }
+  .p2 .quiz-card .option {
+    background: #fff;
+    border: 1.5px solid var(--gray-200);
+    border-radius: 14px;
+    padding: 16px 18px;
+    font-weight: 600; font-size: 15px;
+    color: var(--gray-900);
+    cursor: pointer;
+    text-align: left;
+    transition: border-color .15s, background .15s;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .p2 .quiz-card .option:hover { border-color: var(--green-600); background: var(--green-50); }
+  .p2 .quiz-card .option .arrow { color: var(--gray-300); font-size: 18px; }
+  .p2 .quiz-card .option:hover .arrow { color: var(--green-600); }
+  .p2 .quiz-card .skip-row {
+    margin-top: 18px; text-align: right;
+    color: var(--gray-500); font-size: 12.5px;
+  }
+  .p2 .below-card {
+    height: 120px;
+  }
+
+  /* ============================================================
+     P3 — /p-plates-plan: Minimal, no chrome (Typeform feel)
+     ============================================================ */
+  .p3 .stage {
+    background: #fff;
+    padding: 96px 24px;
+    min-height: 480px;
+  }
+  .p3 .inner {
+    max-width: 720px; margin: 0 auto;
+  }
+  .p3 .step-counter {
+    color: var(--green-700); font-weight: 700; font-size: 12px;
+    text-transform: uppercase; letter-spacing: .18em;
+  }
+  .p3 h3 {
+    font-family: var(--font-sansita);
+    font-size: clamp(28px, 5vw, 48px);
+    line-height: 1.1;
+    color: var(--gray-900);
+    margin: 10px 0 0;
+    letter-spacing: -0.02em;
+  }
+  .p3 .options {
+    display: grid; gap: 14px;
+    margin-top: 36px;
+  }
+  .p3 .option {
+    background: transparent;
+    border: 2px solid var(--gray-200);
+    border-radius: 14px;
+    padding: 22px 24px;
+    text-align: left;
+    color: var(--gray-900);
+    font-size: 17px; font-weight: 500;
+    cursor: pointer;
+    transition: all .15s;
+    display: flex; align-items: center; gap: 14px;
+  }
+  .p3 .option:hover { border-color: var(--green-600); transform: translateY(-1px); }
+  .p3 .option .key {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 28px; height: 28px;
+    border: 1.5px solid var(--gray-300);
+    border-radius: 6px;
+    font-family: var(--font-sansita); font-weight: 700; font-size: 13px;
+    color: var(--gray-500);
+  }
+  .p3 .option:hover .key { border-color: var(--green-600); color: var(--green-700); }
+  .p3 .progress-bar {
+    height: 3px; background: var(--gray-200);
+    border-radius: 999px; max-width: 720px; margin: 36px auto 0;
+    overflow: hidden;
+  }
+  .p3 .progress-bar .fill {
+    height: 100%; width: 20%; background: var(--green-600);
+  }
+  .p3 .footer-row {
+    margin-top: 28px;
+    display: flex; justify-content: space-between; align-items: center;
+    color: var(--gray-500); font-size: 13px;
+  }
+
+  /* ============================================================
+     F1 — /first-lesson: Slim expander/accordion
+     ============================================================ */
+  .f1-wrap {
+    background: linear-gradient(180deg, var(--green-50) 0%, #fff 100%);
+    padding: 48px 24px;
+  }
+  .f1 {
+    max-width: 720px; margin: 0 auto;
+    background: #fff;
+    border: 1px solid var(--green-100);
+    border-radius: 18px;
+    box-shadow: 0 8px 24px -10px rgba(22,163,74,0.18);
+    overflow: hidden;
+  }
+  .f1 .head {
+    padding: 18px 22px;
+    display: flex; align-items: center; justify-content: space-between;
+    cursor: pointer;
+    background: linear-gradient(90deg, var(--green-600), var(--green-700));
+    color: #fff;
+  }
+  .f1 .head .label-wrap {
+    display: flex; align-items: center; gap: 14px;
+  }
+  .f1 .head .icon {
+    width: 36px; height: 36px; border-radius: 999px;
+    background: rgba(255,255,255,0.18);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-sansita); font-weight: 700;
+    font-size: 16px;
+  }
+  .f1 .head .label {
+    font-family: var(--font-sansita); font-weight: 700;
+    font-size: 17px;
+  }
+  .f1 .head .sub {
+    color: rgba(255,255,255,0.85); font-size: 13px;
+    margin-top: 1px;
+  }
+  .f1 .head .chev {
+    color: rgba(255,255,255,0.85); font-size: 18px;
+  }
+  .f1 .body {
+    padding: 28px 26px 26px;
+  }
+  .f1 .body h3 {
+    font-family: var(--font-sansita); font-size: 22px; color: var(--gray-900);
+    letter-spacing: -0.015em;
+  }
+  .f1 .body .options {
+    display: grid; gap: 10px; margin-top: 18px;
+  }
+  .f1 .body .option {
+    background: #fff;
+    border: 1.5px solid var(--gray-200);
+    border-radius: 12px;
+    padding: 14px 16px;
+    color: var(--gray-900);
+    font-weight: 600; font-size: 15px;
+    cursor: pointer;
+    text-align: left;
+  }
+  .f1 .body .option:hover { border-color: var(--green-600); background: var(--green-50); }
+  .f1 .body .footer {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-top: 18px;
+  }
+  .f1 .body .progress {
+    height: 4px; width: 50%; background: var(--green-100);
+    border-radius: 999px; position: relative;
+  }
+  .f1 .body .progress::after {
+    content: ""; position: absolute; left: 0; top: 0; bottom: 0;
+    width: 20%; background: var(--green-600); border-radius: 999px;
+  }
+  .f1 .body .micro {
+    color: var(--gray-500); font-size: 12.5px;
+  }
+
+  /* ============================================================
+     F2 — /first-lesson: Polished inline card, replacement
+     ============================================================ */
+  .f2-wrap { background: #fff; padding: 56px 24px; }
+  .f2 {
+    max-width: 720px; margin: 0 auto;
+    background: linear-gradient(180deg, var(--green-50) 0%, #fff 70%);
+    border: 1px solid var(--green-100);
+    border-radius: 24px;
+    padding: 36px 36px 32px;
+    text-align: left;
+    box-shadow: 0 12px 30px -16px rgba(22,163,74,0.20);
+  }
+  .f2 .top-row {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 16px;
+  }
+  .f2 .top-row .super {
+    font-family: var(--font-sansita); color: var(--green-700);
+    font-size: 13px; font-weight: 700;
+    letter-spacing: .12em; text-transform: uppercase;
+  }
+  .f2 .top-row .time-pill {
+    background: #fff;
+    color: var(--gray-700);
+    font-size: 11.5px; font-weight: 700;
+    padding: 5px 11px; border-radius: 999px;
+    border: 1px solid var(--green-100);
+  }
+  .f2 h3 {
+    font-family: var(--font-sansita);
+    font-size: clamp(22px, 3vw, 28px);
+    color: var(--gray-900);
+    letter-spacing: -0.015em;
+    line-height: 1.15;
+  }
+  .f2 .options {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 10px; margin-top: 22px;
+  }
+  @media (max-width: 640px) { .f2 .options { grid-template-columns: 1fr; } }
+  .f2 .option {
+    background: #fff;
+    border: 1.5px solid var(--gray-200);
+    border-radius: 14px;
+    padding: 18px 14px;
+    color: var(--gray-900);
+    font-weight: 600; font-size: 14.5px;
+    cursor: pointer;
+    text-align: center;
+    transition: all .15s;
+  }
+  .f2 .option:hover {
+    border-color: var(--green-600);
+    background: var(--green-50);
+    transform: translateY(-1px);
+  }
+  .f2 .footer {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-top: 24px;
+    color: var(--gray-500); font-size: 13px;
+  }
+  .f2 .footer .dots {
+    display: flex; gap: 6px;
+  }
+  .f2 .footer .dots span {
+    width: 7px; height: 7px; border-radius: 999px;
+    background: var(--gray-200);
+  }
+  .f2 .footer .dots span.active { background: var(--green-600); }
+
+  /* ============================================================
+     F3 — /first-lesson: Horizontal strip, full-width
+     ============================================================ */
+  .f3-wrap {
+    background: linear-gradient(90deg, var(--green-700), var(--green-800));
+    padding: 0;
+    color: #fff;
+  }
+  .f3 {
+    max-width: 1100px; margin: 0 auto;
+    padding: 22px 24px;
+    display: grid; grid-template-columns: 1fr auto;
+    gap: 24px; align-items: center;
+  }
+  @media (max-width: 800px) {
+    .f3 { grid-template-columns: 1fr; gap: 14px; padding: 18px 24px; }
+  }
+  .f3 .left {
+    display: flex; align-items: center; gap: 18px;
+  }
+  .f3 .super {
+    font-size: 11px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: .14em;
+    color: var(--green-100);
+  }
+  .f3 .question {
+    font-family: var(--font-sansita); font-weight: 700;
+    font-size: 18px; color: #fff;
+    line-height: 1.2;
+  }
+  .f3 .pill-row {
+    display: flex; gap: 8px; flex-wrap: wrap;
+  }
+  @media (max-width: 800px) { .f3 .pill-row { gap: 6px; } }
+  .f3 .pill {
+    background: rgba(255,255,255,0.10);
+    border: 1.5px solid rgba(255,255,255,0.22);
+    color: #fff;
+    padding: 9px 14px;
+    border-radius: 999px;
+    font-size: 13.5px; font-weight: 600;
+    cursor: pointer;
+    backdrop-filter: blur(2px);
+    transition: all .15s;
+  }
+  .f3 .pill:hover { background: var(--yellow-300); color: var(--green-950); border-color: var(--yellow-300); }
+  .f3 .right .time {
+    font-size: 11.5px; color: rgba(255,255,255,0.75);
+    text-transform: uppercase; letter-spacing: .12em;
+    font-weight: 600;
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <span class="wordmark"><span class="l">Licence</span>Mate</span>
+</div>
+
+<header class="page-header">
+  <h1>Inline quiz — design variants</h1>
+  <p>3 treatments for <code>/p-plates-plan</code> (dedicated LP, quiz is primary) and 3 for <code>/first-lesson</code> (LP where Book a Lesson is primary, quiz is secondary). Each renders question 1 of the existing quiz in context. Pick one per page.</p>
+</header>
+
+<!-- ============ /p-plates-plan section ============ -->
+<div class="section-header">
+  <div class="super">For /p-plates-plan</div>
+  <h2>Quiz is the primary action — should dominate.</h2>
+  <p class="desc">Audience is cold paid-ad traffic. They land, see the quiz, start it. The page exists to serve quiz starts.</p>
+</div>
+
+<!-- P1 -->
+<div class="variant-meta">
+  <div class="label">P1 — Hero-integrated, no card</div>
+  <h3>Quiz IS the hero. No chrome, no card.</h3>
+  <p class="desc">The page hero IS question 1. Answer pills styled as proof cards (white/10 backdrop blur). Question text in hero Sansita. Stat lines below. Strongest commitment-killer because there's no decision moment — they're already in the quiz.</p>
+</div>
+<section class="p1 lp-hero-bg" style="position:relative;">
+  <div class="hero-stage" style="position:relative;z-index:2;">
+    <p class="hero-eyebrow">Your P-Plates Plan</p>
+    <h1 class="hero-title">How many lessons until you're on your <span class="accent">Ps</span>?</h1>
+    <div class="progress-tag">Question 1 of 5 · 60s total</div>
+    <h2 class="question">What kind of licence do you have now?</h2>
+    <div class="options">
+      <button class="option">I have my L's</button>
+      <button class="option">I have an overseas licence</button>
+      <button class="option">I've never had a licence</button>
+    </div>
+    <div class="meta-stats">
+      <span>★★★★★ 81% First-Go Pass Rate</span>
+      <span>30+ Adelaide Instructors</span>
+    </div>
+  </div>
+</section>
+
+<!-- P2 -->
+<div class="variant-meta">
+  <div class="label">P2 — Premium white card overlapping hero</div>
+  <h3>Hero text up top, white quiz card below it (overlaps the next section).</h3>
+  <p class="desc">Hero is brief (headline + subtitle + stat-strip). Quiz lives in a generous premium white card that overlaps into the next section, drawing the eye down. Card has its own subtle chrome (step pill, mini-progress, hover arrows).</p>
+</div>
+<section class="p2 lp-hero-bg">
+  <div class="hero-stage" style="position:relative;z-index:1;">
+    <p class="hero-eyebrow">Your P-Plates Plan</p>
+    <h1 class="hero-title">How many lessons until you're on your <span class="accent">Ps</span>?</h1>
+    <p class="hero-subtitle">Get sorted in 60 seconds.</p>
+    <div class="hero-stats-strip">
+      <span>★★★★★ 81% pass rate</span>
+      <span>30+ instructors</span>
+    </div>
+  </div>
+  <div class="quiz-card">
+    <div class="step-info">
+      <span class="pill">Step 1 of 5</span>
+      <div class="progress-mini"></div>
+    </div>
+    <h3>What kind of licence do you have now?</h3>
+    <div class="options">
+      <button class="option"><span>I have my L's</span><span class="arrow">→</span></button>
+      <button class="option"><span>I have an overseas licence</span><span class="arrow">→</span></button>
+      <button class="option"><span>I've never had a licence</span><span class="arrow">→</span></button>
+    </div>
+    <div class="skip-row">60 seconds · no booking required</div>
+  </div>
+  <div class="below-card"></div>
+</section>
+<div class="faux"><strong>↑ Next section sits below</strong> — the white card overlaps into it, creating depth.</div>
+
+<!-- P3 -->
+<div class="variant-meta">
+  <div class="label">P3 — Minimal, no card, Typeform feel</div>
+  <h3>No hero, no card, no chrome. Page opens with the quiz question as the H1.</h3>
+  <p class="desc">Stripped-back focus mode. Big question, big buttons, lots of breathing room. No marketing fluff. Trust signals below. Risk: zero brand context — relies entirely on the user knowing why they're there (good for paid ads where they just clicked an ad).</p>
+</div>
+<section class="p3">
+  <div class="stage">
+    <div class="inner">
+      <p class="step-counter">Question 1 of 5</p>
+      <h3>What kind of licence do you have now?</h3>
+      <div class="options">
+        <button class="option"><span class="key">A</span><span>I have my L's</span></button>
+        <button class="option"><span class="key">B</span><span>I have an overseas licence</span></button>
+        <button class="option"><span class="key">C</span><span>I've never had a licence</span></button>
+      </div>
+      <div class="progress-bar"><div class="fill"></div></div>
+      <div class="footer-row">
+        <span>★★★★★ 4.6 · 81% first-go pass rate</span>
+        <span>60 seconds total</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ /first-lesson section ============ -->
+<div class="section-header">
+  <div class="super">For /first-lesson</div>
+  <h2>Quiz is secondary — must NOT compete with the primary "Book a Lesson" CTA.</h2>
+  <p class="desc">Audience is mid/high-intent (Google search ads on "driving lessons"). Most are ready to book. Quiz needs to capture the not-ready slice without distracting the ready slice.</p>
+</div>
+
+<div class="faux"><strong>↑ /first-lesson hero with "Book a Lesson" CTA, then trust banner, then ↓ THIS quiz section ↓, then rest of LP</strong></div>
+
+<!-- F1 -->
+<div class="variant-meta">
+  <div class="label">F1 — Slim expander / accordion</div>
+  <h3>Default minimised. Header strip that expands inline on click.</h3>
+  <p class="desc">Lowest visual weight by default — looks like a single-row CTA bar. Expanded state shows the actual quiz. Catches engaged scrollers without dominating. Below is rendered in expanded state for review.</p>
+</div>
+<div class="f1-wrap">
+  <div class="f1">
+    <div class="head">
+      <div class="label-wrap">
+        <div class="icon">🎯</div>
+        <div>
+          <div class="label">Your P-Plates Plan</div>
+          <div class="sub">5 questions · 60 seconds · personalised plan</div>
+        </div>
+      </div>
+      <div class="chev">▾</div>
+    </div>
+    <div class="body">
+      <h3>What kind of licence do you have now?</h3>
+      <div class="options">
+        <button class="option">I have my L's</button>
+        <button class="option">I have an overseas licence</button>
+        <button class="option">I've never had a licence</button>
+      </div>
+      <div class="footer">
+        <div class="progress"></div>
+        <div class="micro">Question 1 of 5</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- F2 -->
+<div class="variant-meta">
+  <div class="label">F2 — Polished inline card</div>
+  <h3>Section-sized card, fully visible. Not collapsed. Lives between trust banner and main LP content.</h3>
+  <p class="desc">Brand-tinted (light green-50 gradient), no foreign chrome from the standalone quiz. 3 answer pills in a 3-col grid. Subtle "Step 1 of 5" dots below. Higher visual weight than F1 but still secondary to the hero's Book a Lesson.</p>
+</div>
+<div class="f2-wrap">
+  <div class="f2">
+    <div class="top-row">
+      <span class="super">Your P-Plates Plan</span>
+      <span class="time-pill">★★★★★ · 60 seconds</span>
+    </div>
+    <h3>What kind of licence do you have now?</h3>
+    <div class="options">
+      <button class="option">I have my L's</button>
+      <button class="option">I have an overseas licence</button>
+      <button class="option">I've never had a licence</button>
+    </div>
+    <div class="footer">
+      <span>Question 1 of 5</span>
+      <div class="dots"><span class="active"></span><span></span><span></span><span></span><span></span></div>
+    </div>
+  </div>
+</div>
+
+<!-- F3 -->
+<div class="variant-meta">
+  <div class="label">F3 — Horizontal strip (full-width)</div>
+  <h3>One-row green strip. First question and pill options inline horizontally.</h3>
+  <p class="desc">Very compact, looks like a feature strip rather than a quiz. Clicking a pill starts the full flow (probably opens a modal or scrolls to the dedicated LP). Best for low-real-estate placement between sections. Doesn't compete because it doesn't look like a CTA.</p>
+</div>
+<div class="f3-wrap">
+  <div class="f3">
+    <div class="left">
+      <div>
+        <div class="super">Your P-Plates Plan</div>
+        <div class="question">What kind of licence do you have now?</div>
+      </div>
+      <div class="pill-row">
+        <button class="pill">I have my L's</button>
+        <button class="pill">Overseas</button>
+        <button class="pill">Never had one</button>
+      </div>
+    </div>
+    <div class="right">
+      <div class="time">60s · 5 questions</div>
+    </div>
+  </div>
+</div>
+
+<div class="faux" style="margin-top:0;"><strong>↑ The rest of /first-lesson continues below</strong> — main LP content, packages, etc.</div>
+
+<div style="text-align:center; padding: 48px 24px; color: var(--gray-500); font-size: 13px;">
+  Pick one per page and I'll wire it into production.
+</div>
+
+</body>
+</html>
