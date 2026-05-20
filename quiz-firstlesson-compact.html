@@ -1,0 +1,391 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>/first-lesson — compact quiz section variants</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sansita:wght@700;800&family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green-50:  #f0fdf4;
+    --green-100: #dcfce7;
+    --green-200: #bbf7d0;
+    --green-400: #4ade80;
+    --green-500: #22c55e;
+    --green-600: #16a34a;
+    --green-700: #15803d;
+    --green-800: #166534;
+    --green-900: #14532d;
+    --green-950: #052e16;
+    --yellow-300: #fde047;
+    --gray-50:  #f8fafc;
+    --gray-200: #e5e7eb;
+    --gray-300: #d1d5db;
+    --gray-500: #6b7280;
+    --gray-700: #374151;
+    --gray-900: #111827;
+    --font-sansita: "Sansita", Georgia, serif;
+    --font-sans: "Geist", -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { font-family: var(--font-sans); background: #fafdfb; color: var(--gray-900); line-height: 1.5; -webkit-font-smoothing: antialiased; }
+  h1, h2, h3, h4 { margin: 0; font-family: var(--font-sansita); font-weight: 700; letter-spacing: -0.005em; }
+  p { margin: 0; }
+  a, button { font-family: inherit; }
+
+  .topbar { background: #fff; border-bottom: 1px solid var(--gray-200); padding: 14px 32px; }
+  .topbar .wordmark { font-family: var(--font-sansita); font-size: 22px; font-weight: 700; }
+  .topbar .wordmark .l { color: var(--green-700); }
+  .page-header { background: linear-gradient(180deg, #fff, #f7fdf9); border-bottom: 1px solid var(--gray-200); padding: 28px 32px; }
+  .page-header h1 { font-size: 22px; }
+  .page-header p { color: var(--gray-700); font-size: 13.5px; margin-top: 6px; max-width: 760px; }
+
+  .vlabel-wrap { max-width: 1000px; margin: 56px auto 0; padding: 0 24px; }
+  .vlabel-wrap .super { font-size: 11.5px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--green-700); }
+  .vlabel-wrap h2 { font-size: 22px; margin-top: 6px; color: var(--gray-900); }
+  .vlabel-wrap .desc { color: var(--gray-700); font-size: 13.5px; margin-top: 6px; max-width: 740px; }
+  .vlabel-wrap .height-tag {
+    display: inline-block; margin-top: 8px;
+    padding: 3px 10px;
+    background: var(--green-50); color: var(--green-800);
+    border: 1px solid var(--green-200); border-radius: 999px;
+    font-size: 11px; font-weight: 700;
+    letter-spacing: .04em;
+  }
+
+  /* Faux /first-lesson hero */
+  .faux-hero {
+    background:
+      radial-gradient(ellipse at 80% 10%, rgba(74,222,128,0.18), transparent 55%),
+      linear-gradient(135deg, var(--green-900), var(--green-700));
+    color: #fff; text-align: center; padding: 36px 24px;
+  }
+  .faux-hero h1 { font-family: var(--font-sansita); font-size: 30px; text-shadow: 0 2px 16px rgba(0,0,0,0.4); }
+  .faux-hero .cta { display: inline-block; margin-top: 16px; padding: 12px 26px; background: var(--green-600); color: #fff; border-radius: 999px; font-weight: 700; box-shadow: 0 6px 18px -4px rgba(22,163,74,0.55); }
+  .faux-hero .stats { margin-top: 14px; color: rgba(255,255,255,0.85); font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: .14em; }
+  .faux-trust {
+    background: linear-gradient(90deg, var(--green-500), var(--green-600));
+    color: #fff; text-align: center; padding: 12px 24px; font-size: 12.5px;
+  }
+  .faux-below {
+    background: #fff; text-align: center; padding: 20px 24px;
+    color: var(--gray-500); font-size: 12.5px; opacity: 0.6;
+    border-top: 1px dashed var(--gray-200);
+  }
+  .faux-below strong { color: var(--gray-700); }
+
+  /* ============= FL1 — Side-by-side (compact horizontal) ============= */
+  .fl1-wrap {
+    background: linear-gradient(180deg, #fff, var(--green-50));
+    padding: 36px 24px 44px;
+  }
+  .fl1 {
+    max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1.05fr;
+    gap: 32px; align-items: center;
+  }
+  @media (max-width: 880px) { .fl1 { grid-template-columns: 1fr; gap: 22px; max-width: 580px; } }
+  .fl1 .copy .eyebrow {
+    color: var(--green-700); font-size: 11.5px; font-weight: 700;
+    letter-spacing: .14em; text-transform: uppercase;
+  }
+  .fl1 .copy h2 {
+    font-family: var(--font-sansita); font-weight: 700;
+    font-size: clamp(24px, 3.4vw, 34px);
+    color: var(--gray-900); line-height: 1.1; letter-spacing: -0.02em;
+    margin-top: 8px;
+  }
+  .fl1 .copy h2 .accent { color: var(--green-700); }
+  .fl1 .copy .sub {
+    color: var(--gray-700); font-size: 15px;
+    margin-top: 12px; max-width: 380px;
+  }
+  .fl1 .copy .stats {
+    margin-top: 16px; display: flex; gap: 14px;
+    color: var(--gray-700); font-size: 12px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: .1em;
+  }
+  .fl1 .copy .stats .num {
+    color: var(--green-700); font-family: var(--font-sansita);
+    font-weight: 700; font-style: italic;
+    text-decoration: underline; text-underline-offset: 3px;
+    text-decoration-color: rgba(21,128,61,0.4);
+    text-transform: none; letter-spacing: 0;
+    margin-right: 4px;
+  }
+  .fl1-card {
+    background: linear-gradient(180deg, var(--green-50) 0%, #fff 70%);
+    border: 1px solid var(--green-100);
+    border-radius: 22px;
+    padding: 24px 24px 18px;
+    box-shadow: 0 14px 34px -22px rgba(22,163,74,0.30);
+  }
+  .fl1-card .top {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 14px;
+  }
+  .fl1-card .super {
+    font-family: var(--font-sansita); color: var(--green-700);
+    font-size: 12px; font-weight: 700;
+    letter-spacing: .12em; text-transform: uppercase;
+  }
+  .fl1-card .pill {
+    background: #fff; color: var(--gray-700);
+    font-size: 11px; font-weight: 700;
+    padding: 4px 10px; border-radius: 999px;
+    border: 1px solid var(--green-100);
+  }
+  .fl1-card h3 { font-family: var(--font-sansita); font-size: 19px; color: var(--gray-900); line-height: 1.2; }
+  .fl1-card .options { display: grid; gap: 8px; margin-top: 16px; }
+  .fl1-card .option {
+    background: #fff; border: 1.5px solid var(--gray-200);
+    border-radius: 12px; padding: 12px 16px;
+    color: var(--gray-900); font-weight: 600; font-size: 14.5px;
+    cursor: pointer; text-align: left;
+    display: flex; align-items: center; justify-content: space-between;
+    transition: all .15s;
+  }
+  .fl1-card .option:hover { border-color: var(--green-600); background: var(--green-50); transform: translateY(-1px); }
+  .fl1-card .option .arrow { color: var(--gray-300); }
+  .fl1-card .option:hover .arrow { color: var(--green-600); transform: translateX(3px); }
+  .fl1-card .footer {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-top: 16px; color: var(--gray-500); font-size: 12.5px;
+  }
+  .fl1-card .dots { display: flex; gap: 5px; }
+  .fl1-card .dots span { width: 6px; height: 6px; border-radius: 999px; background: var(--gray-200); }
+  .fl1-card .dots span.active { background: var(--green-600); width: 20px; }
+
+  /* ============= FL2 — Single teaser bar (one-row strip) ============= */
+  .fl2-wrap {
+    background: linear-gradient(90deg, var(--green-700), var(--green-800));
+    padding: 0; color: #fff;
+  }
+  .fl2 {
+    max-width: 1100px; margin: 0 auto;
+    padding: 20px 24px;
+    display: grid; grid-template-columns: auto 1fr auto;
+    gap: 22px; align-items: center;
+  }
+  @media (max-width: 880px) {
+    .fl2 { grid-template-columns: 1fr; gap: 12px; padding: 18px 20px; }
+    .fl2 .right { display: none; }
+  }
+  .fl2 .heading-block {
+    border-right: 1px solid rgba(255,255,255,0.18);
+    padding-right: 22px;
+  }
+  @media (max-width: 880px) { .fl2 .heading-block { border-right: 0; padding-right: 0; } }
+  .fl2 .super { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .14em; color: var(--green-100); }
+  .fl2 .question { font-family: var(--font-sansita); font-weight: 700; font-size: 18px; color: #fff; line-height: 1.2; margin-top: 4px; }
+  .fl2 .pill-row { display: flex; gap: 8px; flex-wrap: wrap; }
+  .fl2 .pill {
+    background: rgba(255,255,255,0.10);
+    border: 1.5px solid rgba(255,255,255,0.22);
+    color: #fff; padding: 9px 14px; border-radius: 999px;
+    font-size: 13.5px; font-weight: 600;
+    cursor: pointer; backdrop-filter: blur(2px);
+    transition: all .15s;
+  }
+  .fl2 .pill:hover { background: var(--yellow-300); color: var(--green-950); border-color: var(--yellow-300); }
+  .fl2 .right .time {
+    font-size: 11px; color: rgba(255,255,255,0.75);
+    text-transform: uppercase; letter-spacing: .12em; font-weight: 600;
+  }
+
+  /* ============= FL3 — Compact card, no big heading ============= */
+  .fl3-wrap {
+    background: linear-gradient(180deg, #fff, var(--green-50));
+    padding: 36px 24px 40px;
+  }
+  .fl3 {
+    max-width: 580px; margin: 0 auto;
+  }
+  .fl3 .card {
+    background: linear-gradient(180deg, var(--green-50) 0%, #fff 70%);
+    border: 1px solid var(--green-100);
+    border-radius: 22px;
+    padding: 26px 28px 22px;
+    box-shadow: 0 14px 34px -22px rgba(22,163,74,0.30);
+  }
+  .fl3 .card .top-meta {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 14px;
+    padding-bottom: 14px;
+    border-bottom: 1px dashed var(--green-100);
+  }
+  .fl3 .card .super {
+    font-family: var(--font-sansita); color: var(--green-700);
+    font-size: 14px; font-weight: 700;
+    letter-spacing: .04em;
+  }
+  .fl3 .card .super-sub {
+    color: var(--gray-500); font-size: 12px; font-weight: 500;
+    margin-top: 2px;
+  }
+  .fl3 .card .pill {
+    background: #fff; color: var(--gray-700);
+    font-size: 11px; font-weight: 700;
+    padding: 5px 11px; border-radius: 999px;
+    border: 1px solid var(--green-100);
+  }
+  .fl3 .card h3 { font-family: var(--font-sansita); font-size: 20px; color: var(--gray-900); line-height: 1.2; }
+  .fl3 .card .options { display: grid; gap: 8px; margin-top: 16px; }
+  .fl3 .card .option {
+    background: #fff; border: 1.5px solid var(--gray-200);
+    border-radius: 12px; padding: 12px 16px;
+    color: var(--gray-900); font-weight: 600; font-size: 14.5px;
+    cursor: pointer; text-align: left;
+    display: flex; align-items: center; justify-content: space-between;
+    transition: all .15s;
+  }
+  .fl3 .card .option:hover { border-color: var(--green-600); background: var(--green-50); transform: translateY(-1px); }
+  .fl3 .card .option .arrow { color: var(--gray-300); }
+  .fl3 .card .option:hover .arrow { color: var(--green-600); transform: translateX(3px); }
+  .fl3 .card .footer {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-top: 16px; color: var(--gray-500); font-size: 12.5px;
+  }
+  .fl3 .card .dots { display: flex; gap: 5px; }
+  .fl3 .card .dots span { width: 6px; height: 6px; border-radius: 999px; background: var(--gray-200); }
+  .fl3 .card .dots span.active { background: var(--green-600); width: 20px; }
+
+  .end-note { text-align: center; padding: 56px 24px; color: var(--gray-500); font-size: 13px; }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <span class="wordmark"><span class="l">Licence</span>Mate</span>
+</div>
+
+<header class="page-header">
+  <h1>/first-lesson quiz section — 3 compact alternatives</h1>
+  <p>Each shows hero → trust → quiz section → rest of LP. Same content but progressively more compact. Approx vertical heights flagged on each.</p>
+</header>
+
+<!-- ============ FL1 — Compact horizontal ============ -->
+<div class="vlabel-wrap">
+  <div class="super">FL1 — Side-by-side (compact horizontal)</div>
+  <h2>Heading + sub on the left, smaller quiz card on the right. Stacks on mobile.</h2>
+  <p class="desc">Saves ~40% of vertical vs the original stacked version. Still has the explanatory heading (so users know what they're filling out). Card itself is tighter — smaller padding, smaller font, smaller buttons. No side tip on /first-lesson (just the mobile-inline tip if needed).</p>
+  <span class="height-tag">~330px desktop · ~600px mobile (was ~700px+)</span>
+</div>
+
+<section class="faux-hero">
+  <h1>Driving lessons in Adelaide</h1>
+  <a class="cta">Book a Lesson</a>
+  <div class="stats">★★★★★ 81% pass rate · 30+ instructors</div>
+</section>
+<div class="faux-trust">Government Licensed · Free Pickup · Book 24/7 · Guaranteed Pass</div>
+
+<div class="fl1-wrap">
+  <div class="fl1">
+    <div class="copy">
+      <p class="eyebrow">Your P-Plates Plan</p>
+      <h2>How many lessons until you're on your <span class="accent">Ps</span>?</h2>
+      <p class="sub">Personalised plan in 60 seconds. No booking required.</p>
+      <div class="stats">
+        <span><span class="num">81%</span>first-go pass rate</span>
+      </div>
+    </div>
+    <div class="fl1-card">
+      <div class="top">
+        <span class="super">Start your plan</span>
+        <span class="pill">★★★★★ · 60s</span>
+      </div>
+      <h3>What kind of licence do you have now?</h3>
+      <div class="options">
+        <button class="option"><span>I have my L's</span><span class="arrow">→</span></button>
+        <button class="option"><span>I have an overseas licence</span><span class="arrow">→</span></button>
+        <button class="option"><span>I've never had a licence</span><span class="arrow">→</span></button>
+      </div>
+      <div class="footer">
+        <span>Question 1 of 5</span>
+        <div class="dots"><span class="active"></span><span></span><span></span><span></span><span></span></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="faux-below"><strong>↑ Packages, reviews, FAQ, etc.</strong></div>
+
+<!-- ============ FL2 — Single teaser bar ============ -->
+<div class="vlabel-wrap">
+  <div class="super">FL2 — Teaser strip (one-row band)</div>
+  <h2>Slim green strip between trust banner and rest of LP. First question + pill options inline.</h2>
+  <p class="desc">Lowest possible vertical footprint. Reads like a feature strip, not a quiz. Clicking a pill either starts the quiz inline (expand below) or redirects to <code>/p-plates-plan?prefill=...</code>. Best when you want maximum prominence-per-pixel.</p>
+  <span class="height-tag">~80px desktop · ~140px mobile (was ~700px+)</span>
+</div>
+
+<section class="faux-hero">
+  <h1>Driving lessons in Adelaide</h1>
+  <a class="cta">Book a Lesson</a>
+  <div class="stats">★★★★★ 81% pass rate · 30+ instructors</div>
+</section>
+<div class="faux-trust">Government Licensed · Free Pickup · Book 24/7 · Guaranteed Pass</div>
+
+<div class="fl2-wrap">
+  <div class="fl2">
+    <div class="heading-block">
+      <div class="super">Your P-Plates Plan</div>
+      <div class="question">How many lessons until your Ps?</div>
+    </div>
+    <div class="pill-row">
+      <button class="pill">I have my L's</button>
+      <button class="pill">Overseas licence</button>
+      <button class="pill">Never had one</button>
+    </div>
+    <div class="right">
+      <div class="time">60s · 5 questions</div>
+    </div>
+  </div>
+</div>
+<div class="faux-below"><strong>↑ Packages, reviews, FAQ, etc.</strong></div>
+
+<!-- ============ FL3 — Compact card only, no big heading ============ -->
+<div class="vlabel-wrap">
+  <div class="super">FL3 — Compact card only (no big heading above)</div>
+  <h2>Drop the H2/sub section. Card itself carries all the context via its built-in chrome.</h2>
+  <p class="desc">Card's top-meta is upgraded: "Your P-Plates Plan" reads as a real header, "Personalised plan in 60 seconds" sub right below. Then a dashed divider, then the actual quiz question. The card IS the section — no separate heading needed.</p>
+  <span class="height-tag">~480px desktop · ~530px mobile (was ~700px+)</span>
+</div>
+
+<section class="faux-hero">
+  <h1>Driving lessons in Adelaide</h1>
+  <a class="cta">Book a Lesson</a>
+  <div class="stats">★★★★★ 81% pass rate · 30+ instructors</div>
+</section>
+<div class="faux-trust">Government Licensed · Free Pickup · Book 24/7 · Guaranteed Pass</div>
+
+<div class="fl3-wrap">
+  <div class="fl3">
+    <div class="card">
+      <div class="top-meta">
+        <div>
+          <div class="super">Your P-Plates Plan</div>
+          <div class="super-sub">Personalised plan in 60 seconds · no booking required</div>
+        </div>
+        <span class="pill">★★★★★ · 60s</span>
+      </div>
+      <h3>What kind of licence do you have now?</h3>
+      <div class="options">
+        <button class="option"><span>I have my L's</span><span class="arrow">→</span></button>
+        <button class="option"><span>I have an overseas licence</span><span class="arrow">→</span></button>
+        <button class="option"><span>I've never had a licence</span><span class="arrow">→</span></button>
+      </div>
+      <div class="footer">
+        <span>Question 1 of 5</span>
+        <div class="dots"><span class="active"></span><span></span><span></span><span></span><span></span></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="faux-below"><strong>↑ Packages, reviews, FAQ, etc.</strong></div>
+
+<div class="end-note">Pick one (or hybrid). My recommendation in the chat above.</div>
+
+</body>
+</html>
