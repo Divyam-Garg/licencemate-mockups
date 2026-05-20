@@ -1,0 +1,629 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Quiz Card on /p-plates-plan dark hero — variants</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sansita:wght@700;800&family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green-50:  #f0fdf4;
+    --green-100: #dcfce7;
+    --green-200: #bbf7d0;
+    --green-400: #4ade80;
+    --green-500: #22c55e;
+    --green-600: #16a34a;
+    --green-700: #15803d;
+    --green-800: #166534;
+    --green-900: #14532d;
+    --green-950: #052e16;
+    --yellow-300: #fde047;
+    --yellow-400: #facc15;
+    --gray-50:  #f8fafc;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-300: #d1d5db;
+    --gray-500: #6b7280;
+    --gray-700: #374151;
+    --gray-900: #111827;
+    --font-sansita: "Sansita", Georgia, serif;
+    --font-sans: "Geist", -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: var(--font-sans);
+    background: #fafdfb;
+    color: var(--gray-900);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, h4 { margin: 0; font-family: var(--font-sansita); font-weight: 700; letter-spacing: -0.005em; }
+  p { margin: 0; }
+  a, button { font-family: inherit; }
+
+  .topbar { background: #fff; border-bottom: 1px solid var(--gray-200); padding: 14px 32px; }
+  .topbar .wordmark { font-family: var(--font-sansita); font-size: 22px; font-weight: 700; }
+  .topbar .wordmark .l { color: var(--green-700); }
+  .page-header { background: linear-gradient(180deg, #fff, #f7fdf9); border-bottom: 1px solid var(--gray-200); padding: 28px 32px; }
+  .page-header h1 { font-size: 22px; }
+  .page-header p { color: var(--gray-700); font-size: 13.5px; margin-top: 6px; max-width: 760px; }
+
+  .vlabel-wrap {
+    max-width: 800px;
+    margin: 56px auto 0;
+    padding: 0 24px;
+  }
+  .vlabel-wrap .super {
+    font-size: 11.5px; font-weight: 700;
+    letter-spacing: .14em; text-transform: uppercase;
+    color: var(--green-700);
+  }
+  .vlabel-wrap h2 {
+    font-size: 22px; margin-top: 6px; color: var(--gray-900);
+  }
+  .vlabel-wrap .desc {
+    color: var(--gray-700); font-size: 13.5px; margin-top: 6px;
+    max-width: 700px;
+  }
+
+  /* /p-plates-plan hero context — dark green */
+  .lp-hero-bg {
+    position: relative; overflow: hidden; color: #fff;
+    background:
+      radial-gradient(ellipse at 80% 10%, rgba(74,222,128,0.18), transparent 55%),
+      linear-gradient(135deg, var(--green-900) 0%, var(--green-800) 35%, var(--green-700) 70%, var(--green-950) 100%);
+  }
+  .lp-hero-bg::after {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0.18) 0%, transparent 25%, transparent 75%, rgba(0,0,0,0.22) 100%);
+    pointer-events: none;
+  }
+  .hero-stage {
+    text-align: center;
+    padding: 56px 24px 96px;
+    position: relative; z-index: 1;
+  }
+  .hero-stage .eyebrow {
+    color: var(--green-100);
+    font-size: 12px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: .22em;
+    text-shadow: 0 2px 14px rgba(0,0,0,0.35);
+  }
+  .hero-stage h1 {
+    color: #fff;
+    margin: 14px auto 12px;
+    font-size: clamp(32px, 5vw, 50px);
+    line-height: 1.05; letter-spacing: -0.025em;
+    text-shadow: 0 2px 16px rgba(0,0,0,0.5);
+    max-width: 760px;
+  }
+  .hero-stage h1 .accent { color: var(--yellow-300); }
+  .hero-stage .subtitle {
+    color: var(--green-400);
+    font-family: var(--font-sansita); font-weight: 700;
+    font-size: clamp(20px, 2.4vw, 26px);
+    text-shadow: 0 2px 14px rgba(0,0,0,0.25);
+    margin-bottom: 22px;
+  }
+  .hero-stage .statlines {
+    display: inline-flex; gap: 22px; flex-wrap: wrap; justify-content: center;
+    color: rgba(255,255,255,0.92);
+    font-size: 12.5px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: .14em;
+    text-shadow: 0 2px 14px rgba(0,0,0,0.3);
+  }
+  .hero-stage .statlines .num {
+    font-family: var(--font-sansita); font-style: italic; font-weight: 700;
+    font-size: 22px;
+    text-decoration: underline; text-underline-offset: 4px;
+    text-transform: none; letter-spacing: 0;
+    margin-right: 5px; vertical-align: -2px;
+  }
+  .hero-stage .statlines .num.yellow { color: var(--yellow-300); text-decoration-color: rgba(253,224,71,0.5); }
+  .hero-stage .statlines .num.white { color: #fff; text-decoration-color: rgba(255,255,255,0.5); }
+
+  .quiz-wrap {
+    background: linear-gradient(180deg, var(--green-50), #fff 40%);
+    padding: 0 24px 56px;
+  }
+  .quiz-wrap .inner {
+    max-width: 580px;
+    margin: -56px auto 0;
+    position: relative; z-index: 2;
+  }
+
+  /* ============== Q1: Refined (current baseline) ============== */
+  .q1 {
+    background: linear-gradient(180deg, var(--green-50) 0%, #fff 70%);
+    border: 1px solid var(--green-100);
+    border-radius: 24px;
+    padding: 30px 30px 24px;
+    box-shadow: 0 30px 60px -28px rgba(0,0,0,0.45), 0 12px 28px -16px rgba(22,163,74,0.25);
+    text-align: left;
+  }
+  .q1 .top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+  .q1 .super {
+    font-family: var(--font-sansita); color: var(--green-700);
+    font-size: 13px; font-weight: 700;
+    letter-spacing: .12em; text-transform: uppercase;
+  }
+  .q1 .pill {
+    background: #fff; color: var(--gray-700);
+    font-size: 11.5px; font-weight: 700;
+    padding: 5px 12px; border-radius: 999px;
+    border: 1px solid var(--green-100);
+  }
+  .q1 h3 {
+    font-family: var(--font-sansita); font-size: 22px;
+    color: var(--gray-900); line-height: 1.2;
+  }
+  .q1 .options { display: grid; gap: 10px; margin-top: 20px; }
+  .q1 .option {
+    background: #fff; border: 1.5px solid var(--gray-200);
+    border-radius: 14px; padding: 16px 18px;
+    color: var(--gray-900); font-weight: 600; font-size: 15px;
+    cursor: pointer; text-align: left;
+    display: flex; align-items: center; justify-content: space-between;
+    transition: all .15s;
+  }
+  .q1 .option:hover { border-color: var(--green-600); background: var(--green-50); transform: translateY(-1px); }
+  .q1 .option .arrow { color: var(--gray-300); transition: color .15s, transform .15s; }
+  .q1 .option:hover .arrow { color: var(--green-600); transform: translateX(3px); }
+  .q1 .footer {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-top: 22px; color: var(--gray-500); font-size: 13px;
+  }
+  .q1 .dots { display: flex; gap: 6px; }
+  .q1 .dots span { width: 7px; height: 7px; border-radius: 999px; background: var(--gray-200); }
+  .q1 .dots span.active { background: var(--green-600); width: 22px; }
+
+  /* ============== Q2: Minimal flat ============== */
+  .q2 {
+    background: #fff;
+    border: 1px solid var(--gray-200);
+    border-radius: 16px;
+    padding: 36px 32px 28px;
+    text-align: left;
+    box-shadow: 0 30px 60px -28px rgba(0,0,0,0.45);
+  }
+  .q2 h3 {
+    font-family: var(--font-sansita); font-size: 24px;
+    color: var(--gray-900); line-height: 1.2; letter-spacing: -0.01em;
+  }
+  .q2 .options { display: grid; gap: 0; margin-top: 24px; }
+  .q2 .option {
+    background: transparent; border: 0;
+    border-bottom: 1px solid var(--gray-200);
+    padding: 18px 4px;
+    color: var(--gray-900); font-weight: 500; font-size: 17px;
+    cursor: pointer; text-align: left;
+    display: flex; align-items: center; justify-content: space-between;
+    transition: all .15s;
+  }
+  .q2 .option:last-child { border-bottom: 0; }
+  .q2 .option:hover {
+    background: var(--green-50);
+    padding-left: 14px; padding-right: 14px;
+    margin-left: -10px; margin-right: -10px;
+    border-radius: 8px;
+    border-bottom-color: transparent;
+    color: var(--green-800);
+  }
+  .q2 .option .arrow { color: var(--gray-300); }
+  .q2 .option:hover .arrow { color: var(--green-700); }
+  .q2 .footer {
+    margin-top: 24px; color: var(--gray-500); font-size: 12.5px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .q2 .progress {
+    height: 3px; width: 80px; background: var(--gray-200); border-radius: 999px;
+    position: relative;
+  }
+  .q2 .progress::after {
+    content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 20%;
+    background: var(--green-600); border-radius: 999px;
+  }
+
+  /* ============== Q3: Premium dark (brand-forward) ============== */
+  .q3 {
+    background:
+      radial-gradient(ellipse at 80% 0%, rgba(74,222,128,0.14), transparent 60%),
+      linear-gradient(135deg, var(--green-800) 0%, var(--green-950) 100%);
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.10);
+    border-radius: 24px;
+    padding: 32px 32px 28px;
+    box-shadow: 0 30px 60px -22px rgba(0,0,0,0.55);
+    text-align: left;
+  }
+  .q3 .top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; }
+  .q3 .super {
+    color: var(--yellow-300);
+    font-size: 11.5px; font-weight: 700;
+    letter-spacing: .14em; text-transform: uppercase;
+  }
+  .q3 .pill {
+    color: rgba(255,255,255,0.92);
+    font-size: 11.5px; font-weight: 700;
+    padding: 5px 12px; border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.20);
+    background: rgba(255,255,255,0.08);
+  }
+  .q3 h3 {
+    font-family: var(--font-sansita); font-size: 24px; color: #fff;
+    line-height: 1.2; letter-spacing: -0.01em;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.25);
+  }
+  .q3 .options { display: grid; gap: 10px; margin-top: 22px; }
+  .q3 .option {
+    background: rgba(255,255,255,0.06);
+    border: 1.5px solid rgba(255,255,255,0.18);
+    border-radius: 14px; padding: 16px 18px;
+    color: #fff; font-weight: 600; font-size: 15px;
+    cursor: pointer; text-align: left;
+    backdrop-filter: blur(2px);
+    display: flex; align-items: center; justify-content: space-between;
+    transition: all .15s;
+  }
+  .q3 .option:hover {
+    background: var(--yellow-300); color: var(--green-950);
+    border-color: var(--yellow-300); transform: translateY(-1px);
+  }
+  .q3 .option .arrow { color: rgba(255,255,255,0.50); }
+  .q3 .option:hover .arrow { color: var(--green-950); }
+  .q3 .footer {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-top: 22px; color: rgba(255,255,255,0.65); font-size: 12.5px;
+  }
+  .q3 .dots { display: flex; gap: 6px; }
+  .q3 .dots span { width: 7px; height: 7px; border-radius: 999px; background: rgba(255,255,255,0.18); }
+  .q3 .dots span.active { background: var(--yellow-300); width: 22px; }
+
+  /* ============== Q4: Icon-led options ============== */
+  .q4 {
+    background: #fff;
+    border: 1px solid var(--green-100);
+    border-radius: 24px;
+    padding: 32px 32px 26px;
+    box-shadow: 0 30px 60px -28px rgba(0,0,0,0.45), 0 12px 28px -16px rgba(22,163,74,0.20);
+    text-align: left;
+  }
+  .q4 .top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; }
+  .q4 .super {
+    font-family: var(--font-sansita); color: var(--green-700);
+    font-size: 13px; font-weight: 700;
+    letter-spacing: .12em; text-transform: uppercase;
+  }
+  .q4 .pill {
+    background: var(--green-50); color: var(--green-700);
+    font-size: 11.5px; font-weight: 700;
+    padding: 5px 12px; border-radius: 999px;
+    border: 1px solid var(--green-200);
+  }
+  .q4 h3 {
+    font-family: var(--font-sansita); font-size: 22px;
+    color: var(--gray-900); line-height: 1.2;
+  }
+  .q4 .options { display: grid; gap: 10px; margin-top: 22px; }
+  .q4 .option {
+    background: #fff; border: 1.5px solid var(--gray-200);
+    border-radius: 14px; padding: 14px 18px;
+    color: var(--gray-900); font-weight: 600; font-size: 15px;
+    cursor: pointer; text-align: left;
+    display: flex; align-items: center; gap: 14px;
+    transition: all .15s;
+  }
+  .q4 .option:hover { border-color: var(--green-600); background: var(--green-50); transform: translateY(-1px); }
+  .q4 .option .icon {
+    width: 40px; height: 40px;
+    background: var(--green-100); color: var(--green-700);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; font-weight: 700; flex-shrink: 0;
+    transition: all .15s;
+    font-family: var(--font-sansita);
+  }
+  .q4 .option:hover .icon { background: var(--green-600); color: #fff; }
+  .q4 .option .body { flex: 1; }
+  .q4 .option .desc {
+    color: var(--gray-500); font-size: 12.5px; font-weight: 500;
+    margin-top: 2px;
+  }
+  .q4 .option .arrow { color: var(--gray-300); }
+  .q4 .option:hover .arrow { color: var(--green-600); }
+  .q4 .footer {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-top: 22px; color: var(--gray-500); font-size: 13px;
+  }
+  .q4 .dots { display: flex; gap: 6px; }
+  .q4 .dots span { width: 7px; height: 7px; border-radius: 999px; background: var(--gray-200); }
+  .q4 .dots span.active { background: var(--green-600); width: 22px; }
+
+  /* ============== Q5: Typeform-style (keyboard keys) ============== */
+  .q5 {
+    background: #fff;
+    border-radius: 16px;
+    padding: 40px 36px 32px;
+    border: 1px solid var(--gray-200);
+    box-shadow: 0 30px 60px -28px rgba(0,0,0,0.45), 0 2px 0 var(--gray-200);
+    text-align: left;
+  }
+  .q5 .step {
+    color: var(--green-700);
+    font-size: 11.5px; font-weight: 700;
+    letter-spacing: .14em; text-transform: uppercase;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .q5 .step::before { content: "→"; color: var(--green-600); font-weight: 700; }
+  .q5 h3 {
+    font-family: var(--font-sansita); font-size: 26px;
+    color: var(--gray-900); line-height: 1.15;
+    margin-top: 8px; letter-spacing: -0.015em;
+  }
+  .q5 .options { display: grid; gap: 12px; margin-top: 28px; }
+  .q5 .option {
+    background: transparent; border: 2px solid var(--gray-200);
+    border-radius: 12px; padding: 16px 18px;
+    color: var(--gray-900); font-weight: 500; font-size: 16px;
+    cursor: pointer; text-align: left;
+    display: flex; align-items: center; gap: 14px;
+    transition: all .15s;
+  }
+  .q5 .option:hover { border-color: var(--green-600); background: var(--green-50); }
+  .q5 .option .key {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 28px; height: 28px;
+    border: 1.5px solid var(--gray-300);
+    border-radius: 6px;
+    font-family: var(--font-sansita); font-weight: 700; font-size: 13px;
+    color: var(--gray-500); flex-shrink: 0;
+    transition: all .15s;
+  }
+  .q5 .option:hover .key { border-color: var(--green-600); color: var(--green-700); background: #fff; }
+  .q5 .footer {
+    margin-top: 28px; padding-top: 14px;
+    border-top: 1px solid var(--gray-200);
+    display: flex; align-items: center; justify-content: space-between;
+    color: var(--gray-500); font-size: 12.5px;
+  }
+  .q5 .progress {
+    height: 3px; width: 120px; background: var(--gray-200); border-radius: 999px;
+    position: relative;
+  }
+  .q5 .progress::after {
+    content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 20%;
+    background: var(--green-600); border-radius: 999px;
+  }
+
+  .faux {
+    background: #fff; text-align: center; padding: 24px;
+    color: var(--gray-500); font-size: 13px; opacity: 0.55;
+  }
+  .faux strong { color: var(--gray-700); }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <span class="wordmark"><span class="l">Licence</span>Mate</span>
+</div>
+
+<header class="page-header">
+  <h1>Quiz card variants — on the actual /p-plates-plan dark hero</h1>
+  <p>Each variant rendered in the real context: dark green hero with H1/subtitle/stats above, card overlapping the hero/white boundary below. This is what you'll actually see on /p-plates-plan.</p>
+</header>
+
+<!-- Q1 -->
+<div class="vlabel-wrap">
+  <div class="super">Q1 — Refined (current baseline)</div>
+  <h2>Light brand-tinted card on green hero.</h2>
+  <p class="desc">Card sits cleanly on the dark hero — high contrast (light card on dark bg), strong shadow. Top meta row ("Start your plan" + time pill) might compete a touch with the H1 above.</p>
+</div>
+<section class="lp-hero-bg">
+  <div class="hero-stage">
+    <p class="eyebrow">Your P-Plates Plan</p>
+    <h1>How many lessons until you're on your <span class="accent">Ps</span>?</h1>
+    <p class="subtitle">Get sorted in 60 seconds.</p>
+    <div class="statlines">
+      <span><span class="num yellow">81%</span> first-go pass rate</span>
+      <span><span class="num white">35%</span> above state average</span>
+    </div>
+  </div>
+</section>
+<div class="quiz-wrap">
+  <div class="inner">
+    <div class="q1">
+      <div class="top">
+        <span class="super">Start your plan</span>
+        <span class="pill">★★★★★ · 60s</span>
+      </div>
+      <h3>What kind of licence do you have now?</h3>
+      <div class="options">
+        <button class="option"><span>I have my L's</span><span class="arrow">→</span></button>
+        <button class="option"><span>I have an overseas licence</span><span class="arrow">→</span></button>
+        <button class="option"><span>I've never had a licence</span><span class="arrow">→</span></button>
+      </div>
+      <div class="footer">
+        <span>Question 1 of 5</span>
+        <div class="dots"><span class="active"></span><span></span><span></span><span></span><span></span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Q2 -->
+<div class="vlabel-wrap">
+  <div class="super">Q2 — Minimal flat on green hero</div>
+  <h2>Plain white card, no meta row, hairline-separated options.</h2>
+  <p class="desc">Quiet white card pops cleanly on the dark hero. No competing chrome — just question + clean list of options. Heavy shadow does most of the visual lifting against the hero.</p>
+</div>
+<section class="lp-hero-bg">
+  <div class="hero-stage">
+    <p class="eyebrow">Your P-Plates Plan</p>
+    <h1>How many lessons until you're on your <span class="accent">Ps</span>?</h1>
+    <p class="subtitle">Get sorted in 60 seconds.</p>
+    <div class="statlines">
+      <span><span class="num yellow">81%</span> first-go pass rate</span>
+      <span><span class="num white">35%</span> above state average</span>
+    </div>
+  </div>
+</section>
+<div class="quiz-wrap">
+  <div class="inner">
+    <div class="q2">
+      <h3>What kind of licence do you have now?</h3>
+      <div class="options">
+        <button class="option"><span>I have my L's</span><span class="arrow">→</span></button>
+        <button class="option"><span>I have an overseas licence</span><span class="arrow">→</span></button>
+        <button class="option"><span>I've never had a licence</span><span class="arrow">→</span></button>
+      </div>
+      <div class="footer">
+        <span>Question 1 of 5 · 60s total</span>
+        <div class="progress"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Q3 -->
+<div class="vlabel-wrap">
+  <div class="super">Q3 — Premium dark on green hero</div>
+  <h2>Dark green card on dark green hero — visual continuity, almost embedded.</h2>
+  <p class="desc">Card uses the same colour family as the hero. Slightly darker, with subtle border + heavy shadow for separation. Yellow accent on hover for the option selected. Feels like the hero <em>contains</em> the quiz rather than the quiz sitting on top of it. Risk: less visual prominence — could blend in too much.</p>
+</div>
+<section class="lp-hero-bg">
+  <div class="hero-stage">
+    <p class="eyebrow">Your P-Plates Plan</p>
+    <h1>How many lessons until you're on your <span class="accent">Ps</span>?</h1>
+    <p class="subtitle">Get sorted in 60 seconds.</p>
+    <div class="statlines">
+      <span><span class="num yellow">81%</span> first-go pass rate</span>
+      <span><span class="num white">35%</span> above state average</span>
+    </div>
+  </div>
+</section>
+<div class="quiz-wrap">
+  <div class="inner">
+    <div class="q3">
+      <div class="top">
+        <span class="super">Start your plan</span>
+        <span class="pill">★★★★★ · 60s</span>
+      </div>
+      <h3>What kind of licence do you have now?</h3>
+      <div class="options">
+        <button class="option"><span>I have my L's</span><span class="arrow">→</span></button>
+        <button class="option"><span>I have an overseas licence</span><span class="arrow">→</span></button>
+        <button class="option"><span>I've never had a licence</span><span class="arrow">→</span></button>
+      </div>
+      <div class="footer">
+        <span>Question 1 of 5</span>
+        <div class="dots"><span class="active"></span><span></span><span></span><span></span><span></span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Q4 -->
+<div class="vlabel-wrap">
+  <div class="super">Q4 — Icon-led, light card on green hero</div>
+  <h2>Light card pops on dark hero, options have icons + sub-descriptions.</h2>
+  <p class="desc">Same contrast strategy as Q1 (light card stands out on dark hero). Adds icons + sub-text per option, which gives the card more substance and helps visual scanning. Best when option labels need disambiguation.</p>
+</div>
+<section class="lp-hero-bg">
+  <div class="hero-stage">
+    <p class="eyebrow">Your P-Plates Plan</p>
+    <h1>How many lessons until you're on your <span class="accent">Ps</span>?</h1>
+    <p class="subtitle">Get sorted in 60 seconds.</p>
+    <div class="statlines">
+      <span><span class="num yellow">81%</span> first-go pass rate</span>
+      <span><span class="num white">35%</span> above state average</span>
+    </div>
+  </div>
+</section>
+<div class="quiz-wrap">
+  <div class="inner">
+    <div class="q4">
+      <div class="top">
+        <span class="super">Start your plan</span>
+        <span class="pill">★★★★★ · 60s</span>
+      </div>
+      <h3>What kind of licence do you have now?</h3>
+      <div class="options">
+        <button class="option">
+          <div class="icon">L</div>
+          <div class="body">
+            <div>I have my L's</div>
+            <div class="desc">Learner's permit issued</div>
+          </div>
+          <span class="arrow">→</span>
+        </button>
+        <button class="option">
+          <div class="icon">🌏</div>
+          <div class="body">
+            <div>I have an overseas licence</div>
+            <div class="desc">Converting from another country</div>
+          </div>
+          <span class="arrow">→</span>
+        </button>
+        <button class="option">
+          <div class="icon">+</div>
+          <div class="body">
+            <div>I've never had a licence</div>
+            <div class="desc">Starting from scratch</div>
+          </div>
+          <span class="arrow">→</span>
+        </button>
+      </div>
+      <div class="footer">
+        <span>Question 1 of 5</span>
+        <div class="dots"><span class="active"></span><span></span><span></span><span></span><span></span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Q5 -->
+<div class="vlabel-wrap">
+  <div class="super">Q5 — Typeform-style on green hero</div>
+  <h2>Stripped white card, keyboard letters, app-like feel.</h2>
+  <p class="desc">Most modern / minimal. Pops cleanly on the green hero via heavy shadow. The A/B/C keys signal "this is fast — type and move on." Reads as a focused tool, not a marketing card.</p>
+</div>
+<section class="lp-hero-bg">
+  <div class="hero-stage">
+    <p class="eyebrow">Your P-Plates Plan</p>
+    <h1>How many lessons until you're on your <span class="accent">Ps</span>?</h1>
+    <p class="subtitle">Get sorted in 60 seconds.</p>
+    <div class="statlines">
+      <span><span class="num yellow">81%</span> first-go pass rate</span>
+      <span><span class="num white">35%</span> above state average</span>
+    </div>
+  </div>
+</section>
+<div class="quiz-wrap">
+  <div class="inner">
+    <div class="q5">
+      <div class="step">Question 1 of 5</div>
+      <h3>What kind of licence do you have now?</h3>
+      <div class="options">
+        <button class="option"><span class="key">A</span><span>I have my L's</span></button>
+        <button class="option"><span class="key">B</span><span>I have an overseas licence</span></button>
+        <button class="option"><span class="key">C</span><span>I've never had a licence</span></button>
+      </div>
+      <div class="footer">
+        <span>60s total · press a key or tap</span>
+        <div class="progress"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="faux"><strong>↑ Rest of /p-plates-plan continues below each variant</strong> — testimonial, bottom CTA, etc.</div>
+
+<div style="text-align:center; padding: 56px 24px; color: var(--gray-500); font-size: 13px;">
+  Pick one (or mix elements — e.g. "Q1 with Q4's icons", "Q2 styling but with Q3's hover state").
+</div>
+
+</body>
+</html>
