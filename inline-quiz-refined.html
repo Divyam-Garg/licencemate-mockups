@@ -1,0 +1,404 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Inline Quiz — refined (F2 styling + P2 heading)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sansita:wght@700;800&family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green-50:  #f0fdf4;
+    --green-100: #dcfce7;
+    --green-200: #bbf7d0;
+    --green-400: #4ade80;
+    --green-500: #22c55e;
+    --green-600: #16a34a;
+    --green-700: #15803d;
+    --green-800: #166534;
+    --green-900: #14532d;
+    --green-950: #052e16;
+    --yellow-300: #fde047;
+    --gray-50:  #f8fafc;
+    --gray-200: #e5e7eb;
+    --gray-300: #d1d5db;
+    --gray-500: #6b7280;
+    --gray-700: #374151;
+    --gray-900: #111827;
+    --font-sansita: "Sansita", Georgia, serif;
+    --font-sans: "Geist", -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: var(--font-sans);
+    background: #fafdfb;
+    color: var(--gray-900);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3 { margin: 0; font-family: var(--font-sansita); font-weight: 700; letter-spacing: -0.005em; }
+  p { margin: 0; }
+  a, button { font-family: inherit; }
+
+  .topbar { background: #fff; border-bottom: 1px solid var(--gray-200); padding: 14px 32px; }
+  .topbar .wordmark { font-family: var(--font-sansita); font-size: 22px; font-weight: 700; }
+  .topbar .wordmark .l { color: var(--green-700); }
+  .page-header { background: linear-gradient(180deg, #fff, #f7fdf9); border-bottom: 1px solid var(--gray-200); padding: 28px 32px; }
+  .page-header h1 { font-size: 22px; }
+  .page-header p { color: var(--gray-700); font-size: 13.5px; margin-top: 6px; max-width: 760px; }
+
+  .section-header {
+    max-width: 1100px;
+    margin: 56px auto 0;
+    padding: 0 24px;
+  }
+  .section-header .super {
+    font-size: 11px; font-weight: 700; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--gray-500);
+  }
+  .section-header h2 {
+    font-size: 26px; margin-top: 6px; color: var(--gray-900);
+  }
+  .section-header .desc {
+    color: var(--gray-700); font-size: 14px; margin-top: 6px;
+    max-width: 720px;
+  }
+
+  /* Reusable LP hero backdrop */
+  .lp-hero-bg {
+    position: relative; overflow: hidden; color: #fff;
+    background:
+      radial-gradient(ellipse at 80% 10%, rgba(74,222,128,0.18), transparent 55%),
+      linear-gradient(135deg, var(--green-900) 0%, var(--green-800) 35%, var(--green-700) 70%, var(--green-950) 100%);
+  }
+  .lp-hero-bg::after {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0.18) 0%, transparent 25%, transparent 75%, rgba(0,0,0,0.22) 100%);
+    pointer-events: none;
+  }
+
+  .faux {
+    background: #fff;
+    text-align: center;
+    padding: 24px;
+    color: var(--gray-500);
+    font-size: 13px;
+    opacity: 0.55;
+  }
+  .faux strong { color: var(--gray-700); }
+
+  /* ================================================
+     SHARED: Polished Quiz Card (F2-derived)
+     Used in both /p-plates-plan and /first-lesson
+     ================================================ */
+  .qcard {
+    background: linear-gradient(180deg, var(--green-50) 0%, #fff 70%);
+    border: 1px solid var(--green-100);
+    border-radius: 24px;
+    padding: 32px 32px 28px;
+    box-shadow: 0 18px 40px -22px rgba(22,163,74,0.25);
+    text-align: left;
+  }
+  @media (max-width: 720px) { .qcard { padding: 24px 22px 22px; border-radius: 18px; } }
+  .qcard .top-row {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 18px;
+  }
+  .qcard .super {
+    font-family: var(--font-sansita); color: var(--green-700);
+    font-size: 13px; font-weight: 700;
+    letter-spacing: .12em; text-transform: uppercase;
+  }
+  .qcard .time-pill {
+    background: #fff;
+    color: var(--gray-700);
+    font-size: 11.5px; font-weight: 700;
+    padding: 5px 12px; border-radius: 999px;
+    border: 1px solid var(--green-100);
+    white-space: nowrap;
+  }
+  .qcard h3 {
+    font-family: var(--font-sansita);
+    font-size: clamp(20px, 2.6vw, 24px);
+    color: var(--gray-900);
+    letter-spacing: -0.015em;
+    line-height: 1.2;
+  }
+  .qcard .options {
+    display: grid; gap: 10px;
+    margin-top: 20px;
+  }
+  .qcard .option {
+    background: #fff;
+    border: 1.5px solid var(--gray-200);
+    border-radius: 14px;
+    padding: 16px 18px;
+    color: var(--gray-900);
+    font-weight: 600; font-size: 15px;
+    cursor: pointer;
+    text-align: left;
+    transition: all .15s;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 12px;
+  }
+  .qcard .option:hover {
+    border-color: var(--green-600);
+    background: var(--green-50);
+    transform: translateY(-1px);
+  }
+  .qcard .option .arrow {
+    color: var(--gray-300);
+    font-size: 18px;
+    transition: color .15s, transform .15s;
+  }
+  .qcard .option:hover .arrow {
+    color: var(--green-600);
+    transform: translateX(3px);
+  }
+  .qcard .footer {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-top: 24px;
+    color: var(--gray-500); font-size: 13px;
+  }
+  .qcard .footer .step {
+    font-weight: 600;
+  }
+  .qcard .footer .dots {
+    display: flex; gap: 6px;
+  }
+  .qcard .footer .dots span {
+    width: 7px; height: 7px; border-radius: 999px;
+    background: var(--gray-200);
+  }
+  .qcard .footer .dots span.active {
+    background: var(--green-600);
+    width: 22px;
+  }
+
+  /* ================================================
+     /p-plates-plan REFINED — branded hero + quiz card overlapping into white section
+     ================================================ */
+  .pp-hero {
+    text-align: center;
+    padding: 56px 24px 96px;
+    position: relative;
+    z-index: 1;
+  }
+  .pp-hero .eyebrow {
+    color: var(--green-100);
+    font-size: 12px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: .22em;
+    text-shadow: 0 2px 14px rgba(0,0,0,0.35);
+  }
+  .pp-hero h1 {
+    color: #fff;
+    margin: 14px auto 12px;
+    font-size: clamp(32px, 5vw, 52px);
+    line-height: 1.05; letter-spacing: -0.025em;
+    text-shadow: 0 2px 16px rgba(0,0,0,0.5);
+    max-width: 760px;
+  }
+  .pp-hero h1 .accent { color: var(--yellow-300); }
+  .pp-hero .subtitle {
+    color: var(--green-400);
+    font-family: var(--font-sansita); font-weight: 700;
+    font-size: clamp(20px, 2.4vw, 26px);
+    text-shadow: 0 2px 14px rgba(0,0,0,0.25);
+    margin-bottom: 22px;
+  }
+  .pp-hero .statlines {
+    display: inline-flex; gap: 24px; flex-wrap: wrap; justify-content: center;
+    color: rgba(255,255,255,0.92);
+    font-size: 13px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: .14em;
+    text-shadow: 0 2px 14px rgba(0,0,0,0.3);
+  }
+  .pp-hero .statlines .num {
+    font-family: var(--font-sansita); font-style: italic; font-weight: 700;
+    font-size: 22px;
+    text-decoration: underline; text-underline-offset: 4px;
+    text-transform: none; letter-spacing: 0;
+    margin-right: 5px; vertical-align: -2px;
+  }
+  .pp-hero .statlines .num.yellow { color: var(--yellow-300); text-decoration-color: rgba(253,224,71,0.5); }
+  .pp-hero .statlines .num.white { color: #fff; text-decoration-color: rgba(255,255,255,0.5); }
+
+  .pp-quiz-wrap {
+    background: linear-gradient(180deg, var(--green-50), #fff 40%);
+    padding: 0 24px 56px;
+  }
+  .pp-quiz-wrap .inner {
+    max-width: 580px;
+    margin: -56px auto 0;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* ================================================
+     /first-lesson REFINED — section between trust banner and rest, with heading + quiz card
+     ================================================ */
+  .fl-section {
+    background: linear-gradient(180deg, #fff 0%, var(--green-50) 100%);
+    padding: 56px 24px 64px;
+    text-align: center;
+  }
+  .fl-section .container {
+    max-width: 720px; margin: 0 auto;
+  }
+  .fl-section .eyebrow {
+    color: var(--green-700);
+    font-size: 11.5px; font-weight: 700;
+    letter-spacing: .14em; text-transform: uppercase;
+  }
+  .fl-section h2 {
+    font-family: var(--font-sansita); font-weight: 700;
+    font-size: clamp(28px, 4.5vw, 40px);
+    color: var(--gray-900);
+    line-height: 1.1; letter-spacing: -0.02em;
+    margin-top: 10px;
+  }
+  .fl-section h2 .accent { color: var(--green-700); }
+  .fl-section .sub {
+    color: var(--gray-700);
+    font-size: 16.5px; line-height: 1.55;
+    margin: 16px auto 0;
+    max-width: 480px;
+  }
+  .fl-section .qcard {
+    margin-top: 36px;
+    text-align: left;
+  }
+
+  /* faux hero strip for /first-lesson context */
+  .faux-fl-hero {
+    background:
+      radial-gradient(ellipse at 80% 10%, rgba(74,222,128,0.18), transparent 55%),
+      linear-gradient(135deg, var(--green-900), var(--green-700));
+    color: #fff;
+    text-align: center;
+    padding: 56px 24px;
+  }
+  .faux-fl-hero h1 {
+    font-family: var(--font-sansita); font-weight: 700;
+    font-size: 36px;
+    text-shadow: 0 2px 16px rgba(0,0,0,0.4);
+  }
+  .faux-fl-hero .cta {
+    display: inline-block; margin-top: 22px;
+    padding: 14px 28px; background: var(--green-600);
+    color: #fff; border-radius: 999px; font-weight: 700;
+    box-shadow: 0 6px 18px -4px rgba(22,163,74,0.55);
+  }
+  .faux-fl-hero .stats {
+    margin-top: 18px;
+    color: rgba(255,255,255,0.85);
+    font-size: 12.5px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: .14em;
+  }
+  .faux-fl-trust {
+    background: linear-gradient(90deg, var(--green-500), var(--green-600));
+    color: #fff; text-align: center; padding: 16px 24px;
+    font-size: 13px;
+    border-bottom: 1px solid var(--gray-200);
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <span class="wordmark"><span class="l">Licence</span>Mate</span>
+</div>
+
+<header class="page-header">
+  <h1>Inline quiz — refined (F2 styling + P2 heading)</h1>
+  <p>Combines F2's polished card styling with P2's explanatory-heading-above-quiz pattern. Same quiz card design for both pages, different page context wrappers.</p>
+</header>
+
+<!-- ============ /p-plates-plan refined ============ -->
+<div class="section-header">
+  <div class="super">For /p-plates-plan</div>
+  <h2>Branded hero with H1 + polished quiz card overlapping into white section below.</h2>
+  <p class="desc">Hero explains what the page IS (the question + brand context + stats). Quiz card sits in its own polished container, overlapping the hero/white boundary for visual depth. No competing chrome.</p>
+</div>
+
+<section class="lp-hero-bg">
+  <div class="pp-hero">
+    <p class="eyebrow">Your P-Plates Plan</p>
+    <h1>How many lessons until you're on your <span class="accent">Ps</span>?</h1>
+    <p class="subtitle">Get sorted in 60 seconds.</p>
+    <div class="statlines">
+      <span><span class="num yellow">81%</span> first-go pass rate</span>
+      <span><span class="num white">35%</span> above state average</span>
+    </div>
+  </div>
+</section>
+<div class="pp-quiz-wrap">
+  <div class="inner">
+    <div class="qcard">
+      <div class="top-row">
+        <span class="super">Start your plan</span>
+        <span class="time-pill">★★★★★ · 60 seconds</span>
+      </div>
+      <h3>What kind of licence do you have now?</h3>
+      <div class="options">
+        <button class="option"><span>I have my L's</span><span class="arrow">→</span></button>
+        <button class="option"><span>I have an overseas licence</span><span class="arrow">→</span></button>
+        <button class="option"><span>I've never had a licence</span><span class="arrow">→</span></button>
+      </div>
+      <div class="footer">
+        <span class="step">Question 1 of 5</span>
+        <div class="dots"><span class="active"></span><span></span><span></span><span></span><span></span></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="faux"><strong>↑ Rest of /p-plates-plan continues below</strong> — testimonial, bottom CTA, etc.</div>
+
+<!-- ============ /first-lesson refined ============ -->
+<div class="section-header">
+  <div class="super">For /first-lesson</div>
+  <h2>Section sits between trust banner and rest of LP. H1 introduces the quiz + polished card below.</h2>
+  <p class="desc">Heading explains <em>what</em> the quiz is and <em>why</em> the user would do it (the missing piece in F2). Card itself uses the same polished design as /p-plates-plan — consistent UI primitive across both pages.</p>
+</div>
+
+<section class="faux-fl-hero">
+  <h1>Driving lessons in Adelaide</h1>
+  <div class="stats">★★★★★ 81% pass rate · 30+ instructors</div>
+  <a class="cta">Book a Lesson</a>
+</section>
+<div class="faux-fl-trust">Government Licensed · Free Pickup · Book 24/7 · Guaranteed Pass</div>
+
+<section class="fl-section">
+  <div class="container">
+    <p class="eyebrow">Your P-Plates Plan</p>
+    <h2>How many lessons until you're on your <span class="accent">Ps</span>?</h2>
+    <p class="sub">Personalised plan in 60 seconds. No booking required.</p>
+    <div class="qcard">
+      <div class="top-row">
+        <span class="super">Start your plan</span>
+        <span class="time-pill">★★★★★ · 60 seconds</span>
+      </div>
+      <h3>What kind of licence do you have now?</h3>
+      <div class="options">
+        <button class="option"><span>I have my L's</span><span class="arrow">→</span></button>
+        <button class="option"><span>I have an overseas licence</span><span class="arrow">→</span></button>
+        <button class="option"><span>I've never had a licence</span><span class="arrow">→</span></button>
+      </div>
+      <div class="footer">
+        <span class="step">Question 1 of 5</span>
+        <div class="dots"><span class="active"></span><span></span><span></span><span></span><span></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="faux"><strong>↑ Rest of /first-lesson continues below</strong> — packages, reviews, etc.</div>
+
+<div style="text-align:center; padding: 56px 24px; color: var(--gray-500); font-size: 13px;">
+  Sign off and I'll wire this into production for both pages.
+</div>
+
+</body>
+</html>
