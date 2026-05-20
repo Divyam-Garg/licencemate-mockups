@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>/first-lesson FL1 + inline tip</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sansita:wght@700;800&family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green-50:  #f0fdf4;
+    --green-100: #dcfce7;
+    --green-200: #bbf7d0;
+    --green-400: #4ade80;
+    --green-500: #22c55e;
+    --green-600: #16a34a;
+    --green-700: #15803d;
+    --green-800: #166534;
+    --green-900: #14532d;
+    --green-950: #052e16;
+    --yellow-300: #fde047;
+    --gray-50:  #f8fafc;
+    --gray-200: #e5e7eb;
+    --gray-300: #d1d5db;
+    --gray-500: #6b7280;
+    --gray-700: #374151;
+    --gray-900: #111827;
+    --font-sansita: "Sansita", Georgia, serif;
+    --font-sans: "Geist", -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { font-family: var(--font-sans); background: #fafdfb; color: var(--gray-900); line-height: 1.5; -webkit-font-smoothing: antialiased; }
+  h1, h2, h3, h4 { margin: 0; font-family: var(--font-sansita); font-weight: 700; letter-spacing: -0.005em; }
+  p { margin: 0; }
+  a, button { font-family: inherit; }
+
+  .topbar { background: #fff; border-bottom: 1px solid var(--gray-200); padding: 14px 32px; }
+  .topbar .wordmark { font-family: var(--font-sansita); font-size: 22px; font-weight: 700; }
+  .topbar .wordmark .l { color: var(--green-700); }
+  .page-header { background: linear-gradient(180deg, #fff, #f7fdf9); border-bottom: 1px solid var(--gray-200); padding: 28px 32px; }
+  .page-header h1 { font-size: 22px; }
+  .page-header p { color: var(--gray-700); font-size: 13.5px; margin-top: 6px; max-width: 760px; }
+
+  .vlabel-wrap { max-width: 1000px; margin: 48px auto 0; padding: 0 24px; }
+  .vlabel-wrap .super { font-size: 11.5px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--green-700); }
+  .vlabel-wrap h2 { font-size: 22px; margin-top: 6px; color: var(--gray-900); }
+  .vlabel-wrap .desc { color: var(--gray-700); font-size: 13.5px; margin-top: 6px; max-width: 740px; }
+
+  /* Faux /first-lesson context */
+  .faux-hero {
+    background: radial-gradient(ellipse at 80% 10%, rgba(74,222,128,0.18), transparent 55%), linear-gradient(135deg, var(--green-900), var(--green-700));
+    color: #fff; text-align: center; padding: 36px 24px;
+  }
+  .faux-hero h1 { font-family: var(--font-sansita); font-size: 30px; text-shadow: 0 2px 16px rgba(0,0,0,0.4); }
+  .faux-hero .cta { display: inline-block; margin-top: 16px; padding: 12px 26px; background: var(--green-600); color: #fff; border-radius: 999px; font-weight: 700; box-shadow: 0 6px 18px -4px rgba(22,163,74,0.55); }
+  .faux-hero .stats { margin-top: 14px; color: rgba(255,255,255,0.85); font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: .14em; }
+  .faux-trust { background: linear-gradient(90deg, var(--green-500), var(--green-600)); color: #fff; text-align: center; padding: 12px 24px; font-size: 12.5px; }
+  .faux-below { background: #fff; text-align: center; padding: 20px 24px; color: var(--gray-500); font-size: 12.5px; opacity: 0.6; border-top: 1px dashed var(--gray-200); }
+  .faux-below strong { color: var(--gray-700); }
+
+  /* FL1 layout */
+  .fl1-wrap { background: linear-gradient(180deg, #fff, var(--green-50)); padding: 36px 24px 44px; }
+  .fl1 { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.05fr; gap: 32px; align-items: center; }
+  @media (max-width: 880px) { .fl1 { grid-template-columns: 1fr; gap: 22px; max-width: 580px; } }
+  .fl1 .copy .eyebrow { color: var(--green-700); font-size: 11.5px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+  .fl1 .copy h2 { font-family: var(--font-sansita); font-weight: 700; font-size: clamp(24px, 3.4vw, 34px); color: var(--gray-900); line-height: 1.1; letter-spacing: -0.02em; margin-top: 8px; }
+  .fl1 .copy h2 .accent { color: var(--green-700); }
+  .fl1 .copy .sub { color: var(--gray-700); font-size: 15px; margin-top: 12px; max-width: 380px; }
+  .fl1 .copy .stats { margin-top: 16px; display: flex; gap: 14px; color: var(--gray-700); font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: .1em; }
+  .fl1 .copy .stats .num { color: var(--green-700); font-family: var(--font-sansita); font-weight: 700; font-style: italic; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgba(21,128,61,0.4); text-transform: none; letter-spacing: 0; margin-right: 4px; }
+
+  /* Quiz card with inline tip */
+  .fl1-card {
+    background: linear-gradient(180deg, var(--green-50) 0%, #fff 70%);
+    border: 1px solid var(--green-100);
+    border-radius: 22px;
+    padding: 24px 24px 18px;
+    box-shadow: 0 14px 34px -22px rgba(22,163,74,0.30);
+  }
+  .fl1-card .top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+  .fl1-card .super { font-family: var(--font-sansita); color: var(--green-700); font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+  .fl1-card .pill { background: #fff; color: var(--gray-700); font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 999px; border: 1px solid var(--green-100); }
+  .fl1-card h3 { font-family: var(--font-sansita); font-size: 19px; color: var(--gray-900); line-height: 1.2; }
+  .fl1-card .options { display: grid; gap: 8px; margin-top: 16px; }
+  .fl1-card .option {
+    background: #fff; border: 1.5px solid var(--gray-200);
+    border-radius: 12px; padding: 12px 16px;
+    color: var(--gray-900); font-weight: 600; font-size: 14.5px;
+    cursor: pointer; text-align: left;
+    display: flex; align-items: center; justify-content: space-between;
+    transition: all .15s;
+  }
+  .fl1-card .option:hover { border-color: var(--green-600); background: var(--green-50); transform: translateY(-1px); }
+  .fl1-card .option .arrow { color: var(--gray-300); transition: color .15s, transform .15s; }
+  .fl1-card .option:hover .arrow { color: var(--green-600); transform: translateX(3px); }
+  /* Inline tip — below options, above footer */
+  .fl1-card .tip {
+    margin-top: 14px;
+    padding: 11px 12px 11px 36px;
+    color: var(--gray-700); font-size: 13px;
+    line-height: 1.45;
+    background: var(--green-50);
+    border-radius: 10px;
+    border-left: 3px solid var(--green-500);
+    position: relative;
+  }
+  .fl1-card .tip::before { content: "💡"; position: absolute; left: 11px; top: 10px; font-size: 14px; }
+  .fl1-card .tip strong { color: var(--gray-900); font-weight: 700; }
+  .fl1-card .footer { display: flex; align-items: center; justify-content: space-between; margin-top: 14px; color: var(--gray-500); font-size: 12.5px; }
+  .fl1-card .dots { display: flex; gap: 5px; }
+  .fl1-card .dots span { width: 6px; height: 6px; border-radius: 999px; background: var(--gray-200); }
+  .fl1-card .dots span.active { background: var(--green-600); width: 20px; }
+
+  /* Mobile preview frame */
+  .mobile-preview {
+    max-width: 420px; margin: 24px auto 0;
+    border: 1px solid var(--gray-200);
+    border-radius: 28px; overflow: hidden;
+    box-shadow: 0 30px 60px -30px rgba(0,0,0,0.25);
+  }
+  .mobile-preview .label-strip {
+    background: var(--gray-900); color: #fff;
+    padding: 12px 16px;
+    font-size: 11.5px; font-weight: 600;
+    letter-spacing: .12em; text-transform: uppercase;
+    text-align: center;
+  }
+  .mobile-preview .frame { background: #fafdfb; }
+  .mobile-preview .frame .faux-hero { padding: 26px 16px; }
+  .mobile-preview .frame .faux-hero h1 { font-size: 22px; }
+  .mobile-preview .frame .faux-trust { padding: 10px 16px; font-size: 11.5px; }
+  .mobile-preview .frame .fl1-wrap { padding: 24px 16px 28px; }
+  .mobile-preview .frame .fl1 { grid-template-columns: 1fr; gap: 18px; max-width: 380px; }
+  .mobile-preview .frame .fl1 .copy h2 { font-size: 22px; }
+
+  .end-note { text-align: center; padding: 56px 24px; color: var(--gray-500); font-size: 13px; }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <span class="wordmark"><span class="l">Licence</span>Mate</span>
+</div>
+
+<header class="page-header">
+  <h1>/first-lesson — FL1 with inline tip (desktop + mobile)</h1>
+  <p>Side-by-side compact layout + inline tip below options inside the card (T2 style). Same tip placement at both viewport sizes — simpler than the responsive switch on /p-plates-plan. Left column stays clean (heading + sub + stats), card stays focused (question + options + tip + footer).</p>
+</header>
+
+<!-- ============ Desktop view ============ -->
+<div class="vlabel-wrap">
+  <div class="super">Desktop view (current window)</div>
+  <h2>Heading + sub on left. Card on right with inline tip below options.</h2>
+  <p class="desc">Card height grows by ~50px to fit the tip, but the overall section is still way more compact than the original (still ~400px vs the original ~700px+).</p>
+</div>
+
+<section class="faux-hero">
+  <h1>Driving lessons in Adelaide</h1>
+  <a class="cta">Book a Lesson</a>
+  <div class="stats">★★★★★ 81% pass rate · 30+ instructors</div>
+</section>
+<div class="faux-trust">Government Licensed · Free Pickup · Book 24/7 · Guaranteed Pass</div>
+
+<div class="fl1-wrap">
+  <div class="fl1">
+    <div class="copy">
+      <p class="eyebrow">Your P-Plates Plan</p>
+      <h2>How many lessons until you're on your <span class="accent">Ps</span>?</h2>
+      <p class="sub">Personalised plan in 60 seconds. No booking required.</p>
+      <div class="stats">
+        <span><span class="num">81%</span>first-go pass rate</span>
+      </div>
+    </div>
+    <div class="fl1-card">
+      <div class="top">
+        <span class="super">Start your plan</span>
+        <span class="pill">★★★★★ · 60s</span>
+      </div>
+      <h3>Roughly how much have you driven?</h3>
+      <div class="options">
+        <button class="option"><span>0 hours</span><span class="arrow">→</span></button>
+        <button class="option"><span>1 to 20 hours</span><span class="arrow">→</span></button>
+        <button class="option"><span>20 to 50 hours</span><span class="arrow">→</span></button>
+        <button class="option"><span>50 to 100 hours</span><span class="arrow">→</span></button>
+        <button class="option"><span>100+ hours</span><span class="arrow">→</span></button>
+      </div>
+      <div class="tip">
+        <strong>Under 20 hrs?</strong> Most need 6–10 lessons with us.
+      </div>
+      <div class="footer">
+        <span>Question 2 of 5</span>
+        <div class="dots"><span></span><span class="active"></span><span></span><span></span><span></span></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="faux-below"><strong>↑ Packages, reviews, FAQ, etc.</strong></div>
+
+<!-- ============ Mobile preview ============ -->
+<div class="vlabel-wrap">
+  <div class="super">Mobile preview</div>
+  <h2>Stacks naturally — heading on top, card below. Tip stays inside the card (same position as desktop).</h2>
+  <p class="desc">Identical tip placement on both viewports. No responsive switch needed — one tip slot, one tip element.</p>
+</div>
+<div class="mobile-preview">
+  <div class="label-strip">/first-lesson · Mobile · 380px frame</div>
+  <div class="frame">
+    <section class="faux-hero">
+      <h1>Driving lessons in Adelaide</h1>
+      <a class="cta">Book a Lesson</a>
+      <div class="stats">★★★★★ 81% pass rate</div>
+    </section>
+    <div class="faux-trust">Government Licensed · Free Pickup</div>
+    <div class="fl1-wrap">
+      <div class="fl1">
+        <div class="copy">
+          <p class="eyebrow">Your P-Plates Plan</p>
+          <h2>How many lessons until you're on your <span class="accent">Ps</span>?</h2>
+          <p class="sub">Personalised plan in 60 seconds.</p>
+        </div>
+        <div class="fl1-card">
+          <div class="top">
+            <span class="super">Start your plan</span>
+            <span class="pill">★★★★★</span>
+          </div>
+          <h3>Roughly how much have you driven?</h3>
+          <div class="options">
+            <button class="option"><span>0 hours</span><span class="arrow">→</span></button>
+            <button class="option"><span>1 to 20 hours</span><span class="arrow">→</span></button>
+            <button class="option"><span>20 to 50 hours</span><span class="arrow">→</span></button>
+            <button class="option"><span>50 to 100 hours</span><span class="arrow">→</span></button>
+            <button class="option"><span>100+ hours</span><span class="arrow">→</span></button>
+          </div>
+          <div class="tip">
+            <strong>Under 20 hrs?</strong> Most need 6–10 lessons with us.
+          </div>
+          <div class="footer">
+            <span>Q2 of 5</span>
+            <div class="dots"><span></span><span class="active"></span><span></span><span></span><span></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="end-note">If this lands, I wire it into production. Final cross-page summary in chat.</div>
+
+</body>
+</html>
