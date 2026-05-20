@@ -1,0 +1,383 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Quiz Card — tip placement variants</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sansita:wght@700;800&family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green-50:  #f0fdf4;
+    --green-100: #dcfce7;
+    --green-200: #bbf7d0;
+    --green-400: #4ade80;
+    --green-500: #22c55e;
+    --green-600: #16a34a;
+    --green-700: #15803d;
+    --green-800: #166534;
+    --green-900: #14532d;
+    --green-950: #052e16;
+    --yellow-300: #fde047;
+    --yellow-400: #facc15;
+    --amber-50:  #fffbeb;
+    --amber-100: #fef3c7;
+    --amber-300: #fcd34d;
+    --amber-600: #d97706;
+    --amber-800: #92400e;
+    --gray-50:  #f8fafc;
+    --gray-200: #e5e7eb;
+    --gray-300: #d1d5db;
+    --gray-500: #6b7280;
+    --gray-700: #374151;
+    --gray-900: #111827;
+    --font-sansita: "Sansita", Georgia, serif;
+    --font-sans: "Geist", -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { font-family: var(--font-sans); background: #fafdfb; color: var(--gray-900); line-height: 1.5; -webkit-font-smoothing: antialiased; }
+  h1, h2, h3, h4 { margin: 0; font-family: var(--font-sansita); font-weight: 700; letter-spacing: -0.005em; }
+  p { margin: 0; }
+  a, button { font-family: inherit; }
+
+  .topbar { background: #fff; border-bottom: 1px solid var(--gray-200); padding: 14px 32px; }
+  .topbar .wordmark { font-family: var(--font-sansita); font-size: 22px; font-weight: 700; }
+  .topbar .wordmark .l { color: var(--green-700); }
+  .page-header { background: linear-gradient(180deg, #fff, #f7fdf9); border-bottom: 1px solid var(--gray-200); padding: 28px 32px; }
+  .page-header h1 { font-size: 22px; }
+  .page-header p { color: var(--gray-700); font-size: 13.5px; margin-top: 6px; max-width: 760px; }
+
+  .vlabel-wrap { max-width: 900px; margin: 56px auto 0; padding: 0 24px; }
+  .vlabel-wrap .super { font-size: 11.5px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--green-700); }
+  .vlabel-wrap h2 { font-size: 22px; margin-top: 6px; color: var(--gray-900); }
+  .vlabel-wrap .desc { color: var(--gray-700); font-size: 13.5px; margin-top: 6px; max-width: 720px; }
+
+  /* Hero context */
+  .lp-hero-bg {
+    position: relative; overflow: hidden; color: #fff;
+    background:
+      radial-gradient(ellipse at 80% 10%, rgba(74,222,128,0.18), transparent 55%),
+      linear-gradient(135deg, var(--green-900) 0%, var(--green-800) 35%, var(--green-700) 70%, var(--green-950) 100%);
+  }
+  .lp-hero-bg::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0.18), transparent 25%, transparent 75%, rgba(0,0,0,0.22)); pointer-events: none; }
+  .hero-stage { text-align: center; padding: 48px 24px 88px; position: relative; z-index: 1; }
+  .hero-stage .eyebrow { color: var(--green-100); font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: .22em; text-shadow: 0 2px 14px rgba(0,0,0,0.35); }
+  .hero-stage h1 { color: #fff; margin: 14px auto 12px; font-size: clamp(28px, 4vw, 44px); line-height: 1.05; letter-spacing: -0.025em; text-shadow: 0 2px 16px rgba(0,0,0,0.5); max-width: 720px; }
+  .hero-stage h1 .accent { color: var(--yellow-300); }
+  .hero-stage .subtitle { color: var(--green-400); font-family: var(--font-sansita); font-weight: 700; font-size: clamp(18px, 2vw, 22px); text-shadow: 0 2px 14px rgba(0,0,0,0.25); }
+
+  .quiz-wrap { background: linear-gradient(180deg, var(--green-50), #fff 40%); padding: 0 24px 56px; }
+  .quiz-wrap .inner { max-width: 580px; margin: -56px auto 0; position: relative; z-index: 2; }
+  .quiz-wrap.wider .inner { max-width: 880px; }
+
+  /* Base Q1 refined card (the variant the user liked direction-wise) */
+  .qcard {
+    background: linear-gradient(180deg, var(--green-50) 0%, #fff 70%);
+    border: 1px solid var(--green-100);
+    border-radius: 24px;
+    padding: 30px 30px 24px;
+    box-shadow: 0 30px 60px -28px rgba(0,0,0,0.45), 0 12px 28px -16px rgba(22,163,74,0.25);
+    text-align: left;
+  }
+  .qcard .top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+  .qcard .super { font-family: var(--font-sansita); color: var(--green-700); font-size: 13px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+  .qcard .pill { background: #fff; color: var(--gray-700); font-size: 11.5px; font-weight: 700; padding: 5px 12px; border-radius: 999px; border: 1px solid var(--green-100); }
+  .qcard h3 { font-family: var(--font-sansita); font-size: 22px; color: var(--gray-900); line-height: 1.2; }
+  .qcard .options { display: grid; gap: 10px; margin-top: 20px; }
+  .qcard .option {
+    background: #fff; border: 1.5px solid var(--gray-200);
+    border-radius: 14px; padding: 14px 18px;
+    color: var(--gray-900); font-weight: 600; font-size: 15px;
+    cursor: pointer; text-align: left;
+    display: flex; align-items: center; justify-content: space-between;
+    transition: all .15s;
+  }
+  .qcard .option:hover { border-color: var(--green-600); background: var(--green-50); transform: translateY(-1px); }
+  .qcard .option .arrow { color: var(--gray-300); transition: color .15s, transform .15s; }
+  .qcard .option:hover .arrow { color: var(--green-600); transform: translateX(3px); }
+  .qcard .footer {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-top: 22px; color: var(--gray-500); font-size: 13px;
+  }
+  .qcard .dots { display: flex; gap: 6px; }
+  .qcard .dots span { width: 7px; height: 7px; border-radius: 999px; background: var(--gray-200); }
+  .qcard .dots span.active { background: var(--green-600); width: 22px; }
+
+  /* ====== Tip treatments ====== */
+
+  /* T1 — Inline above options, brand-tinted info card */
+  .tip-inline {
+    margin: 18px 0 4px;
+    background: var(--amber-50);
+    border: 1px solid var(--amber-300);
+    border-radius: 12px;
+    padding: 12px 14px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .tip-inline .badge {
+    flex-shrink: 0;
+    background: var(--amber-300); color: var(--amber-800);
+    font-size: 10.5px; font-weight: 700;
+    padding: 4px 8px; border-radius: 999px;
+    letter-spacing: .08em; text-transform: uppercase;
+    line-height: 1;
+  }
+  .tip-inline .text { color: var(--amber-800); font-size: 13.5px; line-height: 1.5; }
+  .tip-inline .text strong { font-weight: 700; }
+
+  /* T2 — Below options, ghost callout */
+  .tip-below {
+    margin-top: 16px;
+    padding: 12px 14px 12px 38px;
+    color: var(--gray-700); font-size: 13.5px;
+    line-height: 1.5;
+    background: var(--green-50);
+    border-radius: 10px;
+    border-left: 3px solid var(--green-500);
+    position: relative;
+  }
+  .tip-below::before {
+    content: "💡"; position: absolute;
+    left: 12px; top: 11px; font-size: 16px;
+  }
+  .tip-below strong { color: var(--gray-900); font-weight: 700; }
+
+  /* T3 — Side panel on desktop, stacks on mobile */
+  .tip-side-wrap {
+    display: grid; grid-template-columns: 1fr 280px;
+    gap: 18px; align-items: start;
+  }
+  @media (max-width: 720px) { .tip-side-wrap { grid-template-columns: 1fr; gap: 14px; } }
+  .tip-side {
+    background:
+      radial-gradient(ellipse at 0% 0%, rgba(74,222,128,0.18), transparent 70%),
+      linear-gradient(135deg, var(--green-700), var(--green-800));
+    color: #fff;
+    border-radius: 18px;
+    padding: 22px 20px;
+    box-shadow: 0 20px 40px -20px rgba(21,128,61,0.45);
+    position: sticky; top: 16px;
+  }
+  .tip-side .super {
+    color: var(--yellow-300); font-family: var(--font-sansita); font-weight: 700;
+    font-size: 12px; letter-spacing: .14em; text-transform: uppercase;
+    display: flex; align-items: center; gap: 6px; margin-bottom: 10px;
+  }
+  .tip-side h4 {
+    font-family: var(--font-sansita); font-size: 18px; color: #fff;
+    line-height: 1.2; letter-spacing: -0.01em;
+  }
+  .tip-side .body { color: rgba(255,255,255,0.92); font-size: 13.5px; line-height: 1.55; margin-top: 8px; }
+  .tip-side .nudge {
+    margin-top: 14px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(255,255,255,0.16);
+    color: var(--yellow-300); font-size: 12px; font-weight: 600;
+  }
+
+  .copy-card {
+    max-width: 800px;
+    margin: 36px auto 0;
+    padding: 20px 22px;
+    background: #fff;
+    border: 1px solid var(--gray-200);
+    border-radius: 14px;
+    box-shadow: 0 1px 2px rgba(15,23,42,0.04);
+  }
+  .copy-card h3 {
+    font-size: 15px; color: var(--gray-900);
+    margin-bottom: 8px;
+  }
+  .copy-card table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .copy-card th { text-align: left; padding: 8px 12px 8px 0; color: var(--gray-500); font-weight: 600; text-transform: uppercase; letter-spacing: .06em; font-size: 11.5px; vertical-align: top; border-bottom: 1px solid var(--gray-200); }
+  .copy-card td { padding: 10px 12px 10px 0; color: var(--gray-700); border-bottom: 1px solid var(--gray-200); vertical-align: top; }
+  .copy-card td.q { font-weight: 600; color: var(--gray-900); white-space: nowrap; padding-right: 16px; }
+  .copy-card tr:last-child td { border-bottom: 0; }
+  .copy-card .now { color: var(--gray-500); }
+  .copy-card .nudge { color: var(--green-800); font-weight: 500; }
+
+  .faux { background: #fff; text-align: center; padding: 16px; color: var(--gray-500); font-size: 13px; opacity: 0.55; }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <span class="wordmark"><span class="l">Licence</span>Mate</span>
+</div>
+
+<header class="page-header">
+  <h1>Quiz tips — placement variants + conversion-oriented copy</h1>
+  <p>The quiz engine has 4 tips already keyed by question ID. They currently appear via a desktop overlay panel + mobile overlay. I missed showing them in the card variants. Here are 3 placement options + a copy proposal that nudges toward booking.</p>
+</header>
+
+<!-- ============ T1: Inline above options ============ -->
+<div class="vlabel-wrap">
+  <div class="super">T1 — Inline above options (amber callout)</div>
+  <h2>Tip sits between the question and the options. Frames the answer before they choose.</h2>
+  <p class="desc">Amber tint so it's visually distinct from the rest of the card (the user notices it before scanning options). Concise — 1 sentence max. Best for tips that should influence the answer (e.g. "remember, your driven hours matter").</p>
+</div>
+<section class="lp-hero-bg">
+  <div class="hero-stage">
+    <p class="eyebrow">Your P-Plates Plan</p>
+    <h1>How many lessons until you're on your <span class="accent">Ps</span>?</h1>
+    <p class="subtitle">Get sorted in 60 seconds.</p>
+  </div>
+</section>
+<div class="quiz-wrap">
+  <div class="inner">
+    <div class="qcard">
+      <div class="top">
+        <span class="super">Start your plan</span>
+        <span class="pill">★★★★★ · 60s</span>
+      </div>
+      <h3>Roughly how much have you driven?</h3>
+      <div class="tip-inline">
+        <span class="badge">Tip</span>
+        <p class="text"><strong>Less driving = more lessons.</strong> Most students under 20 hours benefit from a structured plan with an instructor.</p>
+      </div>
+      <div class="options">
+        <button class="option"><span>0 hours</span><span class="arrow">→</span></button>
+        <button class="option"><span>1 to 20 hours</span><span class="arrow">→</span></button>
+        <button class="option"><span>20 to 50 hours</span><span class="arrow">→</span></button>
+        <button class="option"><span>50 to 100 hours</span><span class="arrow">→</span></button>
+        <button class="option"><span>100+ hours</span><span class="arrow">→</span></button>
+      </div>
+      <div class="footer">
+        <span>Question 2 of 5</span>
+        <div class="dots"><span></span><span class="active"></span><span></span><span></span><span></span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ T2: Below options ============ -->
+<div class="vlabel-wrap">
+  <div class="super">T2 — Below options (ghost callout)</div>
+  <h2>Tip sits below the options, above the progress footer. Lower visual weight.</h2>
+  <p class="desc">Doesn't compete with the question/options for attention. Reads like supportive context — "here's something to think about." Best for tips that add value without trying to nudge a specific answer.</p>
+</div>
+<section class="lp-hero-bg">
+  <div class="hero-stage">
+    <p class="eyebrow">Your P-Plates Plan</p>
+    <h1>How many lessons until you're on your <span class="accent">Ps</span>?</h1>
+    <p class="subtitle">Get sorted in 60 seconds.</p>
+  </div>
+</section>
+<div class="quiz-wrap">
+  <div class="inner">
+    <div class="qcard">
+      <div class="top">
+        <span class="super">Start your plan</span>
+        <span class="pill">★★★★★ · 60s</span>
+      </div>
+      <h3>Roughly how much have you driven?</h3>
+      <div class="options">
+        <button class="option"><span>0 hours</span><span class="arrow">→</span></button>
+        <button class="option"><span>1 to 20 hours</span><span class="arrow">→</span></button>
+        <button class="option"><span>20 to 50 hours</span><span class="arrow">→</span></button>
+        <button class="option"><span>50 to 100 hours</span><span class="arrow">→</span></button>
+        <button class="option"><span>100+ hours</span><span class="arrow">→</span></button>
+      </div>
+      <div class="tip-below">
+        <strong>Heads up:</strong> Students with under 20 hours driven typically need 6–10 instructor lessons. We'll factor this into your plan.
+      </div>
+      <div class="footer">
+        <span>Question 2 of 5</span>
+        <div class="dots"><span></span><span class="active"></span><span></span><span></span><span></span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ T3: Side panel ============ -->
+<div class="vlabel-wrap">
+  <div class="super">T3 — Side panel (desktop), stacks on mobile</div>
+  <h2>Persistent dark-green tip panel beside the card. Most prominent. Stays visible while user answers.</h2>
+  <p class="desc">Best when tips are meant to actively influence behaviour — they live alongside the quiz, not below it. Can also surface a "nudge" line ("Lessons that work for this profile →"). Risk: more page real-estate, less focused experience.</p>
+</div>
+<section class="lp-hero-bg">
+  <div class="hero-stage">
+    <p class="eyebrow">Your P-Plates Plan</p>
+    <h1>How many lessons until you're on your <span class="accent">Ps</span>?</h1>
+    <p class="subtitle">Get sorted in 60 seconds.</p>
+  </div>
+</section>
+<div class="quiz-wrap wider">
+  <div class="inner">
+    <div class="tip-side-wrap">
+      <div class="qcard">
+        <div class="top">
+          <span class="super">Start your plan</span>
+          <span class="pill">★★★★★ · 60s</span>
+        </div>
+        <h3>Roughly how much have you driven?</h3>
+        <div class="options">
+          <button class="option"><span>0 hours</span><span class="arrow">→</span></button>
+          <button class="option"><span>1 to 20 hours</span><span class="arrow">→</span></button>
+          <button class="option"><span>20 to 50 hours</span><span class="arrow">→</span></button>
+          <button class="option"><span>50 to 100 hours</span><span class="arrow">→</span></button>
+          <button class="option"><span>100+ hours</span><span class="arrow">→</span></button>
+        </div>
+        <div class="footer">
+          <span>Question 2 of 5</span>
+          <div class="dots"><span></span><span class="active"></span><span></span><span></span><span></span></div>
+        </div>
+      </div>
+      <aside class="tip-side">
+        <div class="super">💡 Tip</div>
+        <h4>Less driving = more lessons.</h4>
+        <p class="body">Most students under 20 driven hours need 6–10 instructor lessons to become VORT-ready. With a structured plan, we cut that down.</p>
+        <p class="nudge">→ Our most-booked package: VORT-Ready (6 lessons)</p>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<!-- ============ Conversion-oriented tip copy ============ -->
+<div class="vlabel-wrap">
+  <div class="super">Tip copy — current vs conversion-oriented</div>
+  <h2>The current tips are informational, not selling.</h2>
+  <p class="desc">Existing copy is neutral ("clearest signal", "remove test mistakes"). Conversion-oriented copy reframes the same info into <em>specific outcomes</em> + <em>what to do about it</em> — pushing toward "and that's why our package helps." Pick whichever copy direction you want and I'll wire it in.</p>
+</div>
+<div class="copy-card">
+  <table>
+    <thead>
+      <tr>
+        <th>Question</th>
+        <th>Current tip <span class="now">(neutral)</span></th>
+        <th>Conversion-oriented <span class="nudge">(suggested)</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="q">Driving hours</td>
+        <td class="now">"Your driven hours are the clearest signal for how much support you still need."</td>
+        <td class="nudge">"Less driving = more lessons. Under 20 hours? Most pass with 6–10 instructor lessons in a structured plan."</td>
+      </tr>
+      <tr>
+        <td class="q">Professional lessons</td>
+        <td class="now">"Professional lessons usually remove test mistakes faster than general practice."</td>
+        <td class="nudge">"Parents fix bad habits slowly. Instructors fix them in 1–2 lessons. Most of our students pass first time."</td>
+      </tr>
+      <tr>
+        <td class="q">VORT failed</td>
+        <td class="now">"A past fail usually needs targeted correction, not a full restart."</td>
+        <td class="nudge">"Don't redo what you nailed. Our retry package targets just the fail pattern — usually 1–3 focused lessons."</td>
+      </tr>
+      <tr>
+        <td class="q">Practice at home</td>
+        <td class="now">"Practice between lessons can cut paid lesson hours a lot."</td>
+        <td class="nudge">"Practising at home is the multiplier. Pair it with our weekly lessons and you'll save real money on total lesson hours."</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div style="text-align:center; padding: 56px 24px; color: var(--gray-500); font-size: 13px;">
+  Pick a placement (T1 / T2 / T3) + copy direction (keep current / use conversion). I'll wire it in.
+</div>
+
+</body>
+</html>
