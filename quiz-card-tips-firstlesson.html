@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Quiz tips on /first-lesson page</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sansita:wght@700;800&family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green-50:  #f0fdf4;
+    --green-100: #dcfce7;
+    --green-200: #bbf7d0;
+    --green-400: #4ade80;
+    --green-500: #22c55e;
+    --green-600: #16a34a;
+    --green-700: #15803d;
+    --green-800: #166534;
+    --green-900: #14532d;
+    --green-950: #052e16;
+    --yellow-300: #fde047;
+    --gray-50:  #f8fafc;
+    --gray-200: #e5e7eb;
+    --gray-300: #d1d5db;
+    --gray-500: #6b7280;
+    --gray-700: #374151;
+    --gray-900: #111827;
+    --font-sansita: "Sansita", Georgia, serif;
+    --font-sans: "Geist", -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { font-family: var(--font-sans); background: #fafdfb; color: var(--gray-900); line-height: 1.5; -webkit-font-smoothing: antialiased; }
+  h1, h2, h3, h4 { margin: 0; font-family: var(--font-sansita); font-weight: 700; letter-spacing: -0.005em; }
+  p { margin: 0; }
+  a, button { font-family: inherit; }
+
+  .topbar { background: #fff; border-bottom: 1px solid var(--gray-200); padding: 14px 32px; }
+  .topbar .wordmark { font-family: var(--font-sansita); font-size: 22px; font-weight: 700; }
+  .topbar .wordmark .l { color: var(--green-700); }
+  .page-header { background: linear-gradient(180deg, #fff, #f7fdf9); border-bottom: 1px solid var(--gray-200); padding: 28px 32px; }
+  .page-header h1 { font-size: 22px; }
+  .page-header p { color: var(--gray-700); font-size: 13.5px; margin-top: 6px; max-width: 760px; }
+
+  .vlabel-wrap { max-width: 980px; margin: 48px auto 0; padding: 0 24px; }
+  .vlabel-wrap .super { font-size: 11.5px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--green-700); }
+  .vlabel-wrap h2 { font-size: 22px; margin-top: 6px; color: var(--gray-900); }
+  .vlabel-wrap .desc { color: var(--gray-700); font-size: 13.5px; margin-top: 6px; max-width: 720px; }
+
+  /* Faux /first-lesson hero + trust strip (to show context) */
+  .faux-hero {
+    background:
+      radial-gradient(ellipse at 80% 10%, rgba(74,222,128,0.18), transparent 55%),
+      linear-gradient(135deg, var(--green-900), var(--green-700));
+    color: #fff;
+    text-align: center;
+    padding: 48px 24px;
+  }
+  .faux-hero h1 { font-family: var(--font-sansita); font-size: clamp(28px, 4vw, 40px); text-shadow: 0 2px 16px rgba(0,0,0,0.4); }
+  .faux-hero .sub { color: var(--green-400); font-family: var(--font-sansita); font-size: clamp(18px, 2vw, 22px); margin-top: 10px; text-shadow: 0 2px 14px rgba(0,0,0,0.25); }
+  .faux-hero .cta {
+    display: inline-block; margin-top: 22px;
+    padding: 14px 28px; background: var(--green-600);
+    color: #fff; border-radius: 999px; font-weight: 700;
+    box-shadow: 0 6px 18px -4px rgba(22,163,74,0.55);
+  }
+  .faux-hero .stats { margin-top: 18px; color: rgba(255,255,255,0.85); font-size: 12.5px; font-weight: 600; text-transform: uppercase; letter-spacing: .14em; }
+  .faux-trust {
+    background: linear-gradient(90deg, var(--green-500), var(--green-600));
+    color: #fff; text-align: center; padding: 16px 24px;
+    font-size: 13px;
+    border-bottom: 1px solid var(--gray-200);
+  }
+
+  /* Quiz section on /first-lesson (light context) */
+  .fl-quiz-section {
+    background: linear-gradient(180deg, #fff 0%, var(--green-50) 100%);
+    padding: 56px 24px 64px;
+  }
+  .fl-quiz-section .container {
+    max-width: 880px; margin: 0 auto;
+  }
+  .fl-quiz-section .heading {
+    text-align: center;
+    max-width: 580px; margin: 0 auto 36px;
+  }
+  .fl-quiz-section .heading .eyebrow {
+    color: var(--green-700);
+    font-size: 11.5px; font-weight: 700;
+    letter-spacing: .14em; text-transform: uppercase;
+  }
+  .fl-quiz-section .heading h2 {
+    font-family: var(--font-sansita); font-weight: 700;
+    font-size: clamp(26px, 4vw, 38px);
+    color: var(--gray-900);
+    line-height: 1.1; letter-spacing: -0.02em;
+    margin-top: 10px;
+  }
+  .fl-quiz-section .heading h2 .accent { color: var(--green-700); }
+  .fl-quiz-section .heading .sub {
+    color: var(--gray-700);
+    font-size: 16px; line-height: 1.55;
+    margin: 14px auto 0; max-width: 460px;
+  }
+
+  /* Same responsive grid as /p-plates-plan */
+  .quiz-grid {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 22px;
+    align-items: center;
+  }
+  @media (max-width: 880px) {
+    .quiz-grid { grid-template-columns: 1fr; gap: 0; max-width: 580px; margin: 0 auto; }
+    .tip-side { display: none !important; }
+  }
+  @media (min-width: 881px) {
+    .tip-mobile { display: none !important; }
+  }
+
+  /* Quiz card — identical to /p-plates-plan */
+  .qcard {
+    background: linear-gradient(180deg, var(--green-50) 0%, #fff 70%);
+    border: 1px solid var(--green-100);
+    border-radius: 24px;
+    padding: 30px 30px 24px;
+    box-shadow: 0 18px 40px -22px rgba(22,163,74,0.25);
+    text-align: left;
+  }
+  .qcard .top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+  .qcard .super { font-family: var(--font-sansita); color: var(--green-700); font-size: 13px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+  .qcard .pill { background: #fff; color: var(--gray-700); font-size: 11.5px; font-weight: 700; padding: 5px 12px; border-radius: 999px; border: 1px solid var(--green-100); }
+  .qcard h3 { font-family: var(--font-sansita); font-size: 22px; color: var(--gray-900); line-height: 1.2; }
+  .qcard .options { display: grid; gap: 10px; margin-top: 20px; }
+  .qcard .option {
+    background: #fff; border: 1.5px solid var(--gray-200);
+    border-radius: 14px; padding: 14px 18px;
+    color: var(--gray-900); font-weight: 600; font-size: 15px;
+    cursor: pointer; text-align: left;
+    display: flex; align-items: center; justify-content: space-between;
+    transition: all .15s;
+  }
+  .qcard .option:hover { border-color: var(--green-600); background: var(--green-50); transform: translateY(-1px); }
+  .qcard .option .arrow { color: var(--gray-300); transition: color .15s, transform .15s; }
+  .qcard .option:hover .arrow { color: var(--green-600); transform: translateX(3px); }
+  .qcard .footer {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-top: 22px; color: var(--gray-500); font-size: 13px;
+  }
+  .qcard .dots { display: flex; gap: 6px; }
+  .qcard .dots span { width: 7px; height: 7px; border-radius: 999px; background: var(--gray-200); }
+  .qcard .dots span.active { background: var(--green-600); width: 22px; }
+
+  /* Side tip — identical to /p-plates-plan */
+  .tip-side {
+    background:
+      radial-gradient(ellipse at 0% 0%, rgba(74,222,128,0.20), transparent 70%),
+      linear-gradient(135deg, var(--green-700), var(--green-800));
+    color: #fff;
+    border-radius: 18px;
+    padding: 22px 20px;
+    box-shadow: 0 20px 40px -20px rgba(21,128,61,0.45);
+  }
+  .tip-side .super {
+    color: var(--yellow-300); font-family: var(--font-sansita); font-weight: 700;
+    font-size: 12px; letter-spacing: .14em; text-transform: uppercase;
+    display: flex; align-items: center; gap: 6px; margin-bottom: 8px;
+  }
+  .tip-side h4 {
+    font-family: var(--font-sansita); font-size: 17px; color: #fff;
+    line-height: 1.25; letter-spacing: -0.005em;
+  }
+  .tip-side .body { color: rgba(255,255,255,0.92); font-size: 13px; line-height: 1.5; margin-top: 6px; }
+
+  /* Mobile inline tip */
+  .tip-mobile {
+    margin-top: 14px;
+    padding: 11px 12px 11px 36px;
+    color: var(--gray-700); font-size: 13.5px;
+    line-height: 1.5;
+    background: var(--green-50);
+    border-radius: 10px;
+    border-left: 3px solid var(--green-500);
+    position: relative;
+  }
+  .tip-mobile::before {
+    content: "💡"; position: absolute; left: 11px; top: 11px; font-size: 15px;
+  }
+  .tip-mobile strong { color: var(--gray-900); font-weight: 700; }
+
+  /* Mobile preview frame */
+  .mobile-preview {
+    max-width: 420px; margin: 24px auto 0;
+    border: 1px solid var(--gray-200);
+    border-radius: 28px;
+    overflow: hidden;
+    box-shadow: 0 30px 60px -30px rgba(0,0,0,0.25);
+  }
+  .mobile-preview .label-strip {
+    background: var(--gray-900); color: #fff;
+    padding: 12px 16px;
+    font-size: 11.5px; font-weight: 600;
+    letter-spacing: .12em; text-transform: uppercase;
+    text-align: center;
+  }
+  .mobile-preview .frame { background: #fafdfb; }
+  .mobile-preview .frame .quiz-grid { grid-template-columns: 1fr; gap: 0; max-width: 380px; margin: 0 auto; }
+  .mobile-preview .frame .tip-side { display: none !important; }
+  .mobile-preview .frame .tip-mobile { display: block !important; }
+  .mobile-preview .frame .faux-hero { padding: 32px 20px; }
+  .mobile-preview .frame .faux-hero h1 { font-size: 24px; }
+  .mobile-preview .frame .fl-quiz-section { padding: 32px 16px; }
+  .mobile-preview .frame .fl-quiz-section .heading { margin-bottom: 20px; }
+  .mobile-preview .frame .fl-quiz-section .heading h2 { font-size: 22px; }
+
+  .faux-below {
+    background: #fff; text-align: center; padding: 28px 24px;
+    color: var(--gray-500); font-size: 13px; opacity: 0.55;
+    border-top: 1px dashed var(--gray-200);
+  }
+  .faux-below strong { color: var(--gray-700); }
+
+  .end-note { text-align: center; padding: 56px 24px; color: var(--gray-500); font-size: 13px; }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <span class="wordmark"><span class="l">Licence</span>Mate</span>
+</div>
+
+<header class="page-header">
+  <h1>Quiz tips on /first-lesson — same responsive split, different page context</h1>
+  <p>/first-lesson keeps Book a Lesson as the primary hero CTA. Quiz section sits below the trust banner. Identical card + tip design to /p-plates-plan — only the surrounding page context changes (light section vs dark hero overlap).</p>
+</header>
+
+<!-- ============ Desktop view: full page context ============ -->
+<div class="vlabel-wrap">
+  <div class="super">Desktop view — full page context</div>
+  <h2>Hero (Book a Lesson) → trust banner → quiz section with side tip → rest of LP.</h2>
+  <p class="desc">The quiz section has its own H2 + sub (what we agreed on earlier — explains what the quiz is). Card + side tip use the same components as /p-plates-plan; just live in a light section instead of overlapping a dark hero.</p>
+</div>
+
+<!-- Faux /first-lesson hero -->
+<section class="faux-hero">
+  <h1>Driving lessons in Adelaide that get you VORT-ready, fast.</h1>
+  <p class="sub">Get Your P's Guaranteed.</p>
+  <a class="cta">Book a Lesson</a>
+  <div class="stats">★★★★★ 81% pass rate · 30+ instructors</div>
+</section>
+<div class="faux-trust">Government Licensed · Free Pickup · Book 24/7 · Guaranteed Pass</div>
+
+<!-- The quiz section -->
+<section class="fl-quiz-section">
+  <div class="container">
+    <div class="heading">
+      <p class="eyebrow">Your P-Plates Plan</p>
+      <h2>How many lessons until you're on your <span class="accent">Ps</span>?</h2>
+      <p class="sub">Personalised plan in 60 seconds. No booking required.</p>
+    </div>
+    <div class="quiz-grid">
+      <div class="qcard">
+        <div class="top">
+          <span class="super">Start your plan</span>
+          <span class="pill">★★★★★ · 60s</span>
+        </div>
+        <h3>Roughly how much have you driven?</h3>
+        <div class="options">
+          <button class="option"><span>0 hours</span><span class="arrow">→</span></button>
+          <button class="option"><span>1 to 20 hours</span><span class="arrow">→</span></button>
+          <button class="option"><span>20 to 50 hours</span><span class="arrow">→</span></button>
+          <button class="option"><span>50 to 100 hours</span><span class="arrow">→</span></button>
+          <button class="option"><span>100+ hours</span><span class="arrow">→</span></button>
+        </div>
+        <div class="tip-mobile">
+          <strong>Under 20 hrs?</strong> Most need 6–10 lessons with us.
+        </div>
+        <div class="footer">
+          <span>Question 2 of 5</span>
+          <div class="dots"><span></span><span class="active"></span><span></span><span></span><span></span></div>
+        </div>
+      </div>
+      <aside class="tip-side">
+        <div class="super">💡 Tip</div>
+        <h4>Less driving = more lessons.</h4>
+        <p class="body">Most under 20-hour students need 6–10 lessons with us to be VORT-ready.</p>
+      </aside>
+    </div>
+  </div>
+</section>
+<div class="faux-below"><strong>↑ Rest of /first-lesson continues below</strong> — packages, reviews, FAQs, etc.</div>
+
+<!-- ============ Mobile preview ============ -->
+<div class="vlabel-wrap">
+  <div class="super">Mobile preview</div>
+  <h2>Same DOM, side panel hidden, inline tip shown below options.</h2>
+  <p class="desc">Identical mobile behavior to /p-plates-plan — only the surrounding page context differs (light section vs hero overlap).</p>
+</div>
+<div class="mobile-preview">
+  <div class="label-strip">/first-lesson · Mobile · 380px frame</div>
+  <div class="frame">
+    <section class="faux-hero">
+      <h1>Driving lessons in Adelaide</h1>
+      <a class="cta">Book a Lesson</a>
+      <div class="stats">★★★★★ 81% pass rate</div>
+    </section>
+    <div class="faux-trust">Government Licensed · Free Pickup</div>
+    <section class="fl-quiz-section">
+      <div class="container">
+        <div class="heading">
+          <p class="eyebrow">Your P-Plates Plan</p>
+          <h2>How many lessons until you're on your <span class="accent">Ps</span>?</h2>
+          <p class="sub">Personalised plan in 60 seconds.</p>
+        </div>
+        <div class="quiz-grid">
+          <div class="qcard">
+            <div class="top">
+              <span class="super">Start your plan</span>
+              <span class="pill">★★★★★</span>
+            </div>
+            <h3>Roughly how much have you driven?</h3>
+            <div class="options">
+              <button class="option"><span>0 hours</span><span class="arrow">→</span></button>
+              <button class="option"><span>1 to 20 hours</span><span class="arrow">→</span></button>
+              <button class="option"><span>20 to 50 hours</span><span class="arrow">→</span></button>
+              <button class="option"><span>50 to 100 hours</span><span class="arrow">→</span></button>
+              <button class="option"><span>100+ hours</span><span class="arrow">→</span></button>
+            </div>
+            <div class="tip-mobile">
+              <strong>Under 20 hrs?</strong> Most need 6–10 lessons with us.
+            </div>
+            <div class="footer">
+              <span>Q2 of 5</span>
+              <div class="dots"><span></span><span class="active"></span><span></span><span></span><span></span></div>
+            </div>
+          </div>
+          <aside class="tip-side">
+            <div class="super">💡 Tip</div>
+            <h4>Less driving = more lessons.</h4>
+            <p class="body">Most under 20-hour students need 6–10 lessons.</p>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<div class="end-note">Same primitives as /p-plates-plan — one card component, one tip component, two page contexts. If this lands, I'll wire both pages with the responsive tip.</div>
+
+</body>
+</html>
